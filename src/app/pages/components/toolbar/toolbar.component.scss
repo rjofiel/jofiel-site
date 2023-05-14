@@ -1,0 +1,23 @@
+@import '../../../../assets/styles/variables';
+
+.toolbar__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .toolbar {
+    &__right,
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: $space-cadet;
+      border-radius: var(--tui-radius-xl);
+      height: 40px;
+      padding: 0 1.5rem;
+    }
+
+    &__right {
+      gap: 1rem;
+    }
+  }
+}

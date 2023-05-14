@@ -1,0 +1,9 @@
+.project__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .project__card {
+    flex-basis: 20%;
+  }
+}

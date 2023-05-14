@@ -1,0 +1,3 @@
+<div class="project__container">
+  <app-git-card class="project__card" *ngFor="let item of repositories$ | async" [info]="item"></app-git-card>
+</div>
