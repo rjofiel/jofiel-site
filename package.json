@@ -15,9 +15,8 @@
   },
   "lint-staged": {
     "*.{css,less,scss,html,json,jsx,js}": [
-      "prettier --write ."
-    ],
-    "*.js": "eslint --fix"
+      "npx prettier --write ."
+    ]
   },
   "config": {
     "commitizen": {
@@ -65,8 +64,6 @@
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.39.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
@@ -76,7 +73,6 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
-    "prettier-eslint": "^15.0.1",
     "typescript": "~5.0.2"
   }
 }
