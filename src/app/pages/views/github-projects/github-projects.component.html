@@ -1,3 +1,15 @@
 <div class="project__container">
-  <app-git-card class="project__card" *ngFor="let item of repositories$ | async" [info]="item"></app-git-card>
+  <div class="project__cards">
+    <ng-container *ngIf="repositoriesInProgress$ | async; else skeleton">
+      <app-git-card
+        class="project__card"
+        *ngFor="let item of repositories$ | async"
+        [info]="item"
+        [isLoaded$]="repositoriesLoaded$"></app-git-card>
+    </ng-container>
+
+    <ng-template #skeleton>
+      <app-git-card class="project__card" *ngFor="let item of [].constructor(12)" [info]="item"></app-git-card>
+    </ng-template>
+  </div>
 </div>

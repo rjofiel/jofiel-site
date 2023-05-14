@@ -1,9 +1,22 @@
-.project__container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '../../../../assets/styles/variables';
 
-  .project__card {
-    flex-basis: 20%;
+.project__container {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: $cool-gray;
+
+  .project__cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+    @media #{$tui-tablet-min} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media #{$tui-desktop-min} {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }

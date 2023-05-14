@@ -1,7 +1,40 @@
+.link {
+  text-decoration: none;
+}
+
 .card__container {
+  &.skeleton {
+    .tui-island__figure .some-figure {
+      min-height: 100px;
+    }
+  }
+
+  overflow: hidden;
+  padding: unset;
+  min-width: 160px;
   min-height: 250px;
 
-  .tui-island__text {
-    overflow: scroll;
+  .tui-island__figure {
+    overflow: hidden;
+    margin: unset;
+    .some-figure {
+      width: 100%;
+      height: 30%;
+      max-height: 100px;
+
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .tui-island__content {
+    padding: 0.25rem 1rem;
+    .tui-island__text {
+      width: 100%;
+      overflow: scroll;
+    }
   }
 }

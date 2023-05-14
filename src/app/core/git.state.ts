@@ -4,11 +4,40 @@ import { GitInfo } from './git-model';
 
 @Injectable({ providedIn: 'root' })
 export class GitState {
+  mock: GitInfo[] = [
+    {
+      id: '1',
+      name: 'Mock card',
+      description: 'Mock description',
+      git_url: 'git_url',
+      html_url: 'html_url',
+      commits_url: 'commits_url',
+      thumbnail: 'image.png',
+      language: {
+        java: 1,
+        python: 2
+      }
+    },
+    {
+      id: '2',
+      name: 'Mock card 2',
+      description: 'Mock description 2',
+      git_url: 'git_url',
+      html_url: 'html_url',
+      commits_url: 'commits_url',
+      thumbnail: 'image.png',
+      language: {
+        java: 1,
+        python: 2
+      }
+    }
+  ];
+
   private _gitRepository = new BehaviorSubject<GitInfo | null>(null);
   private _gitRepositoryInProgress = new BehaviorSubject<boolean>(false);
   private _gitRepositoryLoaded = new BehaviorSubject<boolean>(false);
 
-  private _gitRepositories = new BehaviorSubject<GitInfo[] | null>(null);
+  private _gitRepositories = new BehaviorSubject<GitInfo[] | null>(this.mock);
   private _gitRepositoriesInProgress = new BehaviorSubject<boolean>(false);
   private _gitRepositoriesLoaded = new BehaviorSubject<boolean>(false);
 

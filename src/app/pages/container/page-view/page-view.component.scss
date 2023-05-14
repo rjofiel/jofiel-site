@@ -1,0 +1,17 @@
+.view__container {
+  .view__main {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+
+    .view__content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .view__sidenav {
+      flex-basis: 35%;
+    }
+  }
+}
