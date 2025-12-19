@@ -7,11 +7,11 @@ export type Post = {
   description?: string;
   published: boolean;
 };
-const posts = import.meta.glob('/app/content/blog/*.mdx', { eager: true, as: 'raw' });
+const posts = import.meta.glob('/app/content/blog/*.mdx', { eager: true, query: '?raw' });
 
 export function getAllPosts() {
-  return Object.entries(posts).map(([path, content]) => {
-    const str = content?.()?.type as string;
+  return Object.entries(posts || {}).map(([path, content]) => {
+    const str = content?.['default']?.()?.type as string || '';
     const match = /---\n([\s\S]+?)\n---/.exec(str as string);
     const data: { published?: string } & Omit<Post, 'published'> = {
       slug: '',

@@ -2,7 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
-import mdx from 'vite-plugin-mdx';
+import mdx from '@mdx-js/rollup'
 
 export default defineConfig({
   plugins: [tailwindcss(), tsconfigPaths(), mdx()],
