@@ -58,7 +58,6 @@
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.38.0",
     "vite": "~7.3.0",
-    "vite-plugin-mdx": "~3.0.0",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }

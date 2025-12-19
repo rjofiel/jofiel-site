@@ -27,8 +27,7 @@ export function getAllPosts() {
       });
     }
     const filename = path.split('/').pop()!.replace('.mdx', '');
-    const { slug, readableDate } = parseFilename(filename);
-    console.log('slug', slug, readableDate, path);
+    const { readableDate } = parseFilename(filename);
     return {
       slug: filename,
       title: data.title,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Layout } from '@/components/Layout';
 import { useLocation } from 'react-router-dom';
 import { ExternalLink } from '@/components/ExternalLink';
