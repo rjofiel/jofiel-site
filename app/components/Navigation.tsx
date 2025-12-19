@@ -25,6 +25,9 @@ export const Navigation = () => {
           /{item.label}
         </Link>
       ))}
+      <div className="ml-auto justify-self-end text-muted-foreground">
+        <span className="blink text-foreground">_</span>{new Date().toLocaleDateString()}
+      </div>
     </nav>
   );
 };

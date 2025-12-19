@@ -60,11 +60,11 @@ const Home = () => {
             github stuff
           </ExternalLink>
           <ExternalLink
-            href='https://twitter.com'
+            href='https://twitter.com/srludox'
             description='random thoughts, jokes, bad takes, and the occasional existential crisis at 2am.'>
             twitter
           </ExternalLink>
-          <ExternalLink href='https://linkedin.com' description='“professional” stuff. the socially acceptable version of me. heh.'>
+          <ExternalLink href='https://linkedin.com/in/rjofiel' description='“professional” stuff. the socially acceptable version of me. heh.'>
             linkedin
           </ExternalLink>
           <ExternalLink
