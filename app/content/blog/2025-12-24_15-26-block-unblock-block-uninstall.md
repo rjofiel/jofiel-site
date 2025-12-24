@@ -12,6 +12,7 @@ published: false
 
 ---
 
+first of all… engl
 hi… yestarday when i went to sleep… mi mind start to think about this year
 and how the connections o friends that i "lost" him/her contact o for a decision of mine i decide to cut off completly the friendship or somewhere we have… sometimes from an unilateral way…
 
