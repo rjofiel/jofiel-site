@@ -8,7 +8,12 @@ const About = () => {
     <Layout>
       <div className='space-y-8 pt-8'>
         <section>
-          <h1 className='text-lg font-medium text-foreground mb-2'>/about</h1>
+          <div className='flex justify-between items-end'>
+            <h1 className='text-lg font-medium text-foreground mb-2'>/about</h1>
+            <div className='h-14 w-14 rounded-full'>
+              <img className='object-cover rounded-full w-14 h-14' src='/images/capaldi_pfp.webp' alt='peter capaldi' />
+            </div>
+          </div>
           <p className='text-sm text-muted-foreground'>
             online i go by <span className='line-through'>ludox</span> or jofiel.
           </p>

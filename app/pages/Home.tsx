@@ -57,7 +57,7 @@ const Home = () => {
           <ExternalLink
             href='https://github.com/rjofiel'
             description='code, experiments, half-finished ideas, and projects held together by duct tape and hope.'>
-            github stuff
+            github
           </ExternalLink>
           <ExternalLink
             href='https://twitter.com/srludox'
