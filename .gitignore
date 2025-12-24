@@ -5,3 +5,9 @@
 # React Router
 /build/
 /dist
+
+/*/.attachments
+/*/.files
+/*/.templates
+/*/.octarine
+/*/Daily

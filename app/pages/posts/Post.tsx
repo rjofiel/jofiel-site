@@ -7,9 +7,9 @@ const posts = import.meta.glob('/app/content/blog/*.mdx', { eager: true, import:
 
 const components = {
   hr: (props: any) => <hr className='my-8' />,
-  h1: (props: any) => <h1 className='text-sm leading-relaxed text-foreground my-2 font-bold' {...props} />,
-  h2: (props: any) => <h2 className='text-sm leading-relaxed text-muted-foreground my-2 font-semibold' {...props} />,
-  h3: (props: any) => <h3 className='text-sm leading-relaxed text-muted-foreground my-1' {...props} />,
+  h1: (props: any) => <h1 className='text-lg leading-relaxed text-foreground my-2 font-bold' {...props} />,
+  h2: (props: any) => <h2 className='text-[16px] leading-relaxed text-foreground my-2 font-semibold' {...props} />,
+  h3: (props: any) => <h3 className='text-sm leading-relaxed text-foreground my-1' {...props} />,
   p: (props: any) => <p className='text-sm leading-relaxed text-muted-foreground mb-4' {...props} />,
   a: ExternalLink,
   em: (props: any) => <span className='italic' {...props} />,
