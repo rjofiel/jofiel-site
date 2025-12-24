@@ -22,4 +22,4 @@ how im writting following my mood… maybe i start using and element to represen
 
 okey…
 
-January… althought rlly no was in that month but… in this moment the kuromi girl decide to cut off complet
+January… althought rlly no was in that month but… in this moment the kuromi girl decide to cut off completly the communication with me… weird 
