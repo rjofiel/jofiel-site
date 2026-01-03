@@ -87,12 +87,12 @@ but i think
 the more important i was san valentin :(
 and itv but for other think i remember
 
-welp, i went to donate blood because 
+welp, i went to donate blood because  
 in a moment of my life i need to do
 things that leave marks about me or help in a direct way
 it was sad that this time i went alone
-u know i miss someone but she was bussy
-and i didnt asked
+u know i miss someone but she was busy
+and i didn't asked
 
 the next topic itv
 we rlly late to go the inspection
