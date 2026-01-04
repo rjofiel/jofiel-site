@@ -707,13 +707,11 @@ welp, but it wasnt a problem, perrito and me was more exited to see more than la
 
 short version:
 
-- putero
-- more visits to hospitals
-- trekking
-- birthday’s
-- lost a family member
-- helicopter
-- mental breakdown
+- hospitals became familiar.
+- trekking kept me moving. a helicopter.
+- birthdays.
+- a family member was murdered.
+- mental breakdown. i didn’t see coming.
 
 i start to talking more with a friend that i lost the trust in 2023
 we went to eat to a restaurant but it not was well, food it was late and my mom warned me that she went to hospital
@@ -812,7 +810,7 @@ she said i should remove all the pictures
 
 so i remove all the photos, memories
 
-still hurt 
+still hurt
 
 i didnt remember everything
 
@@ -831,3 +829,940 @@ oh fuck
 i was rlly fucked that day
 
 and i only want to cry
+
+welp, i continue with looking for trips
+
+started to do more manual stuff thinking for her birthday
+
+i do some cards, i bought other keychain and do a squirrel with with string
+
+welp, days continue and later i friend tell me that her and someone holding hands
+
+it was the worst moment
+
+i dispair a lot
+
+cried a lot
+
+wwelp, this was my worst mental breakdown
+
+i blocked that person
+
+## sept
+
+short version:
+
+- my birthday
+- simplr’s party
+- barcelona
+- galicia
+- madrid salvaje
+- comiccon
+
+i start to go to the beach only to not think
+
+i leave the wa group
+
+i need to disconned from everything
+
+she question me if i leave by her
+
+i said no but it was a half lie
+
+i need not to thing about her
+
+dont have contact with her
+
+i rlly want to ask more thing but
+
+i cant
+
+what i could ask her
+
+nothing.
+
+welp, i start to bought more flowers for
+
+my mom and aunt
+
+every week i still doing
+
+i suppose i need to express more
+
+i want to do it for her but i cant
+
+i miss my uncle
+
+something different it was a old coworker
+
+send a proposal job
+
+how i need a change
+
+i still have the idea to leave marbs
+
+because i need to forget about this feelings
+
+i tried at the end of 2024 but for certains issues
+
+i couldnt at the end
+
+now i didnt have anything to stay
+
+i have the proposal a few days but in my mind i already accepted
+
+i only need to leave
+
+galicia
+
+for me was the best trip
+
+waaaa
+
+i cant describe how i feel when i landed to santiago de compostela
+
+how u cant see i need to connect with the nature
+
+so galicia it was the perfect point for this one
+
+this trip was a present from my fathers
+
+i rlly appreciated that
+
+i went to a lot of montains, explore the streets,
+
+i lost a lot, taking pictures
+
+although i was rlly happy i bought a lot of presents someones for her
+
+yep i never learn hahaha
+
+i went a tour trip that i rlly feel that
+
+i see a lot of places
+
+i see a lot of animals and plants
+
+i eat a lot and driking white wine
+
+aaaah i want to eat again pulpo a la feira
+
+aaa and veiras and mariscos
+
+i see the end of the santiago path and i rlly want to try some day with perrito
+
+i hope this 2026 we can do it
+
+i found a craft beer and i see the a manifestation regarding to the fire that took place month ago
+
+the truth, i feel to connected to galicia,
+
+i want to live there o near
+
+but firts i need to live the raining days
+
+this time when i went it was too sunny
+
+so rarely rain and it was raning was a little
+
+also i went to the catedral i rlly enyojed the history
+
+later i return to my home i celebrate my birthday a before day
+
+it was wonderful
+
+i receive a lot of kuromi’s presents (several things haha)
+
+but in my birthday day i was thinking on my previous year
+
+when squirrel ask me to go out to take a coffe
+
+i went alone this time and i ask for the same drink that she ask that year and take a picture
+
+yep, i share with her but nothing more
+
+rlly i dont remember anymore
+
+yes, she congrats me but no more, ask me
+
+what i gonna do but nothing more
+
+later i need to take a bus to go barcelona
+
+to see the new job and the simplr party
+
+talk more about the conditions etc…
+
+how the place it has a lot of old coworkers it was pleased to accept
+
+the simplr’s party was calmed but happy, we do a lot of games
+
+talk about the time and take touch for more people
+
+later i have more days to visit barcelona, walking i found a sunflowers
+
+so i take a picture a share with the squirrel
+
+because that somethings i that bring her memories to me
+
+and welp, that day was a bad day … thinking of her
+
+the last day i go to the office of the new job
+
+we talk regarding to conditions
+
+later i meet to cat a few moments because she was tired of uni
+
+and also i need to go to other place and i didnt have a lot of time
+
+that day i took 3 taxis only to meet ones
+
+at the end i return again to marbs but i go to
+
+the comiccon malaga
+
+i not gonna lie
+
+it was the worst festival for neerds
+
+its was a mangafest but without control, time
+
+and a lot expensive
+
+i waste 100-200euros and i do anything
+
+only eat and bought almost nothing
+
+and i cant see everything because there is not guiedelines to see the halls there are a lot of people
+
+it was a shit try to walk between stands
+
+and thats it, later i need to take a but to go to
+
+Madrid Salvaje a rap festival
+
+in the festival i rlly enyojed there i meet a new person that he live
+
+in girona it was pleased meet someone that it was unexpected
+
+more one i need to move to barcelona
+
+## oct
+
+short version:
+
+- rocanrola (cancelled)
+- cruz
+- buitres
+- axolot (enemy)
+- new note
+- the chorizo’s heart
+- the word “date“
+
+when i return to marbs i really know
+
+that i going to move to barcelona
+
+so i ask to my closed friends to make a appointment to meet the other friends
+
+because i want to say the good news
+
+i expect that squirrle come that day but that didnt happen
+
+although i was warned days ago
+
+welp, i say the good news to the people there
+
+and thats it
+
+i gonna say that this month it was the “anniversary“ when i went to the cruz de juanar in 2024
+
+welp, how i can ask to go out with her more
+
+when she wont to come to the meet with the friends when i want to say the “good news”
+
+first i gonna go alone but perrito said me that also he want to go
+
+so i gonna go with him the day before the anniveresary instead the same day (already took a vacation day)
+
+but some days ago she write me
+
+welp somthing weird happend in that moment
+
+she ask me at 2 or 3am to go out to other route instead the the cruz
+
+only if we want (perrito/me)
+
+welp, i talk with perrito and we decide to go out only both
+
+because it was regarding to the moment to the other thing
+
+welp i replicate the photos that day
+
+i pray for the cruz
+
+begging for calm for my beloved ones and my friends
+
+also if i can could get the touch again with her
+
+welp, seems that she was angry with us
+
+removed me
+
+at the next day i go out with the intention to see her
+
+but for casuality
+
+seems the universe rlly want
+
+she see me and ask me where i go too white (i wear white clothes)
+
+so, we take a coffe again
+
+we dont trust much
+
+but i rlly love the moment when i see her
+
+we talk about a lot things
+
+and moments
+
+also regarding to the ghosting on both sides
+
+but more for my side
+
+more my way to hide me
+
+welp at the end we start taliking again
+
+but this time i said that i feel the sensation that always we return to talk
+
+yes, im delusional
+
+im expecting that something could change.
+
+later i went to alicante with a friend i found in the previous year
+
+so i go with him and friends to rocanrola festival
+
+although we are rlly hyped, some alerts it was up
+
+warning about rains and thunders but the festival didnt canceled nothing yet
+
+welp we reach the place and couple hours that the festival should be start
+
+and red alert jump into the phones and the festival was forced to cancel the shows
+
+so we moved and drove a lot of time for a cancel festival
+
+i wll be stay in the camping but now it was impossible
+
+so the friend i go, offer me a place to stay while we stay in alicante
+
+the idea it was return with them but i decide to return the day before instead to stay there
+
+i continue talking with squirrel and perrito so we decide to go gaucin the place where the helicopter happen
+
+i was relly exited only because i can go with squirreeeeel hahahha
+
+the gaucin it was different this time
+
+i love that moment
+
+i still have the pictures of the that day
+
+i still return to that picture
+
+i see her smile
+
+how she keep sitting looking for the buitres
+
+she was rlly exited
+
+i rlly pleased when i gift her the prismatic
+
+aah… that hat tha she hat
+
+the picture that we take the three
+
+although before to achive this day we pass to a lot of issues
+
+my car was moved by grua
+
+when we reach the place it was japanese wast so we was warned to dont do the trekking
+
+when we reacth the top, perrito forgot the breads
+
+so it was a lot experiences that day
+
+but i was rlly happy only seeing her
+
+although at begun she was angry
+
+oct was fantastic
+
+you were smiling
+
+despite all trouble we through to get there
+
+i dont know if you want that should keep these pictures
+
+but for now i still apreciating sometimes when photos rememeber that day
+
+welp, this is month appear a new enemy
+
+the axolot (he win at the end)
+
+at begun it was a friendly plushie but later i discover 
+
+it was a rlly complicated adversary
+
+he take the first place instead the squirrel crochet
+
+i need to revenge my squirrel
+
+welp jks apart, i rlly apreciated the way the she show me how was her daily life
+
+although sometimes i missunderstood some phrases (more info in the book)
+
+but was a rlly happy days i think
+
+welp some day we had a conflict because i said something i shouldnt
+
+im rlly emotive person
+
+u no know how much i feel when i see another
+
+note in in my laptop
+
+only thankme something
+
+i wake up and see that note
+
+it was precious
+
+i still save the little things that u gave me
+
+papers, notes and the calendar
+
+i went to decatlhon with perrito but also i want to go with squirrel
+
+but she was bussy, seems dont take good that i were there without her
+
+welp, again i need to return to barcelona
+
+this last time i rlly more aproach to say my feelings
+
+so when i want to say i like u
+
+i said
+
+welp, how we’re talking about love
+
+she share with me the chorizos heart’s
+
+i remember that aceitunas and a some breakfast she offer me but no one reach my door
+
+a day, we are talking to go to othe trekking
+
+at begun i think it was both but seems she want to go with more people
+
+she doesnt want to go only alone with me (still hurt yet)
+
+i dont know how we reach this point, im working in the new job
+
+focusing but she jump with this topic, welp i dont feel good to continue talking
+
+so i said that i later i will answered
+
+i dont know how panic both in that moment, i never said this was will be a date
+
+but she think it were or something similar
+
+and that was the main issue
+
+at the end we decide to go (for nothing because it was raining in that place)
+
+welp in barcelona i was looking for a room to live
+
+at the end i chat with a old cooworker and he offer me a room because the person ther leave in some moment
+
+perrito bought me a jacket for the mountain heehe
+
+it was rlly warm, i was really happy in that moments
+
+the rest the days i see a mochuelo at night
+
+i went to sushi with my family because in previous month i went with squirrel and my mom was jelous/
+
+## nov
+
+short version:
+
+- parauta.
+- “mirador de los gitanos” - best pictures.
+- ironwoman and birdie.
+- A bad week.
+- **the fucking wrong decision.**
+- no birthday. no gift. my consequences.
+
+welp, this time i went with my family to parauta to see the mitological path
+
+it was curious the old town, the walking take 2-3h but take more time if u stop for taking pictures
+
+here i took other photo with the love behind me but again sad moment
+
+here almost we lost the shopee’s aunt and my aunt hahhaa
+
+i was rlly wonderful day
+
+my mom was happy and i take a lot of picture of her
+
+the next day we are going to the montain with squirrel also perrito
+
+a way to begging for mercy regarding to the previos outside (missed food)
+
+this time we go to other direction, the walking was easy although squirrel
+
+wrre no feeling well at all
+
+ah i remember that she said GN instead good night the previous day, right i try to invite her but
+
+how she need to do thing i dont know if she can
+
+at the end she accept the go out
+
+welp. both we’re tired, the previous day i went to parauta so i dont rlly sleep well
+
+and squirrel also tired
+
+but at the end we reach the top in the new place, perrito guide us
+
+here we take pictures to the environment
+
+aaaaand squirrel ask for some pictures
+
+this was fantastic because it was blocked to take her photos year ago (mmmph!)
+
+but i take rlly good shots
+
+that fucking smile (hate me but i still lv u)
+
+welp she take some pictures with a camera photo that later she need to reveal
+
+i know that i nver going to receive that pictures
+
+also i dont know if the pciture was good to share
+
+although she said me that she will give me that photo
+
+i hope minimum see it at least
+
+the island this show started, ath the began i rlly understand
+
+its not he type of content i see but how i want to talk with her about something different i
+
+give a try, i see 3 chapters only
+
+it was interesting but stupid people doing stupid things
+
+everyone horny (like me on twt)
+
+welp in this month i finally receive the present for my bestfriend and squirrel
+
+nothing prepare to me for the following days and weeks (kill me)
+
+nothing is wonderful, that day i went again to the hospital (well, i went several times previous months) but i dont said a lot
+
+this day didnt sleep anithing
+
+a day i went with squirrel to take a breakfast and see the ironman
+
+she was really exited, she rlly love that sport and that people
+
+it was wonderfull see her how she expresing herself about it
+
+i still wondering if i rlly i love her but this moment only do that my heart wamrs but my tears start to appear
+
+i little sad
+
+welp, this day was fantastic we walk a lot and also she was feeling unnezy she doesnt want to tell me
+
+i cacth was the problem that stay in her mind (not me) but i didnt ask for more, only way to she said me
+
+in the birthday on my bestfriend, i rlly apreciate that we continue in touch after all years 
+
+and all the problems that i give him since we meet
+
+he and her wife found that i start talking with squirrel again
+
+the toxic relationship, welp i cannot denied that
+
+start the hell week
+
+something that it feel too weird was in the birthday she doesnt said anything
+
+she dont share anything compare to other moments
+
+it was weird
+
+i write twice or three times but no reply
+
+answered me at 3am
+
+i wake up at 5 am and see her reply
+
+i still relive but something it was bothering me that day
+
+i didnt asked her but when something dont like i dont hide
+
+i act the same way that u
+
+eyes by eyes, teeth by teeth maybe
+
+i dont overshare a lot also, i was dull and i dont want to talk more
+
+i still talking with her but she was only tell me that she felling tired
+
+but how i dont know 
+
+the only thing that i can said its why?
+
+welp, never said about that days
+
+at the end i need to remove it from my mind because we dont reach anything
+
+and she start feeling bad because i dont act like always
+
+but i think it was for both side, right?
+
+welp, this was the days that she start to not share anything about her day
+
+so was weird, this days always we go to sleep with a argue or conflict
+
+everysingle day
+
+i rlly know the reason, it no was the day that she go out and return to 3 am
+
+i was the other thing that she was still preocupied
+
+she irrate more quickly than normal
+
+sometimes i dont understand the issue
+
+someday she said that she feel that i was controled her when she was online
+
+thats was a surprise, i didnt expect that question hahaha
+
+more when both we are already say good night 
+
+she was rlly checking me?
+
+why?
+
+she was afraid for something?
+
+she was doing something bad to said me that?
+
+because, its matter?
+
+later she said start talking with someone again (i think this was the main reason, i think)
+
+welp, when the important day, finally she said me what was
+
+man, i cried for her, i was rlly happy for her, i care a lot for how she was
+
+i send a lot of encourages messages
+
+and voices messages, i was rlly happy for her
+
+the moment that she said me i crying like a baby man
+
+i dont know if was all week accumulated or only this moment but i feel free
+
+welp, started again with a happy mood both but this not take a long time
+
+she return to dont share anything, or share less 
+
+again she dissapear until 3-4 am
+
+but this time i feel more unneasy
+
+so i write couple times thinking that she fell asleep 
+
+but seems she go out without said anything
+
+so, sometimes i feel that i overshare to her a lot but she doesnt in certains things
+
+how she was not feeling with the same energy i left only a message that i wait when she want to write me again
+
+instead to continue writting her
+
+i wait only for when she want to write me
+
+someday i went with other friends to take some drinks
+
+i was happy, that day i found out a few things but welp
+
+i expect that, so i pass im still happy that day until.
+
+she write telling me she was in the hospital
+
+welp short story, i was a “little” drunk (i dont think)
+
+i request a uber an went to the hospital
+
+the worst fucking decision
+
+i arrive, enter i see her mom understood that she was not alone
+
+i need to go out there
+
+she come behind me and see me
+
+welp she was angry of course
+
+the next day as expectated everyone, i was dumped again and asked to start leave her
+
+although we are “friends” for me nope
+
+so here we go again
+
+ludox or jofiel feeling sad, seems be normal
+
+i went to see a old friend another brother, only because i want to disconect and talk about her without feeling that someone was judgme
+
+i feel more free but still that issue in my mind
+
+the next day need to return to barcelona
+
+so was more devastating that day because we had a padel match 
+
+and the padel was a sport that she was interested
+
+welp, not happend any interesting in barcelona or i dont remember 
+
+i take flat from my old cowoorker and thats it, i need to return in december finally i moved
+
+when i return a thing that i want to repeat it was to go to the sushi with her but always something happen so we cant go
+
+so i go alone
+
+i enjoyed a little
+
+i start listened my old music only to think in other things and i want to sang a lot
+
+the previous day of her birthday i went with perrito to the mountain with the objetive to see the 
+
+amanecer but we dont hace luck this time first attempt
+
+so we return to the “mirador de las golondrinas 2“
+
+in her birthday i rlly congrats…
+
+i rlly want to buy flowers
+
+give her with my present but my present it was a declaration of love
+
+its not the moment for that but it was my last attempt
+
+someday i went with my mom walking taking a walk and i see her
+
+i think she was not feeling well, maybe i was only thinking wrong
+
+i salute her only moving my head, she up her hand but she was doubting
+
+that same day i found that she was hide me the stories in ig
+
+i didnt understand the reason 
+
+welp i start to focus in my job, music because the new album of hard gz comming soon
+
+i still had the present sometime i see in my desk
+
+i phrase i remember because u are my important person:
+
+“merecer una persona que te haga sentir como el primer traguitode cafe por la ma;ana, caliente, necesario e irremplazable” 
+
+the last day i went with perrito to the montain at night, second attempt to reach the top
+
+and see the amanecer, almost reach but we get late
+
+but we take a cools pictures
+
+## dec
+
+short version:
+
+- sister
+- moving to barcelona
+- evalion
+- monserrat
+- simplr’s party
+- christmats
+- trekking with perrito
+- new year
+
+okey december had a lot of thing
+
+first one i still had the hope that she could write me only to said me goodbye or bye
+
+but what i could expect of her, if i remember other moments we never said that when we disconected
+
+welp, i bought flowers for my sister because it was the last one to receive it
+
+i bought the big boutique that i could
+
+the previous day i meet with sora and her gf and we stay a time talking and bought the first skin care hehe
+
+and the next day i was moving to barcelona… squirrel never appear
+
+welp the time in barcelona was happy because everything was new, i need to change my mind to adapt to the new things and the job
+
+but im rlly focus in the work so i stay a lot of hours working
+
+i didint have much time, the first days i went to the center to bought the presents for my friends
+
+because at mid dicember i will return to marbs
+
+this month i still creating some dumps photos
+
+later we have the evalion christamts dinner, it was wonderfull time
+
+we talk a lot, it feel was a family and do some games there
+
+it was a wonderful time
+
+in this month i found a curious site
+
+so i replicated but following my interest and adding a blog page
+
+and for that i start writting hehehe, in enlgish or trying 
+
+and finally monserrat, i rlly need montain because my mind going to explode 
+
+monserrat its a place that i love and i rlly appreciate
+
+the past year i cant go to the every routes and this time somes shortcuts was shutdown but the previous rain
+
+welp, i start from the old town waling a one and half hour (liars)
+
+took me almos 4-5h 
+
+although i rest in some points a lot because i dont have form i need to recover my strenght
+
+welp, it was precious everything
+
+i took a lot of picture, this time i went throught the teleferic intest the train
+
+maybe the next one i need to go for the walking route hehehhe
+
+seems that in monserrat apprear squirrels, i need to found it
+
+i want a pictures
+
+because remember me of her
+
+welp the next day was working, the new desk arrive in my room, continue with the website
+
+welp we are reaching the return to marbs
+
+but before we go to some evalions to take drinks and later i leave them i went to simplr’s party to see other friends
+
+and the fatidic day reach, i must take a flight to agp, almost i miss my flight i fall asleep because i go out yesterday and i sleep tooo late
+
+my uber didnt accept the drive so i need to wait for other want
+
+it was complicated
+
+at the end i take the flight and i reach marbs early 
+
+welp, i start to prepare the gifts for christmats
+
+but i didnt say anything to my friends that i returned only my bestfriend and perrito known
+
+perrito and me want to go to the montain but it was raining a lot
+
+i didnt do anything only continue working and stay in home
+
+welp in christmast eve
+
+i start writing about the previous post because squirrel blockme, unblockme and silenceme well
+
+the same way that other persons
+
+welp in christmas party was cool i receive a new pairs of shoes so perrito and me decide to go to the montain same day hehehe third attempt
+
+this time we need to return because we start hearing some thunders near, so we go carefull 
+
+this time squirrel enable me again the stories
+
+i dont know why
+
+the following day again we go to the montain again with perrito this time trying to see the sunset and we achive to get there hehehe
+
+and was amazing, its could difficult to explain and the pictures that i took never will be reach to what i see in that moment
+
+later i ask to bestfriend and perrito to come to my home to eat a peruvian dish hehehe
+
+it was a calmly day
+
+i was rlly tired for the montains trips hahaha and i do fixed to the car so i was almost near to the bankrupcy
+
+welp, i went to the beach sometimes to see cool views
+
+and finally the almost the last day, perrito and me we try to go to see the amanecer
+
+this time we go too early
+
+this time it was the definitive beacuse the next day it will be raining (at the end nope)
+
+and we reach the top
+
+i was so fuccking cold there
+
+uf and we need to wait almost for 2h for the amanecer
+
+but it was fantastic that amanecer, the birds sounds, the plans, the green… was almost similar to galicia trip that moment
+
+and when we returned the river has more flow so it was a quite difficul to move hahaha
+
+and for the afternoon i should go to moet to see other friends but i was rlly tired
+
+SO TIRED
+
+AND THE SQUIRREL WAS THERE I MISS THE OPORTUNITY TO SEE HER
+
+i only see a picture of her hand from the wa group
+
+but i see and i fall asleep again
+
+that day i wake up 3-4 times
+
+i didnt want to celebrate then end of year because i was tired
+
+welp, i prepare and take time with my family
+
+and misteriosus squirrell appear with a like in my story
+
+understood that i can congrats for the new year (altghout later more issues?)
+
+but i was rlly happy to see that interaction
+
+im hope this year it for her
+
+---
+
+welp as you can see
+
+it was a dramatic journey the 2025 but i rlly enyojed
+
+i still like a squirrel, sometime i see in my memories
+
+i live several moments that i think i going to die
+
+i meet perrito, i hope he can move fordward and who knows maybe this new year we go to other mountains outside of marbs cough cough bcn
+
+and thats it, what a run eh?
+
+i love everyone, especcilay my family and friends and u squirrel, u still have a space in my mind
