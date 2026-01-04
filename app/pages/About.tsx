@@ -44,9 +44,11 @@ const About = () => {
 
           <div>
             <p className='text-sm leading-relaxed text-muted-foreground'>outside of work:</p>
-            <p className='text-sm leading-relaxed text-muted-foreground'>anime.</p>
-            <p className='text-sm leading-relaxed text-muted-foreground'>mechanical keyboards.</p>
-            <p className='text-sm leading-relaxed text-muted-foreground'>overthinking things.</p>
+            <ul className='ml-4 space-y-1 text-sm leading-relaxed text-muted-foreground list-disc'>
+              <li>anime.</li>
+              <li>mechanical keyboards.</li>
+              <li>overthinking things.</li>
+            </ul>
           </div>
 
           <div>

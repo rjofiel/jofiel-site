@@ -64,6 +64,11 @@ const Home = () => {
             description='random thoughts, jokes, bad takes, and the occasional existential crisis at 2am.'>
             twitter
           </ExternalLink>
+           <ExternalLink
+            href='https://twitter.com/rjofiel_'
+            description='low signal. no performance'>
+            alt twitter
+          </ExternalLink>
           <ExternalLink href='https://linkedin.com/in/rjofiel' description='“professional” stuff. the socially acceptable version of me. heh.'>
             linkedin
           </ExternalLink>
