@@ -32,13 +32,12 @@ if [ -f "$FILEPATH" ]; then
 fi
 
 cat <<EOF > "$FILEPATH"
-{/* ---
+---
 title: $TITLE  
 date: $DATE   
 description:    
 published: false    
---- */}
----  
+---
 
 just setting this up.
 

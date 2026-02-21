@@ -7,33 +7,24 @@ export type Post = {
   description?: string;
   published: boolean;
 };
-const posts = import.meta.glob('/app/content/blog/*.mdx', { eager: true, query: '?raw' });
+
+// Remove ?raw so Vite returns the parsed MDX modules, which include export const frontmatter
+const posts = import.meta.glob('/app/content/blog/*.mdx', { eager: true });
 
 export function getAllPosts() {
-  return Object.entries(posts || {}).map(([path, content]) => {
-    const str = content?.['default']?.()?.type as string || '';
-    const match = /---\n([\s\S]+?)\n---/.exec(str as string);
-    const data: { published?: string } & Omit<Post, 'published'> = {
-      slug: '',
-      title: '',
-      date: '',
-      published: 'false'
-    };
+  return Object.entries(posts || {}).map(([path, module]) => {
+    // @ts-ignore - Vite will inject `frontmatter` via remark-mdx-frontmatter
+    const frontmatter = module.frontmatter || {};
 
-    if (match) {
-      match[1].split('\n').forEach(line => {
-        const [key, ...rest] = line.split(':');
-        data[key.trim()] = rest.join(':').trim();
-      });
-    }
     const filename = path.split('/').pop()!.replace('.mdx', '');
     const { readableDate } = parseFilename(filename);
+
     return {
       slug: filename,
-      title: data.title,
+      title: frontmatter.title || '',
       date: readableDate,
-      description: data.description,
-      published: data?.published === 'true'
+      description: frontmatter.description || '',
+      published: frontmatter.published === true || frontmatter.published === 'true'
     };
   });
 }
