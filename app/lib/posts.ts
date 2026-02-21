@@ -13,7 +13,7 @@ const posts = import.meta.glob('/app/content/blog/*.mdx', { eager: true });
 
 export function getAllPosts() {
   return Object.entries(posts || {}).map(([path, module]) => {
-    // @ts-ignore - Vite will inject `frontmatter` via remark-mdx-frontmatter
+    // @ts-expect-error - Vite will inject `frontmatter` via remark-mdx-frontmatter
     const frontmatter = module.frontmatter || {};
 
     const filename = path.split('/').pop()!.replace('.mdx', '');
