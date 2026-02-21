@@ -1,87 +1,98 @@
-# Welcome to React Router!
+# jofiel's space
 
-A modern, production-ready template for building full-stack React applications using React Router.
+welcome to the source code of my site and blog.  
+this is where i share my thoughts...  
+my experiences...  
+projects...  
+and a bit about myself.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## 🚀 tech stack
 
-## Features
+this project is built using:
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **framework**: [react 19](https://react.dev/) + [vite](https://vitejs.dev/)
+- **routing**: [react router](https://reactrouter.com/) (v7)
+- **styling**: [tailwind css v4](https://tailwindcss.com/)
+- **components**: [radix ui](https://www.radix-ui.com/)
+- **content**: markdown/mdx via `@mdx-js/rollup`
+- **data**: [tanstack query](https://tanstack.com/query/latest)
+- **forms**: [react hook form](https://react-hook-form.com/) + [zod](https://zod.dev/)
+- **language**: typescript
 
-## Getting Started
+## 📂 project structure
 
-### Installation
+- `/app/pages`: main application routes.
+- `/app/content/blog`: mdx files containing all the blog posts... written when i need to write.
+- `/app/components`: building blocks.
+- `/app/lib` & `/app/utils`: little helpers.
+- `create_post.sh`: a quick way to create new posts.
 
-Install the dependencies:
+## 🛠️ getting started
+
+you'll need [node.js](https://nodejs.org/) installed somewhere.
+
+clone the repository, install everything:
 
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
+start the server...
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+it will be available at `http://localhost:5173`.
 
-## Building for Production
-
-Create a production build:
+to build for production, when you're ready:
 
 ```bash
 npm run build
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+and if you want to preview what you built:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+npm run preview
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+## 📝 writing...
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+posts are in mdx.  
+stored in `/app/content/blog`.  
+they need this metadata structure:
 
-### DIY Deployment
+```mdx
+{/\* ---
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+title: your title here
 
-Make sure to deploy the output of `npm run build`
+date: YYYY-MM-DD_HH-mm
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
+description: a brief description...
 
-## Styling
+published: true
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+--- \*/}
 
 ---
 
-Built with ❤️ using React Router.
+your content here...
+```
+
+or you can just use `create_post.sh` if you prefer the script.
+
+## 🔗 where to find me
+
+if you really need to reach me...  
+or see what i'm up to...
+
+- [github](https://github.com/rjofiel)
+- [twitter / x](https://x.com/rjofiel)
+- [linkedin](https://linkedin.com/in/rjofiel)
+
+---
+
+built with ❤️ by jofiel.  
+or with whatever energy i have left today.
