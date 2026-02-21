@@ -57,25 +57,18 @@ and if you want to preview what you built:
 npm run preview
 ```
 
-## 📝 writing...
+## 📝 writing
 
 posts are in mdx.  
 stored in `/app/content/blog`.  
 they need this metadata structure:
 
 ```mdx
-{/\* ---
-
+---
 title: your title here
-
 date: YYYY-MM-DD_HH-mm
-
 description: a brief description...
-
 published: true
-
---- \*/}
-
 ---
 
 your content here...
@@ -89,7 +82,7 @@ if you really need to reach me...
 or see what i'm up to...
 
 - [github](https://github.com/rjofiel)
-- [twitter / x](https://x.com/rjofiel)
+- [twitter / x](https://x.com/rjofiel_)
 - [linkedin](https://linkedin.com/in/rjofiel)
 
 ---
