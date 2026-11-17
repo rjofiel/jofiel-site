@@ -66,6 +66,7 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 | Posts, list and bodies                          | `getAllPosts`, `getPost`, `postBody`, `postsByYear`, `formatPostDate` (`app/lib/posts.ts`)     |
 | Dates and times                                 | `SITE_TIME_ZONE`, `madridIso()` (`app/lib/time.ts`)                                            |
 | Anything depending on the clock or randomness   | render it only when `useHydrated()` is true                                                    |
+| Heavy third-party embeds (the pulse widget)     | render them only when `useAfterPageLoad()` is true (`app/lib/useAfterPageLoad.ts`)             |
 | MDX typography (posts and the sealed note)      | `mdxComponents` (`app/components/mdxComponents.tsx`)                                           |
 | Diagrams in posts (steps joined by arrows)      | `<Flow label>` with `<Step name note stage='past'\|'now'\|'next'>` (`app/components/Flow.tsx`) |
 | Body text style                                 | `.body-copy` class (`app/app.css`)                                                             |
