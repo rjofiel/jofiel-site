@@ -2,6 +2,7 @@ import { Layout } from '@/components/Layout';
 import { ExternalLink } from '@/components/ExternalLink';
 import { HeartRateWidget } from '@/components/HeartRateWidget';
 import { Decoration } from '@/components/Decoration';
+import { DitheredImage } from '@/components/DitheredImage';
 
 const About = () => {
   return (
@@ -75,6 +76,16 @@ const About = () => {
               <li>be able to walk more than 150km</li>
             </ul>
           </div>
+        </section>
+
+        <section aria-label='doctor who'>
+          <DitheredImage
+            src='/images/capaldi_pfp.webp'
+            alt='peter capaldi as the doctor, dithered'
+            width={180}
+            dotSize={2}
+            className='text-muted-foreground opacity-70'
+          />
         </section>
       </div>
     </Layout>
