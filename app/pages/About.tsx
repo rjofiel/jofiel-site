@@ -7,7 +7,7 @@ import { DitheredImage } from '@/components/DitheredImage';
 const About = () => {
   return (
     <Layout>
-      <div className='space-y-8 pt-8'>
+      <div className='relative space-y-8 pt-8'>
         <section>
           <div className='flex justify-between items-end'>
             <h1 className='text-lg font-medium text-foreground mb-2'>/about</h1>
@@ -78,17 +78,17 @@ const About = () => {
           </div>
         </section>
 
-        <section aria-label='doctor who'>
+        <div aria-hidden className='pointer-events-none absolute -bottom-8 -right-6 -z-10 w-56 select-none sm:-right-16 sm:w-80 [mask-image:linear-gradient(to_bottom,black_75%,transparent)]'>
           <DitheredImage
             src='/images/capaldi_gallifrey.webp'
-            alt='the twelfth doctor walking with his guitar, dithered'
-            width={180}
-            dotSize={2}
-            contrast={1.5}
+            alt=''
+            width={320}
+            dotSize={1}
+            contrast={1.3}
             invert
-            className='text-muted-foreground opacity-70'
+            className='text-muted-foreground opacity-25'
           />
-        </section>
+        </div>
       </div>
     </Layout>
   );
