@@ -130,6 +130,10 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 - Work in a worktree: `git worktree add ../jofiel-site-worktrees/<name> -b <type>/<name> main`, then
   `npm ci` there. The main checkout stays on `main`.
 - Conventional commits (`feat:`, `fix:`, `chore:`…), no AI attribution or `Co-Authored-By`.
+- Git hooks (husky, installed by `npm ci` / `npm install` through `prepare`) enforce all of this:
+  `pre-commit` runs `npm run check`, `commit-msg` runs commitlint (conventional commits, no
+  `Co-Authored-By`), `pre-push` runs `npm run check` and `npm run build`. Never skip them with
+  `--no-verify`; fix what they report. A fresh worktree needs `npm ci` before its first commit.
 - Git over SSH only. Push the branch to `develop`, open a PR to `main`, merge with
   `gh pr merge <n> --merge --match-head-commit <sha>`.
 - There is no CI and no preview deploy for `develop`: the checks above are the gate. After merging,
