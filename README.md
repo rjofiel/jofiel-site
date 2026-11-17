@@ -88,6 +88,7 @@ the note is encrypted in the browser bundle, so the public repo never has the pl
 the word needs at least 8 characters. the ciphertext is public, so pick something rare, not a dictionary word.
 
 case, accents and extra spaces don't matter.  
+wrap a translation in `<Es>...</Es>` to show it right below, smaller and in grey.  
 what the page says before and after each date lives in `app/heaven-sent/phases.ts`.  
 in `npm run dev`, preview a phase with `/heaven-sent?phase=open`.
 
