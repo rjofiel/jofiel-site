@@ -61,7 +61,9 @@ async function sealCommand() {
   const word = await askHidden('word: ');
   const again = await askHidden('word again: ');
   if (word !== again) throw new Error('The two words do not match. Nothing was written.');
-  if (word.trim().length < 4) throw new Error('Use a word with at least 4 characters.');
+  if (word.trim().length < 8) {
+    throw new Error('Use at least 8 characters: the ciphertext is public, so a short word can be guessed offline.');
+  }
 
   const payload = await seal(compiled, word);
   if ((await unseal(payload, word)) !== compiled) throw new Error('Round-trip failed. Nothing was written.');

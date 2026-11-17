@@ -17,3 +17,6 @@
 
 # Plaintext for sealed sections; only the encrypted output is committed
 /private/
+
+# Local ODD feature notes
+/odd/
