@@ -60,6 +60,8 @@ and if you want to preview what you built:
 npm run preview
 ```
 
+before committing, `npm run check` has to pass (format, lint, types, duplicates). the rules behind it are in [`CLAUDE.md`](./CLAUDE.md).
+
 ## 📝 writing
 
 posts are in mdx.  
