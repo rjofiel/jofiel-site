@@ -80,10 +80,12 @@ const About = () => {
 
         <section aria-label='doctor who'>
           <DitheredImage
-            src='/images/capaldi_pfp.webp'
-            alt='peter capaldi as the doctor, dithered'
+            src='/images/capaldi_gallifrey.webp'
+            alt='the twelfth doctor walking with his guitar, dithered'
             width={180}
             dotSize={2}
+            contrast={1.5}
+            invert
             className='text-muted-foreground opacity-70'
           />
         </section>
