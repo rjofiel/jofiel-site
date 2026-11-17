@@ -7,11 +7,8 @@ import About from './pages/About';
 import { NotFound } from './pages/NotFound';
 import { Post } from './pages/posts/Post';
 
-// Only reached through the letters' QR code, so it ships in its own chunk with the sealed note.
 const HeavenSent = lazy(() => import('./pages/HeavenSent').then(module => ({ default: module.HeavenSent })));
 
-// Shared by the browser (BrowserRouter, root.tsx) and the build-time prerender (StaticRouter,
-// entry-server.tsx), so both render exactly the same tree.
 export const AppRoutes = () => (
   <Routes>
     <Route path='/' element={<Home />} />

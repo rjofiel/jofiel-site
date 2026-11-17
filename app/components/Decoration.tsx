@@ -4,10 +4,10 @@ interface DecorationProps {
   endX?: string;
   duration?: string;
   delay?: string;
-  top?: string; // opcional para posición vertical
-  bottom?: string; // opcional
-  left?: string; // opcional
-  right?: string; // opcional
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
 }
 
 export const Decoration = ({

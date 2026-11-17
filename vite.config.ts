@@ -10,15 +10,7 @@ import { seo } from './vite/seo';
 const blogDir = path.resolve(__dirname, 'app/content/blog');
 
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    tsconfigPaths(),
-    // remark-frontmatter keeps the YAML header out of the rendered post; the header itself
-    // is read by blogIndex.
-    mdx({ remarkPlugins: [remarkFrontmatter] }),
-    blogIndex(blogDir),
-    seo(blogDir, readBlogIndex)
-  ],
+  plugins: [tailwindcss(), tsconfigPaths(), mdx({ remarkPlugins: [remarkFrontmatter] }), blogIndex(blogDir), seo(blogDir, readBlogIndex)],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './app')
@@ -27,7 +19,6 @@ export default defineConfig({
   build: {
     rollupOptions: {
       onwarn(warning, warn) {
-        // react-router ships a "use client" directive for RSC; meaningless in a client-only SPA.
         if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('"use client"')) return;
         warn(warning);
       }

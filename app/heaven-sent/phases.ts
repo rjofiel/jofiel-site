@@ -1,6 +1,3 @@
-// One fixed route, several moments. Dates are Europe/Madrid, written as UTC instants.
-// Add a phase by appending to PHASES; the URL never changes.
-
 export type PhaseId = 'sealed' | 'open' | 'happened';
 
 export type Phase = {
@@ -17,13 +14,11 @@ export const PHASES: Phase[] = [
     lines: ['not yet.', 'this one opens on january 1st.', 'keep the letter closed until then.']
   },
   {
-    // 2027-01-01 00:00 CET
     id: 'open',
     startsAt: '2026-12-31T23:00:00Z',
     lines: ['you opened it.', 'the word is inside the letter.']
   },
   {
-    // 2027-09-23 00:00 CEST, the day after arriving
     id: 'happened',
     startsAt: '2027-09-22T22:00:00Z',
     lines: ['it happened.'],

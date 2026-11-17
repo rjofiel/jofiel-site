@@ -10,6 +10,5 @@ const app = (
   </BrowserRouter>
 );
 
-// Built pages arrive prerendered (vite/prerender.ts); the dev server serves an empty root.
 if (container.hasChildNodes()) hydrateRoot(container, app);
 else createRoot(container).render(app);

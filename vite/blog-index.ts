@@ -8,7 +8,6 @@ import { madridIso } from '../app/lib/time';
 const VIRTUAL_ID = 'virtual:blog-index';
 const RESOLVED_ID = `\0${VIRTUAL_ID}`;
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---/;
-// 2026-11-17_22-00-now-kresco -> date 2026-11-17, time 22:00, slug now-kresco
 const FILENAME = /^(\d{4}-\d{2}-\d{2})_(\d{2})-(\d{2})-(.+)$/;
 
 function toEntry(filename: string, source: string): PostEntry {
@@ -25,8 +24,6 @@ function toEntry(filename: string, source: string): PostEntry {
   };
 }
 
-// Reads only the frontmatter of every post at build time, so the blog list and the SEO files
-// never have to bundle or compile the post bodies. Sorted oldest first.
 export function readBlogIndex(dir: string): PostEntry[] {
   return fs
     .readdirSync(dir)

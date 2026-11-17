@@ -1,11 +1,7 @@
 import { Page, PageTitle } from '@/components/Page';
 import { pageMeta } from '@/lib/meta';
-import { ExternalLink } from '@/components/ExternalLink';
-import { HeartRateWidget } from '@/components/HeartRateWidget';
-import { Decoration } from '@/components/Decoration';
 import { DoctorSilhouette } from '@/components/DoctorSilhouette';
 
-// fastfetch-style summary shown next to the avatar.
 const fetchLines: [string, string][] = [
   ['aka', 'ludox (retired)'],
   ['os', 'macos (unfortunately)'],
@@ -16,7 +12,6 @@ const fetchLines: [string, string][] = [
   ['next', 'walk 150km']
 ];
 
-// Terminal palette row, ending in tardis blue.
 const fetchColors = [
   'var(--color-muted)',
   'var(--color-muted-foreground)',
@@ -63,7 +58,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Intro */}
       <section className='space-y-4'>
         <div>
           <p className='body-copy'>i started with angular and java.</p>

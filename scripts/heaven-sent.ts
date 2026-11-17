@@ -1,11 +1,3 @@
-// Seals the private /heaven-sent note with the word printed on the card inside each letter.
-//
-//   npm run heaven-sent -- seal    compile private/heaven-sent/note.mdx, encrypt it, write sealed.json
-//   npm run heaven-sent -- check   ask for a word and tell whether it opens sealed.json
-//
-// The word is only read from a hidden prompt (or HEAVEN_SENT_WORD for automation), never from argv,
-// so it does not end up in shell history. The note plaintext never leaves private/, which is gitignored.
-
 import { compile } from '@mdx-js/mdx';
 import remarkFrontmatter from 'remark-frontmatter';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';

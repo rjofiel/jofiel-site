@@ -7,8 +7,6 @@ import { formatPostDate, getAllPosts, preloadPost } from '@/lib/posts';
 const Blog = () => {
   const posts = getAllPosts();
 
-  // Post bodies are tiny (about 18 kB gzip for all of them): fetch the published ones in the
-  // background so opening a post is instant instead of showing "loading...".
   useEffect(() => {
     const preloadAll = () => posts.filter(post => post.published).forEach(post => preloadPost(post.filename));
     if ('requestIdleCallback' in window) {
@@ -35,7 +33,6 @@ const Blog = () => {
               <Link
                 to={`/blog/${post.filename}`}
                 className='block space-y-1'
-                // In case the click beats the background fetch.
                 onMouseEnter={() => preloadPost(post.filename)}
                 onFocus={() => preloadPost(post.filename)}
                 onTouchStart={() => preloadPost(post.filename)}>

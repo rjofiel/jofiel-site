@@ -6,7 +6,6 @@ interface FloatingDecorationsProps {
 }
 
 export const FloatingDecorations = ({ count = 10 }: FloatingDecorationsProps) => {
-  // Random positions: client only, so the prerendered HTML and hydration agree.
   if (!useHydrated()) return null;
   return <RandomDecorations count={count} />;
 };
@@ -14,7 +13,7 @@ export const FloatingDecorations = ({ count = 10 }: FloatingDecorationsProps) =>
 const RandomDecorations = ({ count }: { count: number }) => {
   const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
-  const MIN_DISTANCE = 20; // distancia mínima entre decoraciones en %
+  const MIN_DISTANCE = 20;
   const usedTops: number[] = [];
   const usedStarts: number[] = [];
 
@@ -32,16 +31,16 @@ const RandomDecorations = ({ count }: { count: number }) => {
     do {
       value = random(min, max);
       tries++;
-      if (tries > 100) break; // por si no hay espacio suficiente
+      if (tries > 100) break;
     } while (used.some(v => Math.abs(v - value) < MIN_DISTANCE));
     used.push(value);
     return value;
   };
 
   for (let i = 0; i < count; i++) {
-    const startX = generateUnique(usedStarts, -20, 30); // vw
-    const endX = random(50, 100); // no necesita evitar colisiones
-    const top = generateUnique(usedTops, 2, 95); // %
+    const startX = generateUnique(usedStarts, -20, 30);
+    const endX = random(50, 100);
+    const top = generateUnique(usedTops, 2, 95);
     const duration = `${random(16, 40)}s`;
     const delay = `${random(-10, -2)}s`;
 
