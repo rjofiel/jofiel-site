@@ -1,4 +1,5 @@
-import { Layout } from '@/components/Layout';
+import { Page, PageTitle } from '@/components/Page';
+import { pageMeta } from '@/lib/meta';
 import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
 
 interface Project {
@@ -25,55 +26,53 @@ const projects: Project[] = [
 
 const Projects = () => {
   return (
-    <Layout>
-      <div className='space-y-8 pt-8'>
-        <section>
-          <h1 className='text-lg font-medium text-foreground mb-2'>/projects</h1>
+    <Page meta={pageMeta('/projects')}>
+      <section>
+        <PageTitle>/projects</PageTitle>
 
-          <div>
-            <p className='text-sm text-muted-foreground'>things i've built,</p>
-            <p className='text-sm text-muted-foreground'>or i'm still actively messing with.</p>
-            <p className='text-sm text-muted-foreground'>
-              current focus:{' '}
-              <div className='inline-flex gap-2'>
-                {['react', 'python'].map(lang => (
-                  <span key={lang} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
-                    {lang}
-                  </span>
-                ))}
-              </div>
-            </p>
-          </div>
-        </section>
+        <div>
+          <p className='text-sm text-muted-foreground'>things i've built,</p>
+          <p className='text-sm text-muted-foreground'>or i'm still actively messing with.</p>
+          <p className='text-sm text-muted-foreground'>
+            current focus:{' '}
+            <div className='inline-flex gap-2'>
+              {['react', 'python'].map(lang => (
+                <span key={lang} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
+                  {lang}
+                </span>
+              ))}
+            </div>
+          </p>
+        </div>
+      </section>
 
-        <section className='space-y-6'>
-          {projects.map(project => (
-            <article key={project.name} className='space-y-2'>
-              <div className='flex items-center gap-2'>
-                <h2 className='text-sm font-medium text-foreground'>{project.name}</h2>
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='text-muted-foreground hover:text-primary transition-colors'>
-                    <ExternalLinkIcon className='w-3 h-3' />
-                  </a>
-                )}
-              </div>
-              <p className='text-sm text-muted-foreground'>{project.description}</p>
-              <div className='flex gap-2'>
-                {project.tech.map(t => (
-                  <span key={t} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </section>
-      </div>
-    </Layout>
+      <section className='space-y-6'>
+        {projects.map(project => (
+          <article key={project.name} className='space-y-2'>
+            <div className='flex items-center gap-2'>
+              <h2 className='text-sm font-medium text-foreground'>{project.name}</h2>
+              {project.url && (
+                <a
+                  href={project.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-muted-foreground hover:text-primary transition-colors'>
+                  <ExternalLinkIcon className='w-3 h-3' />
+                </a>
+              )}
+            </div>
+            <p className='text-sm text-muted-foreground'>{project.description}</p>
+            <div className='flex gap-2'>
+              {project.tech.map(t => (
+                <span key={t} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </section>
+    </Page>
   );
 };
 
