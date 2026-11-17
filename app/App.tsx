@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 import Projects from './pages/Projects';
@@ -8,7 +8,7 @@ import { NotFound } from './pages/NotFound';
 import { Post } from './pages/posts/Post';
 
 // Only reached through the letters' QR code, so it ships in its own chunk with the sealed note.
-const HeavenSent = lazy(() => import('./pages/HeavenSent').then((module) => ({ default: module.HeavenSent })));
+const HeavenSent = lazy(() => import('./pages/HeavenSent').then(module => ({ default: module.HeavenSent })));
 
 const App = () => (
   <BrowserRouter>

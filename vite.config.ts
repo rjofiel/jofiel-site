@@ -23,5 +23,14 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './app')
     }
+  },
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        // react-router ships a "use client" directive for RSC; meaningless in a client-only SPA.
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('"use client"')) return;
+        warn(warning);
+      }
+    }
   }
 });

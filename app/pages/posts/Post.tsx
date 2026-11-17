@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import type { MDXContent } from 'mdx/types';
 import { Page, PageTitle } from '@/components/Page';
 import { mdxComponents } from '@/components/mdxComponents';

@@ -20,7 +20,7 @@ export type PostEntry = {
   filename: string;
   // Filename without the date prefix.
   slug: string;
-  // Local date and time from the filename, e.g. 2026-11-17T22:00. Empty when missing.
+  // Local date and time from the filename, in Madrid, e.g. 2026-11-17T22:00:00+01:00. Empty when missing.
   date: string;
   title: string;
   description: string;

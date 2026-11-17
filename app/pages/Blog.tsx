@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
 import { pageMeta } from '@/lib/meta';
 import { formatPostDate, getAllPosts } from '@/lib/posts';

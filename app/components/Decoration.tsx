@@ -4,38 +4,39 @@ interface DecorationProps {
   endX?: string;
   duration?: string;
   delay?: string;
-  top?: string;    // opcional para posición vertical
+  top?: string; // opcional para posición vertical
   bottom?: string; // opcional
-  left?: string;   // opcional
-  right?: string;  // opcional
+  left?: string; // opcional
+  right?: string; // opcional
 }
 
 export const Decoration = ({
-  className = "",
-  startX = "0vw",
-  endX = "100vw",
-  duration = "10s",
-  delay = "0s",
+  className = '',
+  startX = '0vw',
+  endX = '100vw',
+  duration = '10s',
+  delay = '0s',
   top,
   bottom,
   left,
-  right,
+  right
 }: DecorationProps) => {
   return (
     <span
       className={`decoration-symbol text-muted-foreground text-decoration float-decoration translation-x-decoration text-lg ${className}`}
-      style={{
-        '--start-x': startX,
-        '--end-x': endX,
-        '--duration': duration,
-        '--delay': delay,
-        top,
-        bottom,
-        left,
-        right,
-      } as React.CSSProperties}
-    >
-      {"><>"}
+      style={
+        {
+          '--start-x': startX,
+          '--end-x': endX,
+          '--duration': duration,
+          '--delay': delay,
+          top,
+          bottom,
+          left,
+          right
+        } as React.CSSProperties
+      }>
+      {'><>'}
     </span>
   );
 };

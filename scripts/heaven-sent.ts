@@ -23,7 +23,7 @@ function askHidden(question: string): Promise<string> {
   if (!process.stdin.isTTY) {
     return Promise.reject(new Error('No TTY: run this in a terminal or set HEAVEN_SENT_WORD.'));
   }
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     process.stdout.write(question);
     const stdin = process.stdin;
     stdin.setRawMode(true);
@@ -54,9 +54,7 @@ async function sealCommand() {
     throw new Error(`Missing ${notePath}. Write the note there first (the folder is gitignored).`);
   }
   const source = readFileSync(notePath, 'utf8');
-  const compiled = String(
-    await compile(source, { outputFormat: 'function-body', remarkPlugins: [remarkFrontmatter] })
-  );
+  const compiled = String(await compile(source, { outputFormat: 'function-body', remarkPlugins: [remarkFrontmatter] }));
 
   const word = await askHidden('word: ');
   const again = await askHidden('word again: ');

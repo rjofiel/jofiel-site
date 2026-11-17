@@ -3,6 +3,7 @@ import path from 'node:path';
 import { parse } from 'yaml';
 import type { Plugin } from 'vite';
 import type { PostEntry } from '../app/lib/meta';
+import { madridIso } from '../app/lib/time';
 
 const VIRTUAL_ID = 'virtual:blog-index';
 const RESOLVED_ID = `\0${VIRTUAL_ID}`;
@@ -17,7 +18,7 @@ function toEntry(filename: string, source: string): PostEntry {
   return {
     filename,
     slug: parts ? parts[4] : '',
-    date: parts ? `${parts[1]}T${parts[2]}:${parts[3]}` : '',
+    date: parts ? madridIso(`${parts[1]}T${parts[2]}:${parts[3]}`) : '',
     title: String(frontmatter.title ?? ''),
     description: String(frontmatter.description ?? ''),
     published: frontmatter.published === true || frontmatter.published === 'true'
