@@ -9,9 +9,9 @@ const Home = () => {
     <Page meta={pageMeta('/')} className='space-y-10'>
       {/* Intro */}
       <section className='space-y-4'>
-        <p className='text-sm leading-relaxed text-foreground'>
+        <h1 className='text-sm leading-relaxed text-foreground'>
           hi, im <span className='text-primary'>ludox</span>.
-        </p>
+        </h1>
         <p className='body-copy'>
           a developer. the kind that builds things, breaks them, then rebuilds them at 3am wondering why they ever started.{' '}
         </p>

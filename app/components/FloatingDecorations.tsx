@@ -1,10 +1,17 @@
 import { Decoration } from './Decoration';
+import { useHydrated } from '@/lib/useHydrated';
 
 interface FloatingDecorationsProps {
   count?: number;
 }
 
 export const FloatingDecorations = ({ count = 10 }: FloatingDecorationsProps) => {
+  // Random positions: client only, so the prerendered HTML and hydration agree.
+  if (!useHydrated()) return null;
+  return <RandomDecorations count={count} />;
+};
+
+const RandomDecorations = ({ count }: { count: number }) => {
   const random = (min: number, max: number) => Math.random() * (max - min) + min;
 
   const MIN_DISTANCE = 20; // distancia mínima entre decoraciones en %

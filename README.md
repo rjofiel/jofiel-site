@@ -24,7 +24,9 @@ this project is built using:
 - `/app/components`: building blocks.
 - `/app/lib`: little helpers. `meta.ts` builds every page's `<head>` (title, description, canonical, preview card).
 - `/app/content/site.json`: title and description of each page. a new page needs an entry here.
-- `/vite`: build-time plugins. `blog-index` reads every post's frontmatter for the blog list; `seo` writes one html per route with its own `<head>`, plus `sitemap.xml`, `feed.xml` and `robots.txt`.
+- `/vite`: build-time plugins. `blog-index` reads every post's frontmatter for the blog list; `seo` prerenders every route to static html (full content plus its own `<head>`, which the browser then hydrates), writes `404.html`, `sitemap.xml`, `feed.xml` and `robots.txt`.
+- `app/entry-server.tsx`: renders a route to html at build time. `app/root.tsx` hydrates it in the browser. both use the same routes from `app/App.tsx`.
+- anything that depends on the visitor's clock or randomness renders only after hydration (`useHydrated`), otherwise the prerendered html and the browser disagree.
 - `public/og.png`: the preview image used when a link is shared.
 - `create_post.sh`: a quick way to create new posts.
 
