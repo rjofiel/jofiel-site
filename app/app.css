@@ -1,5 +1,23 @@
 @import 'tailwindcss';
 
+/* Agave Nerd Font, self-hosted and subset to Latin, punctuation, arrows and box drawing
+   (~20 KB instead of ~1 MB each). Licence: public/fonts/OFL.txt */
+@font-face {
+  font-family: 'Agave Nerd Font';
+  src: url('/fonts/agave-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Agave Nerd Font';
+  src: url('/fonts/agave-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* ================================
    * 🌑 Superficies base
@@ -153,7 +171,7 @@
   /* Base del documento */
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Agave Nerd Font';
+    font-family: 'Agave Nerd Font', ui-monospace, monospace;
   }
 
   html {

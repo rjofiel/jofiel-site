@@ -1,3 +1,5 @@
+import type { MDXContent } from 'mdx/types';
+import blogIndex from 'virtual:blog-index';
 import { parseFilename } from './utils';
 
 export type Post = {
@@ -8,23 +10,20 @@ export type Post = {
   published: boolean;
 };
 
-// Remove ?raw so Vite returns the parsed MDX modules, which include export const frontmatter
-const posts = import.meta.glob('/app/content/blog/*.mdx', { eager: true });
+// Post bodies are split into their own chunks and loaded on demand; the list only needs
+// the frontmatter, which the blog-index Vite plugin extracts at build time.
+const bodies = import.meta.glob<{ default: MDXContent }>('/app/content/blog/*.mdx');
 
-export function getAllPosts() {
-  return Object.entries(posts || {}).map(([path, module]) => {
-    // @ts-expect-error - Vite will inject `frontmatter` via remark-mdx-frontmatter
-    const frontmatter = module.frontmatter || {};
+export function loadPost(slug: string) {
+  return bodies[`/app/content/blog/${slug}.mdx`];
+}
 
-    const filename = path.split('/').pop()!.replace('.mdx', '');
-    const { readableDate } = parseFilename(filename);
-
-    return {
-      slug: filename,
-      title: frontmatter.title || '',
-      date: readableDate,
-      description: frontmatter.description || '',
-      published: frontmatter.published === true || frontmatter.published === 'true'
-    };
-  });
+export function getAllPosts(): Post[] {
+  return blogIndex.map(({ filename, frontmatter }) => ({
+    slug: filename,
+    title: String(frontmatter.title ?? ''),
+    date: parseFilename(filename).readableDate,
+    description: String(frontmatter.description ?? ''),
+    published: frontmatter.published === true || frontmatter.published === 'true'
+  }));
 }

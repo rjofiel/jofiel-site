@@ -11,12 +11,10 @@ and a bit about myself.
 this project is built using:
 
 - **framework**: [react 19](https://react.dev/) + [vite](https://vitejs.dev/)
-- **routing**: [react router](https://reactrouter.com/) (v7)
+- **routing**: [react router](https://reactrouter.com/) (`react-router-dom` v7)
 - **styling**: [tailwind css v4](https://tailwindcss.com/)
-- **components**: [radix ui](https://www.radix-ui.com/)
-- **content**: markdown/mdx via `@mdx-js/rollup`
-- **data**: [tanstack query](https://tanstack.com/query/latest)
-- **forms**: [react hook form](https://react-hook-form.com/) + [zod](https://zod.dev/)
+- **content**: markdown/mdx via `@mdx-js/rollup`. each post is its own chunk, loaded when opened.
+- **font**: [agave nerd font](https://github.com/blobject/agave), self-hosted and trimmed in `public/fonts`
 - **language**: typescript
 
 ## 📂 project structure
@@ -24,7 +22,8 @@ this project is built using:
 - `/app/pages`: main application routes.
 - `/app/content/blog`: mdx files containing all the blog posts... written when i need to write.
 - `/app/components`: building blocks.
-- `/app/lib` & `/app/utils`: little helpers.
+- `/app/lib`: little helpers.
+- `/vite`: build-time plugins. `blog-index` reads every post's frontmatter for the blog list.
 - `create_post.sh`: a quick way to create new posts.
 
 ## 🛠️ getting started
