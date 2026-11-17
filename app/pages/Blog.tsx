@@ -39,7 +39,7 @@ const PastYear = ({ group }: { group: PostYear }) => (
 );
 
 const Blog = () => {
-  const years = postsByYear(getAllPosts()).reverse();
+  const years = postsByYear([...getAllPosts()].reverse());
   const [current, ...past] = years;
 
   return (
