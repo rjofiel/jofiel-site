@@ -1,0 +1,174 @@
+---
+title: 'how i work now: orchestrating agents'
+
+date: 2026-11-14_22-00
+
+description: from opencode's free tier to a team of agents with roles, memory and rules. i don't write most of the code anymore. i orchestrate.
+
+published: true
+---
+
+---
+
+## first technical post
+
+i've never written about how i work.  
+mostly because it kept changing.  
+but i think it's settling down, so here it goes.
+
+<Flow label='from opencode to hermes, and maybe gentle-shell next'>
+  <Step name='opencode' note='the free version. gentle-ai and engram, very early.' />
+  <Step name='custom skills' note="a teammate's skills on top." />
+  <Step name='claude code + gentle-ai' note='terminal, orchestration. sdd, then odd, with rdd on top.' />
+  <Step name='hermes' note='profiles with roles. skills that improve themselves.' stage='now' />
+  <Step name='gentle-shell' note='maybe. for now, hermes in the terminal.' stage='next' />
+</Flow>
+
+## how it started
+
+it started with opencode, because of the free version.  
+i already had gentle-ai and engram, but in very early stages.  
+then some custom skills from a teammate.
+
+then i moved to something more complex:  
+claude code in the terminal, gentle-ai orchestrating on top.  
+always the terminal. the app, almost never.
+
+the flow changed too.  
+first sdd: specs first, then code.  
+now odd: small things stay small, big things get a plan.
+
+and rdd on top, as a complement.  
+reviews on a frozen version, so the evidence belongs to exactly what ships.  
+i'm still learning when i should use it more,  
+because sometimes it doesn't work the way i expect either.
+
+and switching between claude models all the time.  
+i also signed up for nan.builders because i liked the pricing.  
+now they moved to credits... and i'm not so sure anymore.
+
+today the mix is claude (opus and sonnet) for thinking and writing,  
+and qwen, deepseek and glm through nan.builders for exploring and second opinions.
+
+## hermes and roles
+
+then hermes.  
+and here it stopped being one agent.
+
+now there are profiles, each one with a role and its own model:
+
+- a lead that plans, decides and routes. it doesn't write code.
+- an explorer that only reads and maps.
+- a worker that writes and runs the tests.
+- a verifier that checks every claim against the source.
+- two judges, from different model families, reviewing blind.
+- reviewers for risk, readability, reliability and resilience.
+
+why different models?  
+because a model reviewing its own work tends to agree with itself hahaha.
+
+funny thing: with hermes i use the app more.  
+not because i like it more,  
+but because sometimes my computer loses the terminal sessions,  
+and recovering them from the app is way easier hahaha.
+
+## how tasks are born
+
+nothing starts with code.  
+first the agent explores, then decides how big the thing really is.
+
+small: done right away, no paperwork.  
+big: a plan document.  
+specs quoting my exact words, never paraphrased.  
+tasks linked to those specs.  
+and every task closes with its evidence: the commit, the test, the merge.
+
+there are hundreds of those documents now.  
+if a session dies, the next one reads the plan and keeps going.
+
+## how i test
+
+the rule is simple: "it works" is not enough. show me.
+
+- tests first. see it fail, then make it pass.
+- a verifier from another model family checks the risky stuff.
+- ui changes get opened in a real browser, not just "it compiles".
+- after merging, check production too.
+
+and if something can't be proven, it doesn't get marked as done.  
+it gets marked as pending, with what's missing.
+
+## the rules that always repeat
+
+every repo has its claude.md.  
+and some rules show up in almost all of them:
+
+- no comments. names carry the meaning.
+- tests capture behavior, not permutations.
+- never silence the linter, fix the cause.
+- never hard-code a client in shared code.
+- secrets never go through a prompt.
+- careful with migrations and data you can't rebuild.
+- no ai signatures on commits.
+
+and they're not just written.  
+hooks, linters and ci block anything that doesn't pass.
+
+## skills and self-improvement
+
+hermes has a lot of skills now.  
+procedures for things i do again and again.
+
+and the best part: they improve themselves.  
+after a hard task, the agent writes down what went wrong in the skill,  
+so next time it doesn't happen again.  
+and the lessons also go to the team's vault in obsidian,  
+so it's not only my agents that learn, but us too.
+
+## computer use
+
+and the agents can use the computer too.  
+open a browser, click around, take screenshots, check that things really look right.  
+a lot of what i used to check by hand, now it checks itself.
+
+## the language is secondary
+
+i came from frontend.  
+now it's backend, data and ai.  
+and honestly, the language is secondary now.
+
+what matters is deciding what to build,  
+how to split it,  
+and how to know it really works.
+
+i plan, review and decide.  
+the agents do the typing.
+
+## the tools
+
+since this is a technical post, the actual stack:
+
+- claude code and opencode: the agents in the terminal.
+- hermes (cli and app): profiles, roles, skills and memory.
+- gentle-ai: persona, odd, rdd and the rules every agent follows.
+- engram: memory that survives sessions and agents.
+- orca: one worktree per feature, each with its own session.
+- codegraph: an index of the code, so agents ask before grepping everything.
+- context7: up-to-date library docs, instead of what the model remembers.
+- obsidian: the team's vault.
+- cua-driver and a browser harness: computer use and real browser checks.
+- gh, git worktrees, ssh only.
+- husky, commitlint, eslint and jscpd: the gates on this site.
+
+## what's next
+
+maybe gentle-shell.  
+a whole workspace for this, from the same people behind gentle-ai.  
+it's already installed. i want to try it properly and see if it's better.
+
+but for now, i like hermes in the terminal.
+
+## welp
+
+it's still changing.  
+let's see how this evolves.

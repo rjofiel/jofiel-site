@@ -58,18 +58,19 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 
 ## Shared building blocks
 
-| Need                                            | Use                                                                                        |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| A page with layout, `<head>` and content column | `Page` and `PageTitle` (`app/components/Page.tsx`)                                         |
-| Title, description, preview tags of a route     | `app/content/site.json`, read through `pageMeta()` / `postMeta()` (`app/lib/meta.ts`)      |
-| `<head>` tags, build and client                 | `headTags()` + `renderHead()`; the client swaps them with `usePageMeta()`                  |
-| Posts, list and bodies                          | `getAllPosts`, `getPost`, `postBody`, `postsByYear`, `formatPostDate` (`app/lib/posts.ts`) |
-| Dates and times                                 | `SITE_TIME_ZONE`, `madridIso()` (`app/lib/time.ts`)                                        |
-| Anything depending on the clock or randomness   | render it only when `useHydrated()` is true                                                |
-| MDX typography (posts and the sealed note)      | `mdxComponents` (`app/components/mdxComponents.tsx`)                                       |
-| Body text style                                 | `.body-copy` class (`app/app.css`)                                                         |
-| External links                                  | `ExternalLink`                                                                             |
-| Photos in the terminal look                     | `DitheredImage` (algorithm in `app/lib/dither.ts`)                                         |
+| Need                                            | Use                                                                                            |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| A page with layout, `<head>` and content column | `Page` and `PageTitle` (`app/components/Page.tsx`)                                             |
+| Title, description, preview tags of a route     | `app/content/site.json`, read through `pageMeta()` / `postMeta()` (`app/lib/meta.ts`)          |
+| `<head>` tags, build and client                 | `headTags()` + `renderHead()`; the client swaps them with `usePageMeta()`                      |
+| Posts, list and bodies                          | `getAllPosts`, `getPost`, `postBody`, `postsByYear`, `formatPostDate` (`app/lib/posts.ts`)     |
+| Dates and times                                 | `SITE_TIME_ZONE`, `madridIso()` (`app/lib/time.ts`)                                            |
+| Anything depending on the clock or randomness   | render it only when `useHydrated()` is true                                                    |
+| MDX typography (posts and the sealed note)      | `mdxComponents` (`app/components/mdxComponents.tsx`)                                           |
+| Diagrams in posts (steps joined by arrows)      | `<Flow label>` with `<Step name note stage='past'\|'now'\|'next'>` (`app/components/Flow.tsx`) |
+| Body text style                                 | `.body-copy` class (`app/app.css`)                                                             |
+| External links                                  | `ExternalLink`                                                                                 |
+| Photos in the terminal look                     | `DitheredImage` (algorithm in `app/lib/dither.ts`)                                             |
 
 ## Why it is built this way
 
