@@ -1,6 +1,7 @@
+import type { ReactNode } from 'react';
+import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
 import { Page, PageTitle } from '@/components/Page';
 import { pageMeta } from '@/lib/meta';
-import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
 
 interface Project {
   name: string;
@@ -8,6 +9,8 @@ interface Project {
   url?: string;
   tech: string[];
 }
+
+const focus = ['typescript', 'ai agents', 'postgres'];
 
 const projects: Project[] = [
   {
@@ -24,56 +27,64 @@ const projects: Project[] = [
   }
 ];
 
-const Projects = () => {
-  return (
-    <Page meta={pageMeta('/projects')}>
-      <section>
-        <PageTitle>/projects</PageTitle>
+const TagList = ({ tags }: { tags: string[] }) => (
+  <span className='inline-flex flex-wrap gap-2'>
+    {tags.map(tag => (
+      <span key={tag} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
+        {tag}
+      </span>
+    ))}
+  </span>
+);
 
-        <div>
-          <p className='text-sm text-muted-foreground'>things i've built,</p>
-          <p className='text-sm text-muted-foreground'>or i'm still actively messing with.</p>
-          <p className='text-sm text-muted-foreground'>
-            current focus:{' '}
-            <span className='inline-flex gap-2'>
-              {['react', 'python'].map(lang => (
-                <span key={lang} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
-                  {lang}
-                </span>
-              ))}
-            </span>
-          </p>
-        </div>
-      </section>
+const SectionLabel = ({ children }: { children: ReactNode }) => <h2 className='text-sm text-foreground'>{children}</h2>;
 
-      <section className='space-y-6'>
-        {projects.map(project => (
-          <article key={project.name} className='space-y-2'>
-            <div className='flex items-center gap-2'>
-              <h2 className='text-sm font-medium text-foreground'>{project.name}</h2>
-              {project.url && (
-                <a
-                  href={project.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-muted-foreground hover:text-primary transition-colors'>
-                  <ExternalLinkIcon className='w-3 h-3' />
-                </a>
-              )}
-            </div>
-            <p className='text-sm text-muted-foreground'>{project.description}</p>
-            <div className='flex gap-2'>
-              {project.tech.map(t => (
-                <span key={t} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
-                  {t}
-                </span>
-              ))}
-            </div>
-          </article>
-        ))}
-      </section>
-    </Page>
-  );
-};
+const ProjectItem = ({ project }: { project: Project }) => (
+  <article className='space-y-2'>
+    <div className='flex items-center gap-2'>
+      <h3 className='text-sm font-medium text-foreground'>{project.name}</h3>
+      {project.url && (
+        <a
+          href={project.url}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label={`${project.name} on github`}
+          className='text-muted-foreground hover:text-primary transition-colors'>
+          <ExternalLinkIcon className='w-3 h-3' />
+        </a>
+      )}
+    </div>
+    <p className='text-sm text-muted-foreground'>{project.description}</p>
+    <TagList tags={project.tech} />
+  </article>
+);
+
+const Projects = () => (
+  <Page meta={pageMeta('/projects')}>
+    <section>
+      <PageTitle>/projects</PageTitle>
+      <p className='text-sm text-muted-foreground'>things i've built, or i'm still actively messing with.</p>
+    </section>
+
+    <section className='space-y-2'>
+      <SectionLabel>now</SectionLabel>
+      <p className='body-copy'>i changed lanes. from frontend to backend, data and ai.</p>
+      <p className='body-copy'>at kresco i build ai agents that talk to people, and everything behind them.</p>
+      <p className='body-copy'>most of the code is written with ai agents now. i plan, review and decide.</p>
+      <p className='text-sm text-muted-foreground pt-2'>
+        current focus: <TagList tags={focus} />
+      </p>
+    </section>
+
+    <section className='space-y-6'>
+      <SectionLabel>projects</SectionLabel>
+      {projects.map(project => (
+        <ProjectItem key={project.name} project={project} />
+      ))}
+    </section>
+
+    <p className='text-xs text-muted-foreground'>this site: react, mdx, and a lot of hope.</p>
+  </Page>
+);
 
 export default Projects;
