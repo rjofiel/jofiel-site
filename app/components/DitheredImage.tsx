@@ -16,15 +16,7 @@ type DitheredImageProps = {
 
 // Renders an image as 1-bit Atkinson dithering in the current text colour, with a
 // transparent background, so photos sit on the dark theme like terminal output.
-export const DitheredImage = ({
-  src,
-  alt,
-  width,
-  dotSize = 2,
-  contrast = 1.4,
-  invert = false,
-  className
-}: DitheredImageProps) => {
+export const DitheredImage = ({ src, alt, width, dotSize = 2, contrast = 1.4, invert = false, className }: DitheredImageProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -56,7 +48,14 @@ export const DitheredImage = ({
       }
 
       // Atkinson: spreads 6/8 of the error to six neighbours, which keeps highlights clean.
-      const spread: [number, number][] = [[1, 0], [2, 0], [-1, 1], [0, 1], [1, 1], [0, 2]];
+      const spread: [number, number][] = [
+        [1, 0],
+        [2, 0],
+        [-1, 1],
+        [0, 1],
+        [1, 1],
+        [0, 2]
+      ];
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
           const index = y * cols + x;
@@ -76,7 +75,7 @@ export const DitheredImage = ({
         data[i * 4] = r;
         data[i * 4 + 1] = g;
         data[i * 4 + 2] = b;
-        data[i * 4 + 3] = (luminance[i] > 0) !== invert ? 255 : 0;
+        data[i * 4 + 3] = luminance[i] > 0 !== invert ? 255 : 0;
       }
       context.putImageData(pixels, 0, 0);
     };
@@ -85,5 +84,13 @@ export const DitheredImage = ({
     };
   }, [src, width, dotSize, contrast, invert]);
 
-  return <canvas ref={canvasRef} role='img' aria-label={alt} className={className} style={{ imageRendering: 'pixelated', maxWidth: '100%', height: 'auto' }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      role='img'
+      aria-label={alt}
+      className={className}
+      style={{ imageRendering: 'pixelated', maxWidth: '100%', height: 'auto' }}
+    />
+  );
 };

@@ -1,7 +1,7 @@
 import { FormEvent, useMemo, useState } from 'react';
 import type { ComponentType } from 'react';
 import * as jsxRuntime from 'react/jsx-runtime';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
 import { pageMeta } from '@/lib/meta';
 import { DoctorSilhouette } from '@/components/DoctorSilhouette';

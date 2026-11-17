@@ -36,20 +36,11 @@ function fromBase64(value: string): Uint8Array<ArrayBuffer> {
 }
 
 async function deriveKey(word: string, salt: Uint8Array<ArrayBuffer>, iterations: number) {
-  const material = await crypto.subtle.importKey(
-    'raw',
-    new TextEncoder().encode(normalizeWord(word)),
-    'PBKDF2',
-    false,
-    ['deriveKey']
-  );
-  return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', hash: 'SHA-256', salt, iterations },
-    material,
-    { name: 'AES-GCM', length: 256 },
-    false,
-    ['encrypt', 'decrypt']
-  );
+  const material = await crypto.subtle.importKey('raw', new TextEncoder().encode(normalizeWord(word)), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations }, material, { name: 'AES-GCM', length: 256 }, false, [
+    'encrypt',
+    'decrypt'
+  ]);
 }
 
 export async function seal(plaintext: string, word: string, iterations = DEFAULT_ITERATIONS): Promise<SealedPayload> {
@@ -71,11 +62,7 @@ export async function seal(plaintext: string, word: string, iterations = DEFAULT
 export async function unseal(payload: SealedPayload, word: string): Promise<string | null> {
   try {
     const key = await deriveKey(word, fromBase64(payload.salt), payload.iterations);
-    const decrypted = await crypto.subtle.decrypt(
-      { name: 'AES-GCM', iv: fromBase64(payload.iv) },
-      key,
-      fromBase64(payload.ciphertext)
-    );
+    const decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: fromBase64(payload.iv) }, key, fromBase64(payload.ciphertext));
     return new TextDecoder().decode(decrypted);
   } catch {
     return null;

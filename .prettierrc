@@ -8,7 +8,5 @@
   "arrowParens": "avoid",
   "trailingComma": "none",
   "printWidth": 140,
-  "semi": true,
-  "importOrderSeparation": false,
-  "importOrderSortSpecifiers": true
+  "semi": true
 }

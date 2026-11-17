@@ -19,7 +19,6 @@ export const Layout = ({ children }: LayoutProps) => {
           <Decoration startX='40vw' endX='100vw' duration='39s' delay='-9s' className='top-[80%]' />
           <Decoration startX='17vw' endX='100vw' duration='39s' delay='-2s' className='top-[1%]' /> */}
           <FloatingDecorations count={6} />
-
         </div>
       </div>
 

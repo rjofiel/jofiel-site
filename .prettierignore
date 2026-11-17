@@ -38,3 +38,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Content: posts use two trailing spaces as line breaks
+app/content/
+private/
+package-lock.json

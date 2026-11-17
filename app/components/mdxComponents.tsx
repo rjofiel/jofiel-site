@@ -15,7 +15,5 @@ export const mdxComponents = {
   li: (props: any) => <li className='body-copy' {...props} />,
   code: (props: any) => <code className='bg-muted px-1 rounded' {...props} />,
   // Secondary-language block: same content, lighter and smaller, right under the original.
-  Es: (props: any) => (
-    <div lang='es' className='-mt-2 mb-6 opacity-60 [&_li]:text-xs [&_p]:mb-2 [&_p]:text-xs' {...props} />
-  )
+  Es: (props: any) => <div lang='es' className='-mt-2 mb-6 opacity-60 [&_li]:text-xs [&_p]:mb-2 [&_p]:text-xs' {...props} />
 };

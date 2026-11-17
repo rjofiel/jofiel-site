@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { Layout } from '@/components/Layout';
 import { PageTitle } from '@/components/Page';
 import { usePageMeta } from '@/lib/usePageMeta';
