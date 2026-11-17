@@ -3,6 +3,7 @@ import type { ComponentType } from 'react';
 import * as jsxRuntime from 'react/jsx-runtime';
 import { Link, useSearchParams } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
+import { useHydrated } from '@/lib/useHydrated';
 import { pageMeta } from '@/lib/meta';
 import { DoctorSilhouette } from '@/components/DoctorSilhouette';
 import { mdxComponents } from '@/components/mdxComponents';
@@ -36,6 +37,8 @@ function usePhase() {
 
 export const HeavenSent = () => {
   const phase = usePhase();
+  // The phase depends on today's date, so it is never baked into the prerendered HTML.
+  const hydrated = useHydrated();
   const [word, setWord] = useState('');
   const [status, setStatus] = useState<'idle' | 'opening' | 'wrong'>('idle');
   const [Note, setNote] = useState<NoteContent | null>(null);
@@ -61,7 +64,7 @@ export const HeavenSent = () => {
         </PageTitle>
       </section>
 
-      {Note ? (
+      {!hydrated ? null : Note ? (
         <article>
           <Note components={mdxComponents} />
         </article>

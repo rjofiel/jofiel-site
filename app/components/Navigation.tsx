@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router';
 import { SITE_TIME_ZONE } from '@/lib/time';
+import { useHydrated } from '@/lib/useHydrated';
 
 const navItems = [
   { path: '/', label: 'home' },
@@ -10,6 +11,7 @@ const navItems = [
 
 export const Navigation = () => {
   const location = useLocation();
+  const hydrated = useHydrated();
 
   return (
     <nav className='flex items-center gap-6 text-sm'>
@@ -33,7 +35,8 @@ export const Navigation = () => {
       </Link>
       <div className='ml-auto justify-self-end text-muted-foreground'>
         <span className='blink text-foreground'>_</span>
-        {new Date().toLocaleDateString('es-ES', { timeZone: SITE_TIME_ZONE })}
+        {/* Today's date, so never baked into the prerendered HTML. */}
+        {hydrated && new Date().toLocaleDateString('es-ES', { timeZone: SITE_TIME_ZONE })}
       </div>
     </nav>
   );

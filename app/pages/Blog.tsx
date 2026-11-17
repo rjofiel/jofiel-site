@@ -3,15 +3,13 @@ import { Page, PageTitle } from '@/components/Page';
 import { pageMeta } from '@/lib/meta';
 import { formatPostDate, getAllPosts } from '@/lib/posts';
 
-const meta = pageMeta('/blog');
-
 const Blog = () => {
   const posts = getAllPosts();
   return (
-    <Page meta={meta}>
+    <Page meta={pageMeta('/blog')}>
       <section>
         <PageTitle>/blog</PageTitle>
-        <p className='text-sm text-muted-foreground'>{meta.description}</p>
+        <p className='text-sm text-muted-foreground'>notes, tutorials, and whatever i needed to write down.</p>
       </section>
 
       <section className='space-y-6'>

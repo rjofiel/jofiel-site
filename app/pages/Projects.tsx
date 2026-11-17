@@ -35,13 +35,13 @@ const Projects = () => {
           <p className='text-sm text-muted-foreground'>or i'm still actively messing with.</p>
           <p className='text-sm text-muted-foreground'>
             current focus:{' '}
-            <div className='inline-flex gap-2'>
+            <span className='inline-flex gap-2'>
               {['react', 'python'].map(lang => (
                 <span key={lang} className='text-xs px-2 py-0.5 bg-secondary text-secondary-foreground rounded'>
                   {lang}
                 </span>
               ))}
-            </div>
+            </span>
           </p>
         </div>
       </section>
