@@ -118,6 +118,8 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 - Posts: `app/content/blog/YYYY-MM-DD_HH-MM-slug.mdx`, time in Madrid. Frontmatter `title`,
   `description`, `published`. English, all lowercase, line breaks as two trailing spaces, `---` after
   the frontmatter. Prettier ignores `app/content/` so those spaces survive.
+- The filename is the URL. Renaming a published post (to change its date) needs a permanent
+  redirect from the old path in `vercel.json`, so shared links do not break.
 - No personal names or anything private in posts; the repo is public.
 - A new route needs an entry in `site.json` and `<Page meta={pageMeta('/route')}>`. Titles 30-60
   characters, descriptions 120-160. Private or unpublished pages get `noindex` and stay out of the
