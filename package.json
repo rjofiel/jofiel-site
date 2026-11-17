@@ -11,7 +11,8 @@
     "duplicates": "jscpd",
     "check": "prettier --check . && npm run lint && npm run typecheck && npm run duplicates",
     "preview": "vite preview",
-    "heaven-sent": "node scripts/heaven-sent.ts"
+    "heaven-sent": "node scripts/heaven-sent.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
@@ -22,6 +23,8 @@
     "remark-frontmatter": "^5.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "@eslint/js": "^9.32.0",
     "@mdx-js/mdx": "^3.1.1",
     "@tailwindcss/vite": "^4.3.5",
@@ -34,6 +37,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "eslint-plugin-sonarjs": "^4.2.2",
     "globals": "^15.15.0",
+    "husky": "^9.1.7",
     "jscpd": "^5.4.3",
     "prettier": "^3.10.1",
     "tailwindcss": "^4.3.5",
