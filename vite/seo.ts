@@ -52,14 +52,8 @@ function feed(posts: PostEntry[]): string {
   ].join('\n');
 }
 
-// Where a route's prerendered page lives. Vercel serves them extensionless (cleanUrls in
-// vercel.json): /about -> about.html, and 404.html for anything else, with a real 404 status.
 const fileFor = (outDir: string, route: string) => path.join(outDir, route === '/' ? 'index.html' : `${route}.html`);
 
-// Fills the <head> of index.html from app/content/site.json. On build, renders every route to
-// static HTML with its own <head> and full content (crawlers, link previews and readers that
-// don't run JS see the real page; the browser hydrates it), plus sitemap.xml, feed.xml and
-// robots.txt.
 export function seo(blogDir: string, readPosts: (dir: string) => PostEntry[]): Plugin {
   let outDir = 'dist';
   let root = process.cwd();
@@ -78,14 +72,12 @@ export function seo(blogDir: string, readPosts: (dir: string) => PostEntry[]): P
     },
     transformIndexHtml: html => html.replace(HEAD_PLACEHOLDER, renderHead(headTags(pageMeta('/')))),
     async closeBundle() {
-      // Runs once, after the client build; the nested SSR build below skips it.
       if (isSsrBuild) return;
       const indexPath = path.join(outDir, 'index.html');
       if (!fs.existsSync(indexPath)) return;
       const template = fs.readFileSync(indexPath, 'utf8');
       const homeHead = renderHead(headTags(pageMeta('/')));
 
-      // Inside node_modules so the bundle resolves react and friends from the project.
       const ssrDir = path.join(root, 'node_modules/.cache/ssr');
       await build({
         configFile,
@@ -97,7 +89,6 @@ export function seo(blogDir: string, readPosts: (dir: string) => PostEntry[]): P
         render: (url: string) => Promise<string>;
       };
 
-      // Newest first, like the feed readers expect.
       const posts = readPosts(blogDir).reverse();
       const published = posts.filter(post => post.published);
       const notFound: PageMeta = { path: '/404', title: `/404 | ${site.name}`, description: 'welp. my bad.', noindex: true };

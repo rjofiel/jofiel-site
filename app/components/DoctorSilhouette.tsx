@@ -1,7 +1,5 @@
 import { DitheredImage } from '@/components/DitheredImage';
 
-// Decorative twelfth doctor silhouette. Place it inside a `relative` container: it sits
-// behind the content, bottom right, and fades out at the bottom.
 export const DoctorSilhouette = () => (
   <div
     aria-hidden

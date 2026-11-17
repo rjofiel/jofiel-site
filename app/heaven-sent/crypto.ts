@@ -1,6 +1,3 @@
-// Shared by the browser page and the seal CLI (Node runs it through type stripping),
-// so it must stay plain TypeScript with no imports and no TS-only runtime syntax.
-
 export type SealedPayload = {
   v: 1;
   kdf: 'PBKDF2-SHA256';
@@ -12,7 +9,6 @@ export type SealedPayload = {
 
 export const DEFAULT_ITERATIONS = 600_000;
 
-// The word is printed on paper, so case, accents and stray spaces must not matter.
 export function normalizeWord(word: string): string {
   return word
     .normalize('NFKD')
@@ -58,7 +54,6 @@ export async function seal(plaintext: string, word: string, iterations = DEFAULT
   };
 }
 
-// Returns null when the word is wrong: AES-GCM authentication fails instead of producing garbage.
 export async function unseal(payload: SealedPayload, word: string): Promise<string | null> {
   try {
     const key = await deriveKey(word, fromBase64(payload.salt), payload.iterations);

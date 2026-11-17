@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { headTags, scriptJson, type PageMeta } from './meta';
 
-// Keeps <head> in sync on client-side navigation. The first load already has the right tags,
-// prerendered at build time with the same headTags().
 export function usePageMeta(meta: PageMeta) {
   const key = JSON.stringify(meta);
 

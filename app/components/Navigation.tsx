@@ -23,7 +23,6 @@ export const Navigation = () => {
           /{item.label}
         </Link>
       ))}
-      {/* Easter egg: a TARDIS-blue square that only reveals its route on hover or focus. */}
       <Link
         to='/heaven-sent'
         aria-label='/heaven-sent'
@@ -35,7 +34,6 @@ export const Navigation = () => {
       </Link>
       <div className='ml-auto justify-self-end text-muted-foreground'>
         <span className='blink text-foreground'>_</span>
-        {/* Today's date, so never baked into the prerendered HTML. */}
         {hydrated && new Date().toLocaleDateString('es-ES', { timeZone: SITE_TIME_ZONE })}
       </div>
     </nav>

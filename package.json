@@ -6,7 +6,10 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0 && node scripts/no-markup-comments.ts",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "duplicates": "jscpd",
+    "check": "prettier --check . && npm run lint && npm run typecheck && npm run duplicates",
     "preview": "vite preview",
     "heaven-sent": "node scripts/heaven-sent.ts"
   },
@@ -29,7 +32,9 @@
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-sonarjs": "^4.2.2",
     "globals": "^15.15.0",
+    "jscpd": "^5.4.3",
     "prettier": "^3.10.1",
     "tailwindcss": "^4.3.5",
     "typescript": "^5.9.2",
@@ -41,5 +46,10 @@
   "allowScripts": {
     "esbuild": true,
     "fsevents": true
+  },
+  "overrides": {
+    "eslint-plugin-sonarjs": {
+      "minimatch": "^11.0.9"
+    }
   }
 }

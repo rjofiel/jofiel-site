@@ -2,12 +2,10 @@ import { Page } from '@/components/Page';
 import { pageMeta } from '@/lib/meta';
 import { ExternalLink } from '@/components/ExternalLink';
 import { HeartRateWidget } from '@/components/HeartRateWidget';
-import { Decoration } from '@/components/Decoration';
 
 const Home = () => {
   return (
     <Page meta={pageMeta('/')} className='space-y-10'>
-      {/* Intro */}
       <section className='space-y-4'>
         <h1 className='text-sm leading-relaxed text-foreground'>
           hi, im <span className='text-primary'>ludox</span>.
@@ -49,7 +47,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Links */}
       <section className='space-y-2'>
         <p className='text-sm text-muted-foreground mb-4'>here's some links:</p>
         <ExternalLink
@@ -77,7 +74,6 @@ const Home = () => {
         </ExternalLink>
       </section>
 
-      {/* Heart rate section */}
       <section className='space-y-4'>
         <p className='text-sm text-muted-foreground'>
           here's my heartrate. don't worry if it spikes, probably just coffee or debugging smth... or me staring at a terminal questioning
@@ -89,7 +85,6 @@ const Home = () => {
         <HeartRateWidget />
       </section>
 
-      {/* Footer note */}
       <section className='pt-8'>
         <p className='text-xs text-muted-foreground'>
           <span className='blink'>_</span>

@@ -1,5 +1,3 @@
-// Page metadata shared by the app (client-side navigation) and the build (prerendered
-// <head> per route, sitemap, feed). Keep it free of DOM and Node APIs: both tsconfigs use it.
 import site from '../content/site.json';
 
 export { site };
@@ -10,17 +8,12 @@ export type PageMeta = {
   description: string;
   type?: 'website' | 'article';
   noindex?: boolean;
-  // ISO date, for articles.
   publishedTime?: string;
 };
 
-// A post as produced by the blog-index build plugin.
 export type PostEntry = {
-  // Filename without extension; also the URL segment under /blog.
   filename: string;
-  // Filename without the date prefix.
   slug: string;
-  // Local date and time from the filename, in Madrid, e.g. 2026-11-17T22:00:00+01:00. Empty when missing.
   date: string;
   title: string;
   description: string;
@@ -28,10 +21,7 @@ export type PostEntry = {
 };
 
 export type HeadTag =
-  | { tag: 'title'; text: string }
-  | { tag: 'meta' | 'link'; attrs: Record<string, string> }
-  // Structured data (JSON-LD) for search engines.
-  | { tag: 'script'; json: object };
+  { tag: 'title'; text: string } | { tag: 'meta' | 'link'; attrs: Record<string, string> } | { tag: 'script'; json: object };
 
 export function pageMeta(path: string): PageMeta {
   const page = site.pages.find(candidate => candidate.path === path);
@@ -110,10 +100,8 @@ export function headTags(meta: PageMeta): HeadTag[] {
 
 const escapeHtml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-// JSON inside <script>: escaping '<' keeps a stray "</script>" from closing the tag.
 export const scriptJson = (json: object) => JSON.stringify(json).replace(/</g, '\\u003c');
 
-// Every tag carries data-head so the client can swap them on navigation.
 export function renderHead(tags: HeadTag[]): string {
   return tags
     .map(tag => {

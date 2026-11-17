@@ -16,7 +16,6 @@ export const Post = () => {
   return (
     <Page meta={postMeta(post)}>
       <section>
-        {/* Path label only; the post title below is the page heading. */}
         <PageTitle as='p'>
           /blog/<span className='blink'>_</span>
         </PageTitle>
@@ -25,7 +24,6 @@ export const Post = () => {
           <p className='text-xs text-foreground'>{formatPostDate(post.date)}</p>
         </div>
       </section>
-      {/* Keyed by filename so navigating between posts never shows the previous body. */}
       <Suspense key={filename} fallback={<p className='text-sm text-muted-foreground'>loading...</p>}>
         <Body components={mdxComponents} />
       </Suspense>

@@ -1,0 +1,9 @@
+{
+  "threshold": 0,
+  "minTokens": 40,
+  "reporters": ["console"],
+  "path": ["app", "vite", "scripts"],
+  "ignore": ["app/content/**", "**/*.json"],
+  "absolute": false,
+  "gitignore": true
+}
