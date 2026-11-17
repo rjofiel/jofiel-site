@@ -11,3 +11,6 @@
 /*/.templates
 /*/.octarine
 /*/Daily
+
+# React Router generated types (leftover from framework mode)
+.react-router/
