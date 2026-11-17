@@ -3,6 +3,7 @@ import type { ComponentType } from 'react';
 import * as jsxRuntime from 'react/jsx-runtime';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
+import { DoctorSilhouette } from '@/components/DoctorSilhouette';
 import { mdxComponents } from '@/components/mdxComponents';
 import { unseal, type SealedPayload } from '@/heaven-sent/crypto';
 import { PHASES, phaseAt, type PhaseId } from '@/heaven-sent/phases';
@@ -53,7 +54,7 @@ export const HeavenSent = () => {
 
   return (
     <Layout>
-      <div className='space-y-8 pt-8'>
+      <div className='relative min-h-[30rem] space-y-8 pt-8'>
         <section>
           <h1 className='text-lg font-medium text-foreground mb-2'>
             /heaven-sent/<span className='blink'>_</span>
@@ -109,6 +110,7 @@ export const HeavenSent = () => {
             {status === 'wrong' && <p className='text-xs text-muted-foreground'>not that one. try again.</p>}
           </>
         )}
+        <DoctorSilhouette />
       </div>
     </Layout>
   );
