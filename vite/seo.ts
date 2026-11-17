@@ -28,7 +28,7 @@ function feed(posts: PostEntry[]): string {
         `      <title>${escapeXml(post.title)}</title>`,
         `      <link>${url}</link>`,
         `      <guid>${url}</guid>`,
-        post.date ? `      <pubDate>${new Date(`${post.date}:00Z`).toUTCString()}</pubDate>` : '',
+        post.date ? `      <pubDate>${new Date(post.date).toUTCString()}</pubDate>` : '',
         `      <description>${escapeXml(post.description)}</description>`,
         '    </item>'
       ]
