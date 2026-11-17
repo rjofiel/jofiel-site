@@ -1,4 +1,16 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/blog/2026-10-04_21-30-the-in-between",
+      "destination": "/blog/2026-07-12_21-30-the-in-between",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2026-11-17_22-00-now-kresco",
+      "destination": "/blog/2026-09-20_22-00-now-kresco",
+      "permanent": true
+    }
+  ]
 }
