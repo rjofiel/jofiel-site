@@ -4,7 +4,10 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 import mdx from '@mdx-js/rollup';
 import remarkFrontmatter from 'remark-frontmatter';
-import { blogIndex } from './vite/blog-index';
+import { blogIndex, readBlogIndex } from './vite/blog-index';
+import { seo } from './vite/seo';
+
+const blogDir = path.resolve(__dirname, 'app/content/blog');
 
 export default defineConfig({
   plugins: [
@@ -13,7 +16,8 @@ export default defineConfig({
     // remark-frontmatter keeps the YAML header out of the rendered post; the header itself
     // is read by blogIndex.
     mdx({ remarkPlugins: [remarkFrontmatter] }),
-    blogIndex(path.resolve(__dirname, 'app/content/blog'))
+    blogIndex(blogDir),
+    seo(blogDir, readBlogIndex)
   ],
   resolve: {
     alias: {

@@ -185,6 +185,11 @@
     @apply text-primary hover:underline transition-colors cursor-pointer;
   }
 
+  /* Body text on pages and posts */
+  .body-copy {
+    @apply text-sm leading-relaxed text-muted-foreground;
+  }
+
   /* Símbolos decorativos */
   .decoration-symbol {
     @apply select-none;

@@ -1,0 +1,37 @@
+{
+  "url": "https://ludox.dev",
+  "name": "ludox",
+  "image": "/og.png",
+  "pages": [
+    {
+      "path": "/",
+      "title": "ludox | my little paper house",
+      "description": "somehow ended up here anyway.",
+      "nav": "home"
+    },
+    {
+      "path": "/blog",
+      "title": "/blog | ludox",
+      "description": "notes, tutorials, and whatever i needed to write down.",
+      "nav": "blog"
+    },
+    {
+      "path": "/projects",
+      "title": "/projects | ludox",
+      "description": "things i've built, or i'm still actively messing with.",
+      "nav": "projects"
+    },
+    {
+      "path": "/about",
+      "title": "/about | ludox",
+      "description": "i started with angular and java. didn't like react at all. somehow ended up here anyway.",
+      "nav": "about"
+    },
+    {
+      "path": "/heaven-sent",
+      "title": "/heaven-sent | ludox",
+      "description": "a note for whoever got a blue envelope.",
+      "noindex": true
+    }
+  ]
+}

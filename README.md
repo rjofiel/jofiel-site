@@ -22,8 +22,10 @@ this project is built using:
 - `/app/pages`: main application routes.
 - `/app/content/blog`: mdx files containing all the blog posts... written when i need to write.
 - `/app/components`: building blocks.
-- `/app/lib`: little helpers.
-- `/vite`: build-time plugins. `blog-index` reads every post's frontmatter for the blog list.
+- `/app/lib`: little helpers. `meta.ts` builds every page's `<head>` (title, description, canonical, preview card).
+- `/app/content/site.json`: title and description of each page. a new page needs an entry here.
+- `/vite`: build-time plugins. `blog-index` reads every post's frontmatter for the blog list; `seo` writes one html per route with its own `<head>`, plus `sitemap.xml`, `feed.xml` and `robots.txt`.
+- `public/og.png`: the preview image used when a link is shared.
 - `create_post.sh`: a quick way to create new posts.
 
 ## 🛠️ getting started
