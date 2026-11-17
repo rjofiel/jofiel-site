@@ -4,20 +4,63 @@ import { HeartRateWidget } from '@/components/HeartRateWidget';
 import { Decoration } from '@/components/Decoration';
 import { DitheredImage } from '@/components/DitheredImage';
 
+// fastfetch-style summary shown next to the avatar.
+const fetchLines: [string, string][] = [
+  ['aka', 'ludox (retired)'],
+  ['os', 'macos (unfortunately)'],
+  ['distro', 'arch (someday again)'],
+  ['location', 'barcelona'],
+  ['work', 'kresco. backend, data, ai'],
+  ['uptime', '29 years'],
+  ['next', 'walk 150km']
+];
+
+// Terminal palette row, ending in tardis blue.
+const fetchColors = [
+  'var(--color-muted)',
+  'var(--color-muted-foreground)',
+  'var(--color-foreground)',
+  'hsl(var(--heart))',
+  'var(--color-primary)',
+  '#003b6f'
+];
+
 const About = () => {
   return (
     <Layout>
       <div className='relative space-y-8 pt-8'>
         <section>
-          <div className='flex justify-between items-end'>
-            <h1 className='text-lg font-medium text-foreground mb-2'>/about</h1>
-            <div className='h-14 w-14 overflow-hidden rounded-full'>
-              <img className='h-14 w-14 rounded-full object-cover grayscale contrast-125 brightness-90 transition duration-500 hover:grayscale-0' src='/images/ludox.webp' alt='me' />
+          <h1 className='text-lg font-medium text-foreground mb-4'>/about</h1>
+          <p className='mb-3 text-xs text-muted-foreground'>
+            <span className='text-primary'>$</span> whoami && fastfetch
+          </p>
+          <div className='flex items-start gap-4 sm:gap-6'>
+            <img
+              className='h-28 w-28 shrink-0 border border-border object-cover grayscale brightness-75 contrast-125 transition duration-500 hover:brightness-100 hover:grayscale-0 sm:h-32 sm:w-32'
+              src='/images/ludox.webp'
+              alt='me'
+            />
+            <div className='min-w-0 text-xs leading-relaxed'>
+              <p className='text-foreground'>
+                <span className='text-primary'>jofiel</span>@<span className='text-primary'>ludox</span>
+              </p>
+              <p className='text-border' aria-hidden>
+                ------------
+              </p>
+              <dl className='text-muted-foreground'>
+                {fetchLines.map(([key, value]) => (
+                  <div key={key}>
+                    <dt className='inline text-foreground'>{key}</dt>: <dd className='inline'>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className='mt-2 flex' aria-hidden>
+                {fetchColors.map((color) => (
+                  <span key={color} className='h-3 w-4' style={{ backgroundColor: color }} />
+                ))}
+              </div>
             </div>
           </div>
-          <p className='text-sm text-muted-foreground'>
-            online i go by <span className='line-through'>ludox</span> or jofiel.
-          </p>
         </section>
 
         {/* Intro */}
