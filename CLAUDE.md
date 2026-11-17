@@ -94,6 +94,8 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   computes the offset twice so times right after a DST switch use the offset in force at that moment.
 - **Vercel.** `vercel.json` has `cleanUrls` and no catch-all rewrite: `/about` serves `about.html`,
   unknown URLs get `404.html` with a real 404 status.
+- **`public/.well-known/security.txt`** (RFC 9116) uses the contact email already shown on the
+  home page. Its `Expires` date must stay in the future: renew it every year, before it lapses.
 - **`app/heaven-sent/crypto.ts`** is shared by the browser and the Node CLI (type stripping), so it
   stays plain TypeScript with no imports. The word ignores case, accents and stray spaces because it
   is printed on paper. A wrong word returns `null`: AES-GCM fails instead of producing garbage.
