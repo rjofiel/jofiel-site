@@ -25,8 +25,8 @@ const About = () => {
             <p className='text-sm leading-relaxed text-muted-foreground'>i started with angular and java.</p>
             <p className='text-sm leading-relaxed text-muted-foreground'>didn’t like react at all.</p>
             <p className='text-sm leading-relaxed text-muted-foreground'>somehow ended up here anyway.</p>
-            <p className='text-sm leading-relaxed text-muted-foreground'>now i mostly work with react and python,</p>
-            <p className='text-sm leading-relaxed text-muted-foreground'>mostly doing AI stuff.</p>
+            <p className='text-sm leading-relaxed text-muted-foreground'>now i mostly do backend, data and AI stuff.</p>
+            <p className='text-sm leading-relaxed text-muted-foreground'>agents that talk to people. and everything behind them.</p>
           </div>
 
           <div>
@@ -38,15 +38,18 @@ const About = () => {
           <div>
             <p className='text-sm leading-relaxed text-muted-foreground'>i use linux.</p>
             <p className='text-sm leading-relaxed text-muted-foreground'>mostly arch.</p>
-            <p className='text-sm leading-relaxed text-muted-foreground'>sometimes it breaks.</p>
-            <p className='text-sm leading-relaxed text-muted-foreground'>sometimes i learn something.</p>
+            <p className='text-sm leading-relaxed text-muted-foreground'>well... used to.</p>
+            <p className='text-sm leading-relaxed text-muted-foreground'>right now it's a mac (unfortunately).</p>
+            <p className='text-sm leading-relaxed text-muted-foreground'>let's see when i go back to arch.</p>
           </div>
 
           <div>
             <p className='text-sm leading-relaxed text-muted-foreground'>outside of work:</p>
             <ul className='ml-4 space-y-1 text-sm leading-relaxed text-muted-foreground list-disc'>
               <li>anime.</li>
+              <li>doctor who.</li>
               <li>mechanical keyboards.</li>
+              <li>long walks. the longer the better.</li>
               <li>overthinking things.</li>
             </ul>
           </div>
@@ -65,7 +68,11 @@ const About = () => {
               <li>feel loved by someone else</li>
               <li>avoid existential crises (or at least hide them better)</li>
               <li>remove all social media (goodbye dopamine)</li>
-              <li>maybe start working out (or just lift my coffee cup more)</li>
+              <li>
+                <span className='line-through'>maybe start working out (or just lift my coffee cup more)</span>{' '}
+                back at the gym. walked 30km at la marcha del mamut.
+              </li>
+              <li>be able to walk more than 150km</li>
             </ul>
           </div>
         </section>
