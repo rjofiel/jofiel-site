@@ -1,21 +1,38 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
-import { pageMeta } from '@/lib/meta';
-import { formatPostDate, getAllPosts, preloadPost } from '@/lib/posts';
+import { pageMeta, type PostEntry } from '@/lib/meta';
+import { formatPostDate, getAllPosts, postsByYear, type PostYear } from '@/lib/posts';
+
+const PostItem = ({ post }: { post: PostEntry }) => (
+  <article className={`group ${!post.published && 'pointer-events-none opacity-50'}`}>
+    <Link to={`/blog/${post.filename}`} className='block space-y-1'>
+      <div className='flex gap-4'>
+        <p className='text-xs text-muted-foreground tabular-nums text-wrap'>{formatPostDate(post.date)}</p>
+        <div>
+          <h2 className='text-sm text-foreground group-hover:text-primary transition-colors'>{post.title}</h2>
+          <p className='text-sm text-muted-foreground pl-4'>{post.description}</p>
+        </div>
+      </div>
+    </Link>
+  </article>
+);
+
+const YearGroup = ({ group, open }: { group: PostYear; open: boolean }) => (
+  <details open={open} className='group/year space-y-6'>
+    <summary className='flex cursor-pointer list-none items-baseline gap-2 text-sm text-muted-foreground hover:text-primary [&::-webkit-details-marker]:hidden'>
+      <span className='inline-block transition-transform group-open/year:rotate-90'>&gt;</span>
+      <span className='text-foreground'>{group.year}</span>
+      <span className='text-xs'>[{group.posts.length}]</span>
+    </summary>
+    {group.posts.map(post => (
+      <PostItem key={post.filename} post={post} />
+    ))}
+  </details>
+);
 
 const Blog = () => {
-  const posts = getAllPosts();
-
-  useEffect(() => {
-    const preloadAll = () => posts.filter(post => post.published).forEach(post => preloadPost(post.filename));
-    if ('requestIdleCallback' in window) {
-      const id = requestIdleCallback(preloadAll);
-      return () => cancelIdleCallback(id);
-    }
-    const id = setTimeout(preloadAll, 200);
-    return () => clearTimeout(id);
-  }, [posts]);
+  const years = postsByYear(getAllPosts());
+  const latestYear = years[years.length - 1]?.year;
 
   return (
     <Page meta={pageMeta('/blog')}>
@@ -25,27 +42,10 @@ const Blog = () => {
       </section>
 
       <section className='space-y-6'>
-        {posts.length === 0 ? (
+        {years.length === 0 ? (
           <p className='text-sm text-muted-foreground'>no posts yet. check back later.</p>
         ) : (
-          posts.map(post => (
-            <article key={post.filename} className={`group ${!post.published && 'pointer-events-none opacity-50'}`}>
-              <Link
-                to={`/blog/${post.filename}`}
-                className='block space-y-1'
-                onMouseEnter={() => preloadPost(post.filename)}
-                onFocus={() => preloadPost(post.filename)}
-                onTouchStart={() => preloadPost(post.filename)}>
-                <div className='flex gap-4'>
-                  <p className='text-xs text-muted-foreground tabular-nums text-wrap'>{formatPostDate(post.date)}</p>
-                  <div>
-                    <h2 className='text-sm text-foreground group-hover:text-primary transition-colors'>{post.title}</h2>
-                    <p className='text-sm text-muted-foreground pl-4'>{post.description}</p>
-                  </div>
-                </div>
-              </Link>
-            </article>
-          ))
+          years.map(group => <YearGroup key={group.year} group={group} open={group.year === latestYear} />)
         )}
       </section>
     </Page>

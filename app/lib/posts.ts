@@ -1,29 +1,24 @@
-import { lazy, type LazyExoticComponent } from 'react';
 import type { MDXContent } from 'mdx/types';
 import blogIndex from 'virtual:blog-index';
+import type { PostEntry } from './meta';
 import { SITE_TIME_ZONE } from './time';
 
-const bodies = import.meta.glob<{ default: MDXContent }>('/app/content/blog/*.mdx');
-const lazyBodies = new Map<string, LazyExoticComponent<MDXContent>>();
-const readyBodies = new Map<string, MDXContent>();
+const bodies = import.meta.glob<MDXContent>('/app/content/blog/*.mdx', { eager: true, import: 'default' });
+
+export type PostYear = { year: string; posts: PostEntry[] };
 
 export const getAllPosts = () => blogIndex;
 
 export const getPost = (filename: string) => blogIndex.find(post => post.filename === filename);
 
-export function preloadPost(filename: string): void {
-  const load = bodies[`/app/content/blog/${filename}.mdx`];
-  if (!load || readyBodies.has(filename)) return;
-  load().then(module => readyBodies.set(filename, module.default));
-}
+export const postBody = (filename: string): MDXContent | undefined => bodies[`/app/content/blog/${filename}.mdx`];
 
-export function postBody(filename: string): MDXContent | LazyExoticComponent<MDXContent> | undefined {
-  const ready = readyBodies.get(filename);
-  if (ready) return ready;
-  const load = bodies[`/app/content/blog/${filename}.mdx`];
-  if (!load) return undefined;
-  if (!lazyBodies.has(filename)) lazyBodies.set(filename, lazy(load));
-  return lazyBodies.get(filename);
+const yearOf = (post: PostEntry) => post.date.slice(0, 4) || 'undated';
+
+export function postsByYear(posts: PostEntry[]): PostYear[] {
+  const groups = new Map<string, PostEntry[]>();
+  for (const post of posts) groups.set(yearOf(post), [...(groups.get(yearOf(post)) ?? []), post]);
+  return [...groups].map(([year, yearPosts]) => ({ year, posts: yearPosts }));
 }
 
 export function formatPostDate(date: string): string {
