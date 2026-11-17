@@ -69,7 +69,7 @@ const Projects = () => (
     <section className='space-y-2'>
       <SectionLabel>now</SectionLabel>
       <p className='body-copy'>i changed lanes. from frontend to backend, data and ai.</p>
-      <p className='body-copy'>at kresco i build ai agents that talk to people, and everything behind them.</p>
+      <p className='body-copy'>currently, i build ai agents that talk to people, and everything behind them.</p>
       <p className='body-copy'>most of the code is written with ai agents now. i plan, review and decide.</p>
       <p className='text-sm text-muted-foreground pt-2'>
         current focus: <TagList tags={focus} />
