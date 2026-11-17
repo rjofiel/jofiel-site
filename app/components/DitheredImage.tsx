@@ -9,12 +9,22 @@ type DitheredImageProps = {
   dotSize?: number;
   // Pushes mid-tones apart before dithering so faces keep their shape.
   contrast?: number;
+  // Draw the dark tones instead of the light ones. Works better for photos with a bright sky.
+  invert?: boolean;
   className?: string;
 };
 
 // Renders an image as 1-bit Atkinson dithering in the current text colour, with a
 // transparent background, so photos sit on the dark theme like terminal output.
-export const DitheredImage = ({ src, alt, width, dotSize = 2, contrast = 1.4, className }: DitheredImageProps) => {
+export const DitheredImage = ({
+  src,
+  alt,
+  width,
+  dotSize = 2,
+  contrast = 1.4,
+  invert = false,
+  className
+}: DitheredImageProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -66,14 +76,14 @@ export const DitheredImage = ({ src, alt, width, dotSize = 2, contrast = 1.4, cl
         data[i * 4] = r;
         data[i * 4 + 1] = g;
         data[i * 4 + 2] = b;
-        data[i * 4 + 3] = luminance[i] > 0 ? 255 : 0;
+        data[i * 4 + 3] = (luminance[i] > 0) !== invert ? 255 : 0;
       }
       context.putImageData(pixels, 0, 0);
     };
     return () => {
       cancelled = true;
     };
-  }, [src, width, dotSize, contrast]);
+  }, [src, width, dotSize, contrast, invert]);
 
   return <canvas ref={canvasRef} role='img' aria-label={alt} className={className} style={{ imageRendering: 'pixelated' }} />;
 };

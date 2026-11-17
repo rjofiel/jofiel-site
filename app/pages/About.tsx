@@ -11,8 +11,8 @@ const About = () => {
         <section>
           <div className='flex justify-between items-end'>
             <h1 className='text-lg font-medium text-foreground mb-2'>/about</h1>
-            <div className='h-14 w-14 rounded-full'>
-              <img className='object-cover rounded-full w-14 h-14' src='/images/capaldi_pfp.webp' alt='peter capaldi' />
+            <div className='h-14 w-14 overflow-hidden rounded-full'>
+              <img className='h-14 w-14 rounded-full object-cover grayscale contrast-125 brightness-90 transition duration-500 hover:grayscale-0' src='/images/ludox.webp' alt='me' />
             </div>
           </div>
           <p className='text-sm text-muted-foreground'>
