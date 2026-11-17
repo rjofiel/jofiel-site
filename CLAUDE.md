@@ -5,13 +5,14 @@ prerendered to static HTML at build time and hydrated in the browser. Deployed b
 
 ## Commands
 
-| Command                              | What it does                                                                             |
-| ------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `npm run dev`                        | Dev server, client-side rendering only                                                   |
-| `npm run build`                      | Client build, then prerender of every route, `404.html`, sitemap, feed, robots           |
-| `npm run check`                      | Prettier, ESLint, both tsconfigs and the duplicate detector. Must pass before any commit |
-| `npm run preview`                    | Serves `dist/` to test the prerendered site                                              |
-| `npm run heaven-sent -- seal\|check` | Seals or checks the private note. Only the owner runs it                                 |
+| Command                                     | What it does                                                                                                     |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`                               | Dev server, client-side rendering only                                                                           |
+| `npm run build`                             | Client build, then prerender of every route, `404.html`, sitemap, feed, robots                                   |
+| `npm run check`                             | Prettier, ESLint, CSS/HTML comment check, both tsconfigs and the duplicate detector. Must pass before any commit |
+| `npm run lint` / `typecheck` / `duplicates` | The individual steps of `check`                                                                                  |
+| `npm run preview`                           | Serves `dist/` to test the prerendered site                                                                      |
+| `npm run heaven-sent -- seal\|check`        | Seals or checks the private note. Only the owner runs it                                                         |
 
 ## Definition of done
 
@@ -27,7 +28,9 @@ A change is finished only when all of this holds:
 
 These are enforced by `npm run check`; do not work around them.
 
-1. **No comments.** Not in TS, TSX, CSS or HTML. A comment means a name is missing: extract a function,
+1. **No comments.** Not in TS, TSX, CSS or HTML (ESLint `local/no-comments` for code,
+   `scripts/no-markup-comments.ts` for CSS, HTML and SVG; the only exception is the `<!--app-head-->`
+   placeholder `vite/seo.ts` replaces). A comment means a name is missing: extract a function,
    a constant or a component whose name says it. The reason behind a non-obvious decision goes in the
    "Why it is built this way" section below, not in the code. `eslint-disable` comments are blocked too
    (`noInlineConfig`).
@@ -45,6 +48,8 @@ These are enforced by `npm run check`; do not work around them.
 ### Lint exceptions
 
 They live in `eslint.config.js`, scoped to one file each. Adding one needs a reason added here.
+`sonarjs/todo-tag` and `sonarjs/fixme-tag` are off everywhere: they flag comments, which
+`local/no-comments` already rejects, so they would only report the same line twice.
 
 - `app/components/FloatingDecorations.tsx`, `sonarjs/pseudo-random`: `Math.random` only places
   decorative symbols, nothing security related.
