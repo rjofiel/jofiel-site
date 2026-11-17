@@ -1,13 +1,23 @@
 import { Link } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
 import { pageMeta, type PostEntry } from '@/lib/meta';
-import { formatPostDate, getAllPosts, postsByYear, type PostYear } from '@/lib/posts';
+import { getAllPosts, postDateParts, postsByYear, type PostYear } from '@/lib/posts';
+
+const PostDate = ({ date }: { date: string }) => {
+  const parts = postDateParts(date);
+  return (
+    <p className='w-[5ch] shrink-0 text-xs leading-5 text-muted-foreground tabular-nums'>
+      <span className='block'>{parts?.day}</span>
+      <span className='block'>{parts?.time}</span>
+    </p>
+  );
+};
 
 const PostItem = ({ post }: { post: PostEntry }) => (
   <article className={`group ${!post.published && 'pointer-events-none opacity-50'}`}>
     <Link to={`/blog/${post.filename}`} className='block space-y-1'>
       <div className='flex gap-4'>
-        <p className='shrink-0 text-xs text-muted-foreground tabular-nums'>{formatPostDate(post.date)}</p>
+        <PostDate date={post.date} />
         <div>
           <h2 className='text-sm text-foreground group-hover:text-primary transition-colors'>{post.title}</h2>
           <p className='text-sm text-muted-foreground pl-4'>{post.description}</p>

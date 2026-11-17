@@ -21,15 +21,21 @@ export function postsByYear(posts: PostEntry[]): PostYear[] {
   return [...groups].map(([year, yearPosts]) => ({ year, posts: yearPosts }));
 }
 
-export function formatPostDate(date: string): string {
+export type PostDateParts = { day: string; time: string };
+
+const madridFormat = (parsed: Date, options: Intl.DateTimeFormatOptions) =>
+  parsed.toLocaleString('en-US', { timeZone: SITE_TIME_ZONE, ...options });
+
+export function postDateParts(date: string): PostDateParts | undefined {
   const parsed = new Date(date);
-  if (!date || isNaN(parsed.getTime())) return '';
-  return parsed.toLocaleString('en-US', {
-    timeZone: SITE_TIME_ZONE,
-    month: '2-digit',
-    year: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  });
+  if (!date || isNaN(parsed.getTime())) return undefined;
+  return {
+    day: madridFormat(parsed, { month: '2-digit', year: '2-digit' }),
+    time: madridFormat(parsed, { hour: '2-digit', minute: '2-digit', hour12: false })
+  };
+}
+
+export function formatPostDate(date: string): string {
+  const parts = postDateParts(date);
+  return parts ? `${parts.day}, ${parts.time}` : '';
 }
