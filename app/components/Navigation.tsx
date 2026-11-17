@@ -25,6 +25,17 @@ export const Navigation = () => {
           /{item.label}
         </Link>
       ))}
+      {/* Easter egg: a TARDIS-blue square that only reveals its route on hover or focus. */}
+      <Link
+        to="/heaven-sent"
+        aria-label="/heaven-sent"
+        className="group relative -ml-3 inline-flex h-[6px] w-[6px] items-center self-center"
+      >
+        <span className="block h-[6px] w-[6px] bg-[#003b6f] transition-opacity group-hover:opacity-0 group-focus-visible:opacity-0" />
+        <span className="pointer-events-none absolute left-0 whitespace-nowrap text-primary opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+          /heaven-sent
+        </span>
+      </Link>
       <div className="ml-auto justify-self-end text-muted-foreground">
         <span className="blink text-foreground">_</span>{new Date().toLocaleDateString()}
       </div>

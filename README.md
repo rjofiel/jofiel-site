@@ -76,6 +76,19 @@ your content here...
 
 or you can just use `create_post.sh` if you prefer the script.
 
+## 🔒 sealed notes
+
+`/heaven-sent` shows a note that only opens with a word.  
+the note is encrypted in the browser bundle, so the public repo never has the plaintext.
+
+1. write the note in `private/heaven-sent/note.mdx` (gitignored, never commit it).
+2. `npm run heaven-sent -- seal`, type the word twice. it writes `app/heaven-sent/sealed.json`.
+3. `npm run heaven-sent -- check` to test the word you printed.
+
+case, accents and extra spaces don't matter.  
+what the page says before and after each date lives in `app/heaven-sent/phases.ts`.  
+in `npm run dev`, preview a phase with `/heaven-sent?phase=open`.
+
 ## 🔗 where to find me
 
 if you really need to reach me...  

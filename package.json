@@ -7,7 +7,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "heaven-sent": "node scripts/heaven-sent.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
+    "@mdx-js/mdx": "^3.1.1",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^22.16.5",
