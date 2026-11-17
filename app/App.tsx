@@ -7,6 +7,7 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import { NotFound } from './pages/NotFound';
 import { Post } from './pages/posts/Post';
+import { HeavenSent } from './pages/HeavenSent';
 // import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           </Route>
           <Route path='/projects' element={<Projects />} />
           <Route path='/about' element={<About />} />
+          <Route path='/heaven-sent' element={<HeavenSent />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
