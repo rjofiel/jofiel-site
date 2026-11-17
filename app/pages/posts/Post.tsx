@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { useParams } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
 import { mdxComponents } from '@/components/mdxComponents';
@@ -24,9 +23,7 @@ export const Post = () => {
           <p className='text-xs text-foreground'>{formatPostDate(post.date)}</p>
         </div>
       </section>
-      <Suspense key={filename} fallback={<p className='text-sm text-muted-foreground'>loading...</p>}>
-        <Body components={mdxComponents} />
-      </Suspense>
+      <Body components={mdxComponents} />
     </Page>
   );
 };

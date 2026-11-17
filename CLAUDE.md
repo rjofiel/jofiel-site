@@ -63,7 +63,7 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 | A page with layout, `<head>` and content column | `Page` and `PageTitle` (`app/components/Page.tsx`)                                         |
 | Title, description, preview tags of a route     | `app/content/site.json`, read through `pageMeta()` / `postMeta()` (`app/lib/meta.ts`)      |
 | `<head>` tags, build and client                 | `headTags()` + `renderHead()`; the client swaps them with `usePageMeta()`                  |
-| Posts, list and bodies                          | `getAllPosts`, `getPost`, `postBody`, `preloadPost`, `formatPostDate` (`app/lib/posts.ts`) |
+| Posts, list and bodies                          | `getAllPosts`, `getPost`, `postBody`, `postsByYear`, `formatPostDate` (`app/lib/posts.ts`) |
 | Dates and times                                 | `SITE_TIME_ZONE`, `madridIso()` (`app/lib/time.ts`)                                        |
 | Anything depending on the clock or randomness   | render it only when `useHydrated()` is true                                                |
 | MDX typography (posts and the sealed note)      | `mdxComponents` (`app/components/mdxComponents.tsx`)                                       |
@@ -79,9 +79,14 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   Anything that can differ between build time and the visitor (today's date, random positions, the
   `/heaven-sent` phase) must wait for `useHydrated()`, or React throws a hydration error. Invalid HTML
   nesting (a `<div>` inside a `<p>`) breaks hydration too.
-- **Post bodies are lazy chunks.** The list only needs frontmatter, extracted at build time by
-  `vite/blog-index.ts`. `/blog` preloads the bodies in the background so opening a post never shows
-  the Suspense fallback. The prerender waits for them (`progressiveChunkSize: Infinity`).
+- **Post bodies ship in the main bundle.** All posts together are about 20 kB gzip, so they are
+  imported eagerly (`import.meta.glob` with `eager: true`): opening a post never waits for a
+  download and needs no Suspense. The list frontmatter comes from `vite/blog-index.ts`. If the posts
+  ever grow past ~100 kB gzip, revisit this (lazy chunks or a static-first framework like Astro).
+- **`/blog` groups posts by year** with native `<details>`: the newest year is open, older years
+  start collapsed. It works without JavaScript and crawlers still see every link.
+- **`progressiveChunkSize: Infinity`** in `app/entry-server.tsx` keeps lazy routes (`/heaven-sent`)
+  from being prerendered as deferred chunks.
 - **Madrid time.** Post filenames carry Madrid wall-clock time. `madridIso()` turns it into a real
   instant whatever the time zone of the build machine (Vercel builds in UTC) or the reader. It
   computes the offset twice so times right after a DST switch use the offset in force at that moment.
