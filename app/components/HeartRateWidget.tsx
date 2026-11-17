@@ -1,4 +1,8 @@
+import { useAfterPageLoad } from '@/lib/useAfterPageLoad';
+
 export const HeartRateWidget = () => {
+  const ready = useAfterPageLoad();
+  if (!ready) return null;
   return (
     <embed
       className='border-0 outline-0 h-30 scale-50 origin-top-left absolute'
