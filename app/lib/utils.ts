@@ -1,10 +1,3 @@
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
 export function parseFilename(filename: string): { slug: string; readableDate: string } {
   const match = filename.match(/^(\d{4}-\d{2}-\d{2}_\d{2}-\d{2})-(.+)$/);
   if (!match) return { slug: '', readableDate: '' };

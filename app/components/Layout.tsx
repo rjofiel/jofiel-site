@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Navigation } from './Navigation';
 import { Decoration } from './Decoration';
-import { FloatingDecorations } from './FLoatingDecorations';
+import { FloatingDecorations } from './FloatingDecorations';
 
 interface LayoutProps {
   children: ReactNode;
