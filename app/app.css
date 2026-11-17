@@ -18,12 +18,12 @@
 
 @theme {
   --color-background: hsl(0 0% 4%);
-  --color-foreground: hsl(0 0% 85%);
+  --color-foreground: hsl(0 0% 92%);
   --color-primary: hsl(190 100% 50%);
   --color-secondary: hsl(0 0% 12%);
-  --color-secondary-foreground: hsl(0 0% 85%);
+  --color-secondary-foreground: hsl(0 0% 92%);
   --color-muted: hsl(0 0% 15%);
-  --color-muted-foreground: hsl(0 0% 65%);
+  --color-muted-foreground: hsl(0 0% 60%);
   --color-border: hsl(0 0% 18%);
   --radius-md: 0.25rem;
   --heart: 350 80% 55%;
