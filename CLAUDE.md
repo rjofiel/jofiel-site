@@ -83,8 +83,9 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   imported eagerly (`import.meta.glob` with `eager: true`): opening a post never waits for a
   download and needs no Suspense. The list frontmatter comes from `vite/blog-index.ts`. If the posts
   ever grow past ~100 kB gzip, revisit this (lazy chunks or a static-first framework like Astro).
-- **`/blog` groups posts by year** with native `<details>`: the newest year is open, older years
-  start collapsed. It works without JavaScript and crawlers still see every link.
+- **`/blog` groups posts by year.** The newest year with posts is shown first under "current year";
+  older years follow, newest first, as native `<details>` that start collapsed. It works without
+  JavaScript and crawlers still see every link.
 - **`progressiveChunkSize: Infinity`** in `app/entry-server.tsx` keeps lazy routes (`/heaven-sent`)
   from being prerendered as deferred chunks.
 - **Madrid time.** Post filenames carry Madrid wall-clock time. `madridIso()` turns it into a real

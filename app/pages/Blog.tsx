@@ -7,7 +7,7 @@ const PostItem = ({ post }: { post: PostEntry }) => (
   <article className={`group ${!post.published && 'pointer-events-none opacity-50'}`}>
     <Link to={`/blog/${post.filename}`} className='block space-y-1'>
       <div className='flex gap-4'>
-        <p className='text-xs text-muted-foreground tabular-nums text-wrap'>{formatPostDate(post.date)}</p>
+        <p className='shrink-0 text-xs text-muted-foreground tabular-nums'>{formatPostDate(post.date)}</p>
         <div>
           <h2 className='text-sm text-foreground group-hover:text-primary transition-colors'>{post.title}</h2>
           <p className='text-sm text-muted-foreground pl-4'>{post.description}</p>
@@ -17,22 +17,30 @@ const PostItem = ({ post }: { post: PostEntry }) => (
   </article>
 );
 
-const YearGroup = ({ group, open }: { group: PostYear; open: boolean }) => (
-  <details open={open} className='group/year space-y-6'>
+const PostList = ({ posts }: { posts: PostEntry[] }) => (
+  <div className='space-y-6'>
+    {posts.map(post => (
+      <PostItem key={post.filename} post={post} />
+    ))}
+  </div>
+);
+
+const PastYear = ({ group }: { group: PostYear }) => (
+  <details className='group/year'>
     <summary className='flex cursor-pointer list-none items-baseline gap-2 text-sm text-muted-foreground hover:text-primary [&::-webkit-details-marker]:hidden'>
       <span className='inline-block transition-transform group-open/year:rotate-90'>&gt;</span>
       <span className='text-foreground'>{group.year}</span>
       <span className='text-xs'>[{group.posts.length}]</span>
     </summary>
-    {group.posts.map(post => (
-      <PostItem key={post.filename} post={post} />
-    ))}
+    <div className='mt-4 mb-6'>
+      <PostList posts={group.posts} />
+    </div>
   </details>
 );
 
 const Blog = () => {
-  const years = postsByYear(getAllPosts());
-  const latestYear = years[years.length - 1]?.year;
+  const years = postsByYear(getAllPosts()).reverse();
+  const [current, ...past] = years;
 
   return (
     <Page meta={pageMeta('/blog')}>
@@ -41,13 +49,22 @@ const Blog = () => {
         <p className='text-sm text-muted-foreground'>notes, tutorials, and whatever i needed to write down.</p>
       </section>
 
-      <section className='space-y-6'>
-        {years.length === 0 ? (
-          <p className='text-sm text-muted-foreground'>no posts yet. check back later.</p>
-        ) : (
-          years.map(group => <YearGroup key={group.year} group={group} open={group.year === latestYear} />)
-        )}
-      </section>
+      {current ? (
+        <section className='space-y-4'>
+          <p className='text-sm text-muted-foreground'>current year</p>
+          <PostList posts={current.posts} />
+        </section>
+      ) : (
+        <p className='text-sm text-muted-foreground'>no posts yet. check back later.</p>
+      )}
+
+      {past.length > 0 && (
+        <section className='space-y-2'>
+          {past.map(group => (
+            <PastYear key={group.year} group={group} />
+          ))}
+        </section>
+      )}
     </Page>
   );
 };
