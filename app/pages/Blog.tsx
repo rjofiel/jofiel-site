@@ -1,10 +1,24 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
 import { pageMeta } from '@/lib/meta';
-import { formatPostDate, getAllPosts } from '@/lib/posts';
+import { formatPostDate, getAllPosts, preloadPost } from '@/lib/posts';
 
 const Blog = () => {
   const posts = getAllPosts();
+
+  // Post bodies are tiny (about 18 kB gzip for all of them): fetch the published ones in the
+  // background so opening a post is instant instead of showing "loading...".
+  useEffect(() => {
+    const preloadAll = () => posts.filter(post => post.published).forEach(post => preloadPost(post.filename));
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(preloadAll);
+      return () => cancelIdleCallback(id);
+    }
+    const id = setTimeout(preloadAll, 200);
+    return () => clearTimeout(id);
+  }, [posts]);
+
   return (
     <Page meta={pageMeta('/blog')}>
       <section>
@@ -18,7 +32,13 @@ const Blog = () => {
         ) : (
           posts.map(post => (
             <article key={post.filename} className={`group ${!post.published && 'pointer-events-none opacity-50'}`}>
-              <Link to={`/blog/${post.filename}`} className='block space-y-1'>
+              <Link
+                to={`/blog/${post.filename}`}
+                className='block space-y-1'
+                // In case the click beats the background fetch.
+                onMouseEnter={() => preloadPost(post.filename)}
+                onFocus={() => preloadPost(post.filename)}
+                onTouchStart={() => preloadPost(post.filename)}>
                 <div className='flex gap-4'>
                   <p className='text-xs text-muted-foreground tabular-nums text-wrap'>{formatPostDate(post.date)}</p>
                   <div>
