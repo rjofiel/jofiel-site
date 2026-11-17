@@ -40,8 +40,8 @@ export const DitheredImage = ({
       const rows = Math.max(1, Math.round((cols * image.naturalHeight) / image.naturalWidth));
       canvas.width = cols;
       canvas.height = rows;
+      // Height follows the intrinsic aspect ratio, so a parent can shrink it on small screens.
       canvas.style.width = `${cols * dotSize}px`;
-      canvas.style.height = `${rows * dotSize}px`;
 
       const context = canvas.getContext('2d', { willReadFrequently: true });
       if (!context) return;
@@ -85,5 +85,5 @@ export const DitheredImage = ({
     };
   }, [src, width, dotSize, contrast, invert]);
 
-  return <canvas ref={canvasRef} role='img' aria-label={alt} className={className} style={{ imageRendering: 'pixelated' }} />;
+  return <canvas ref={canvasRef} role='img' aria-label={alt} className={className} style={{ imageRendering: 'pixelated', maxWidth: '100%', height: 'auto' }} />;
 };
