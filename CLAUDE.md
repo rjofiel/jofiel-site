@@ -123,6 +123,10 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   the date so he can always read and check the note.
 - **`vite.config.ts`** drops react-router's `"use client"` warning: it is meant for server components
   and means nothing here.
+- **The nav wraps on phones** instead of hiding behind a menu button. The links need about 366 px, so
+  below 420 px of viewport the date moves to its own line above them, right-aligned; from 420 px it
+  sits at the end of the same line. Each link has an invisible 44 px tall touch area (`after:`), so
+  tapping is easy without changing how it looks.
 
 ## Design
 
