@@ -1,0 +1,10 @@
+{
+  "brussels-luxembourg-and-the-cold/christmas-market": { "x": 0, "y": 0.2, "width": 1, "height": 0.8 },
+  "brussels-luxembourg-and-the-cold/jordans": { "x": 0.1, "y": 0.22, "width": 0.8, "height": 0.6 },
+  "how-was-this-year/mountain": { "x": 0.06, "y": 0.22, "width": 0.74, "height": 0.53 },
+  "how-was-this-year/summit": { "x": 0, "y": 0, "width": 0.88, "height": 1 },
+  "madrid-with-perrito/cable-car": { "x": 0.15, "y": 0.2, "width": 0.85, "height": 0.8 },
+  "madrid-with-perrito/prado": { "x": 0, "y": 0, "width": 0.9, "height": 1 },
+  "november-rocks-and-squirrels/pedriza": { "x": 0, "y": 0.35, "width": 1, "height": 0.65 },
+  "november-rocks-and-squirrels/thirty-km": { "x": 0.05, "y": 0.3, "width": 0.95, "height": 0.6 }
+}

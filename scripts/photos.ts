@@ -11,6 +11,7 @@ const blogDir = path.join(root, 'app/content/blog');
 const originalsDir = path.join(root, 'private/photos');
 const outputDir = path.join(root, 'public', PHOTO_ROOT);
 const manifestPath = path.join(root, 'app/content/photos.json');
+const cropsPath = path.join(root, 'app/content/photo-crops.json');
 
 const QUALITY: Record<PhotoFormat, string> = { avif: '55', webp: '80' };
 const OG_DOT_SIZE = 2;
@@ -22,6 +23,10 @@ const NO_PNG_TEXT = ['-define', 'png:exclude-chunks=date,time,text,zTXt,iTXt,eXI
 
 type Size = { width: number; height: number };
 type PhotoEntry = Size & { widths: number[] };
+type Crop = { x: number; y: number; width: number; height: number };
+type Source = { file: string; args: string[] };
+
+const crops: Record<string, Crop> = JSON.parse(fs.readFileSync(cropsPath, 'utf8'));
 
 const MAGICK_LOCATIONS = ['/opt/homebrew/bin/magick', '/usr/local/bin/magick', '/usr/bin/magick'];
 
@@ -37,7 +42,9 @@ const firstFrame = (file: string) => [`${file}[0]`, '-auto-orient'];
 
 const publicFile = (urlPath: string) => path.join(root, 'public', urlPath);
 
-const isFresh = (output: string, original: string) => fs.existsSync(output) && fs.statSync(output).mtimeMs >= fs.statSync(original).mtimeMs;
+const changedAt = (source: Source) => Math.max(fs.statSync(source.file).mtimeMs, fs.statSync(cropsPath).mtimeMs);
+
+const isFresh = (output: string, source: Source) => fs.existsSync(output) && fs.statSync(output).mtimeMs >= changedAt(source);
 
 function bodyPhotoKeys(): string[] {
   return fs
@@ -56,12 +63,26 @@ function originalOf(key: string): string {
   return path.join(dir, file);
 }
 
-function sizeOf(original: string, resize: string[] = []): Size {
-  const [width, height] = magick([...firstFrame(original), ...resize, '-format', '%w %h', 'info:'])
+function sizeOf(args: string[]): Size {
+  const [width, height] = magick([...args, '-format', '%w %h', 'info:'])
     .toString()
     .split(' ')
     .map(Number);
   return { width, height };
+}
+
+function cropArgs(key: string, file: string): string[] {
+  const crop = crops[key];
+  if (!crop) return [];
+  const whole = sizeOf(firstFrame(file));
+  const along = (fraction: number, total: number) => Math.round(fraction * total);
+  const box = `${along(crop.width, whole.width)}x${along(crop.height, whole.height)}`;
+  return ['-crop', `${box}+${along(crop.x, whole.width)}+${along(crop.y, whole.height)}`, '+repage'];
+}
+
+function sourceOf(key: string): Source {
+  const file = originalOf(key);
+  return { file, args: [...firstFrame(file), ...cropArgs(key, file)] };
 }
 
 function widthsFor(naturalWidth: number): number[] {
@@ -69,20 +90,20 @@ function widthsFor(naturalWidth: number): number[] {
   return fitting.length < PHOTO_WIDTHS.length ? [...fitting, naturalWidth] : fitting;
 }
 
-function writeVariant(original: string, output: string, width: number, format: PhotoFormat): void {
-  if (isFresh(output, original)) return;
+function writeVariant(source: Source, output: string, width: number, format: PhotoFormat): void {
+  if (isFresh(output, source)) return;
   fs.mkdirSync(path.dirname(output), { recursive: true });
-  magick([...firstFrame(original), '-strip', '-resize', `${width}x`, '-quality', QUALITY[format], output]);
+  magick([...source.args, '-strip', '-resize', `${width}x`, '-quality', QUALITY[format], output]);
 }
 
 function renderPhoto(key: string): { entry: PhotoEntry; files: string[] } {
-  const original = originalOf(key);
-  const natural = sizeOf(original);
+  const source = sourceOf(key);
+  const natural = sizeOf(source.args);
   const widths = widthsFor(natural.width);
   const files = widths.flatMap(width =>
     PHOTO_FORMATS.map(format => {
       const output = publicFile(photoPath(key, width, format));
-      writeVariant(original, output, width, format);
+      writeVariant(source, output, width, format);
       return output;
     })
   );
@@ -91,19 +112,19 @@ function renderPhoto(key: string): { entry: PhotoEntry; files: string[] } {
   return { entry: { width: largest, height, widths }, files };
 }
 
-function ditheredPixels(original: string, fit: string[], grid: Size): Buffer {
-  const rgba = new Uint8ClampedArray(magick([...firstFrame(original), ...fit, '-depth', '8', 'RGBA:-']));
+function ditheredPixels(source: Source, fit: string[], grid: Size): Buffer {
+  const rgba = new Uint8ClampedArray(magick([...source.args, ...fit, '-depth', '8', 'RGBA:-']));
   const dots = atkinsonDither(luminance(rgba, OG_CONTRAST), { cols: grid.width, rows: grid.height });
   paintDots(rgba, dots, OG_DOT_COLOUR, false);
   return Buffer.from(rgba.buffer, rgba.byteOffset, rgba.byteLength);
 }
 
 function renderShareImage(key: string): string {
-  const original = originalOf(key);
+  const source = sourceOf(key);
   const output = publicFile(ogImagePath(key));
-  if (isFresh(output, original)) return output;
+  if (isFresh(output, source)) return output;
   const fit = ['-resize', `${OG_IMAGE_SIZE.width / OG_DOT_SIZE}x${OG_IMAGE_SIZE.height / OG_DOT_SIZE}`];
-  const grid = sizeOf(original, fit);
+  const grid = sizeOf([...source.args, ...fit]);
   const canvas = `${OG_IMAGE_SIZE.width}x${OG_IMAGE_SIZE.height}`;
   magick(
     [
@@ -112,7 +133,7 @@ function renderShareImage(key: string): string {
       ...['-background', OG_BACKGROUND, '-flatten', '-gravity', 'center', '-extent', canvas],
       ...['-strip', ...NO_PNG_TEXT, output]
     ],
-    ditheredPixels(original, fit, grid)
+    ditheredPixels(source, fit, grid)
   );
   return output;
 }

@@ -91,6 +91,7 @@ or you can just use `create_post.sh` if you prefer the script.
 3. `npm run photos` (needs imagemagick 7: `brew install imagemagick`) strips every bit of metadata and writes
    avif + webp at several widths to `public/images/blog`. commit those and `app/content/photos.json`.
 
+to frame a photo, give it a crop in `app/content/photo-crops.json` (`x`, `y`, `width`, `height` as fractions of the original).  
 photos nobody references are not built, so drop all the candidates in and keep the ones the post uses.
 `npm run check` fails if any image in `public/` still has metadata (gps, camera, dates).
 

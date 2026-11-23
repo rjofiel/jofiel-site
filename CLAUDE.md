@@ -172,7 +172,8 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   reference them with `<Photo src='<slug>/<name>' alt='...' />` or `cover: <name>` + `coverAlt:` in
   the frontmatter, run `npm run photos` and commit what it writes in `public/images/blog` and
   `app/content/photos.json`. Only referenced photos are built; outputs nobody references are
-  deleted. To rebuild a photo, delete its outputs: an output newer than its original is skipped.
+  deleted. To frame a photo, add its key to `app/content/photo-crops.json` with `x`, `y`, `width`
+  and `height` as fractions of the upright original; editing that file rebuilds every photo. To rebuild a photo, delete its outputs: an output newer than its original is skipped.
 - A new route needs an entry in `site.json` and `<Page meta={pageMeta('/route')}>`. Titles 30-60
   characters, descriptions 120-160. Private or unpublished pages get `noindex` and stay out of the
   sitemap and the feed.
