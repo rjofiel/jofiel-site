@@ -2,12 +2,22 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from 'yaml';
 import type { Plugin } from 'vite';
-import type { PostEntry } from '../app/lib/meta';
+import type { PhotoRef, PostEntry } from '../app/lib/meta';
 import { madridIso } from '../app/lib/time.ts';
 
 const VIRTUAL_ID = 'virtual:blog-index';
 const RESOLVED_ID = `\0${VIRTUAL_ID}`;
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---/;
+const PHOTO_TAG = /<Photo\s[^>]*>/g;
+
+const attribute = (tag: string, name: string) => {
+  const value = tag.match(new RegExp(String.raw`\s${name}=(?:'([^']*)'|"([^"]*)")`));
+  return value ? (value[1] ?? value[2]) : '';
+};
+
+export function photoRefsIn(source: string): PhotoRef[] {
+  return [...source.matchAll(PHOTO_TAG)].map(([tag]) => ({ src: attribute(tag, 'src'), alt: attribute(tag, 'alt') }));
+}
 
 const postDate = (frontmatter: Record<string, unknown>) => madridIso(`${String(frontmatter.date ?? '')}T${String(frontmatter.time ?? '')}`);
 
@@ -25,7 +35,8 @@ function toEntry(slug: string, source: string): PostEntry {
     title: String(frontmatter.title ?? ''),
     description: String(frontmatter.description ?? ''),
     published: frontmatter.published === true || frontmatter.published === 'true',
-    ...coverOf(slug, frontmatter)
+    ...coverOf(slug, frontmatter),
+    photos: photoRefsIn(source)
   };
 }
 

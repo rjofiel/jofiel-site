@@ -15,6 +15,8 @@ export type PageMeta = {
 
 export type ShareImage = { path: string; width: number; height: number; alt: string };
 
+export type PhotoRef = { src: string; alt: string };
+
 export type PostEntry = {
   slug: string;
   date: string;
@@ -23,6 +25,7 @@ export type PostEntry = {
   published: boolean;
   cover?: string;
   coverAlt?: string;
+  photos: PhotoRef[];
 };
 
 export type HeadTag =

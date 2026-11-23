@@ -18,7 +18,6 @@ const OG_DOT_SIZE = 2;
 const OG_CONTRAST = 1.4;
 const OG_DOT_COLOUR = [235, 235, 235];
 const OG_BACKGROUND = '#0a0a0a';
-const PHOTO_TAG = /<Photo\b[^>]*?\bsrc=['"]([^'"]+)['"]/g;
 const NO_PNG_TEXT = ['-define', 'png:exclude-chunks=date,time,text,zTXt,iTXt,eXIf'];
 
 type Size = { width: number; height: number };
@@ -46,12 +45,7 @@ const changedAt = (source: Source) => Math.max(fs.statSync(source.file).mtimeMs,
 
 const isFresh = (output: string, source: Source) => fs.existsSync(output) && fs.statSync(output).mtimeMs >= changedAt(source);
 
-function bodyPhotoKeys(): string[] {
-  return fs
-    .readdirSync(blogDir)
-    .filter(file => file.endsWith('.mdx'))
-    .flatMap(file => [...fs.readFileSync(path.join(blogDir, file), 'utf8').matchAll(PHOTO_TAG)].map(match => match[1]));
-}
+const bodyPhotoKeys = () => readBlogIndex(blogDir).flatMap(post => post.photos.map(photo => photo.src));
 
 const coverKeys = () => readBlogIndex(blogDir).flatMap(post => (post.cover ? [post.cover] : []));
 

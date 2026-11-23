@@ -88,6 +88,7 @@ or you can just use `create_post.sh` if you prefer the script.
 1. put the original in `private/photos/<slug>/<name>.jpg` (or `.heic`, `.png`, `.webp`). that folder is gitignored.
 2. in the post, `<Photo src='<slug>/<name>' alt='what it shows' />` between paragraphs, or wrapping them
    (`<Photo ...>`, blank line, the paragraphs, blank line, `</Photo>`) to put the photo beside them (under them on phones).
+   tapping a photo opens it big; the arrows or a swipe go through the rest of the post's photos.
    a dithered cover goes at the end, on the right, with `cover: <name>` and `coverAlt: what it shows` in the frontmatter.
 3. `npm run photos` (needs imagemagick 7: `brew install imagemagick`) strips every bit of metadata and writes
    avif + webp at several widths to `public/images/blog`. commit those and `app/content/photos.json`.

@@ -1,28 +1,29 @@
-import type { ReactNode } from 'react';
-import { getPhoto, inlineWidth, largestWidth, middleWidth, PHOTO_FORMATS, photoSrcSet, sideWidth, type PhotoEntry } from '@/lib/photos';
+import type { MouseEvent, ReactNode } from 'react';
+import { PhotoPicture } from '@/components/PhotoPicture';
+import { getPhoto, inlineWidth, largestWidth, sideWidth, type PhotoEntry } from '@/lib/photos';
 import { photoPath } from '@/lib/photoPaths';
+import { isPlainClick, usePhotoViewer } from '@/lib/usePhotoViewer';
 
-type PictureProps = { src: string; alt: string; photo: PhotoEntry; width: number };
+type LinkedPictureProps = { src: string; alt: string; photo: PhotoEntry; width: number };
 
-const LinkedPicture = ({ src, alt, photo, width }: PictureProps) => (
-  <a href={photoPath(src, largestWidth(photo), 'webp')} className='block w-fit max-w-full'>
-    <picture>
-      {PHOTO_FORMATS.map(format => (
-        <source key={format} type={`image/${format}`} srcSet={photoSrcSet(src, photo, format)} sizes={`${width}px`} />
-      ))}
-      <img
+const LinkedPicture = ({ src, alt, photo, width }: LinkedPictureProps) => {
+  const viewer = usePhotoViewer();
+  const openInViewer = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (viewer && isPlainClick(event) && viewer.open(src)) event.preventDefault();
+  };
+  return (
+    <a href={photoPath(src, largestWidth(photo), 'webp')} className='block w-fit max-w-full cursor-zoom-in' onClick={openInViewer}>
+      <PhotoPicture
+        src={src}
+        alt={alt}
+        photo={photo}
+        sizes={`${width}px`}
         className='post-photo block h-auto max-w-full border border-border'
         style={{ width }}
-        src={photoPath(src, middleWidth(photo), 'webp')}
-        width={photo.width}
-        height={photo.height}
-        alt={alt}
-        loading='lazy'
-        decoding='async'
       />
-    </picture>
-  </a>
-);
+    </a>
+  );
+};
 
 type PhotoProps = { src: string; alt: string; children?: ReactNode };
 

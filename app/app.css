@@ -39,6 +39,10 @@
     font-family: 'Agave Nerd Font', ui-monospace, monospace;
   }
 
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
   html {
     scroll-behavior: smooth;
   }

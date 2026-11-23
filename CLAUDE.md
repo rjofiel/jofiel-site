@@ -74,6 +74,7 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 | External links                                  | `ExternalLink`                                                                                 |
 | Photos in the terminal look                     | `DitheredImage` (algorithm in `app/lib/dither.ts`)                                             |
 | Photos in posts                                 | `<Photo src='<slug>/<name>' alt>`; wrap paragraphs in it to set it beside them; `cover`        |
+| Zoom a post's photos in a modal                 | `PhotoViewer` around the body (`Post.tsx`), fed by `post.photos` from `vite/blog-index.ts`     |
 | Photo URLs, widths and formats                  | `app/lib/photoPaths.ts` (shared by the app and `scripts/photos.ts`)                            |
 
 ## Why it is built this way
@@ -153,7 +154,10 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   `/about` and `/heaven-sent`, and a post's dithered `cover` sits the same way: at the end, on the
   right, fading out, drawn with one dot per device pixel (up to 2) so it stays sharp. Post photos
   stay small (the boxes in `app/lib/photos.ts`: 272x192 inline, 185x252 beside the text) so they
-  accompany the text instead of leading it, and link to the full-size file. A `<Photo>` that wraps
+  accompany the text instead of leading it. Tapping one opens it big in a native `<dialog>`
+  (Esc, tap outside or `x` close it; arrows, swipe or `<` `>` move through the post's photos in
+  reading order, wrapping around); the photo is still a link to the full-size file, so it works
+  without JavaScript and with ctrl/cmd-click. A `<Photo>` that wraps
   paragraphs sits to their right from 640 px up and right under them on phones, where beside the
   text would leave about 25 characters per line; a flex row, not a float, so it can never spill
   into the next section. Photos start grey and take their colour while they cross the
