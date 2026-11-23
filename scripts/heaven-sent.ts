@@ -53,9 +53,9 @@ function askHidden(question: string, envName = GUESTS_WORD_ENV): Promise<string>
 async function askNewWord(label: string, envName: string): Promise<string> {
   const word = await askHidden(`${label}: `, envName);
   const again = await askHidden(`${label} again: `, envName);
-  if (word !== again) throw new Error('The two words do not match. Nothing was written.');
-  if (word.trim().length < 8) {
-    throw new Error('Use at least 8 characters: the ciphertext is public, so a short word can be guessed offline.');
+  if (normalizeWord(word) !== normalizeWord(again)) throw new Error('The two words do not match. Nothing was written.');
+  if (normalizeWord(word).length < 8) {
+    throw new Error('Use at least 8 letters or digits: the ciphertext is public, so a short word can be guessed offline.');
   }
   return word;
 }

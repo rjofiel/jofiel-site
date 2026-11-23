@@ -86,6 +86,7 @@ const WordForm = ({ note, guestsWait, onOpen }: WordFormProps) => {
           type='password'
           autoComplete='off'
           autoCapitalize='none'
+          autoCorrect='off'
           spellCheck={false}
           value={word}
           onChange={event => {
