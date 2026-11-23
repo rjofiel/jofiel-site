@@ -98,6 +98,15 @@
       1440
     ]
   },
+  "madrid-salvaje-no-voice-left/madoka": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
   "madrid-salvaje-no-voice-left/plata-o-plomo": {
     "width": 1440,
     "height": 1440,
@@ -144,15 +153,6 @@
     ]
   },
   "november-rocks-and-squirrels/pedriza": {
-    "width": 1440,
-    "height": 1920,
-    "widths": [
-      480,
-      960,
-      1440
-    ]
-  },
-  "november-rocks-and-squirrels/perrete": {
     "width": 1440,
     "height": 1920,
     "widths": [
