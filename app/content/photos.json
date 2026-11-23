@@ -53,6 +53,33 @@
       1440
     ]
   },
+  "gibraltar-small-and-expensive/mom": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "gibraltar-small-and-expensive/monkey": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "gibraltar-small-and-expensive/red-box": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
   "how-was-this-year/mountain": {
     "width": 1440,
     "height": 773,
@@ -71,6 +98,15 @@
       1440
     ]
   },
+  "madrid-salvaje-no-voice-left/plata-o-plomo": {
+    "width": 1440,
+    "height": 1440,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
   "madrid-with-perrito/cable-car": {
     "width": 1440,
     "height": 1016,
@@ -83,6 +119,15 @@
   "madrid-with-perrito/prado": {
     "width": 1440,
     "height": 1200,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "madrid-with-perrito/sunflowers": {
+    "width": 1440,
+    "height": 1920,
     "widths": [
       480,
       960,
