@@ -73,7 +73,7 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 | Body text style                                 | `.body-copy` class (`app/app.css`)                                                             |
 | External links                                  | `ExternalLink`                                                                                 |
 | Photos in the terminal look                     | `DitheredImage` (algorithm in `app/lib/dither.ts`)                                             |
-| Photos in posts                                 | `<Photo src='<slug>/<name>' alt layout?>` in MDX; a dithered cover with `cover`/`coverAlt`     |
+| Photos in posts                                 | `<Photo src='<slug>/<name>' alt>`; wrap paragraphs in it to set it beside them; `cover`        |
 | Photo URLs, widths and formats                  | `app/lib/photoPaths.ts` (shared by the app and `scripts/photos.ts`)                            |
 
 ## Why it is built this way
@@ -150,14 +150,15 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   cyan…). TARDIS blue `#003b6f` is reserved for the hidden nav square, the last colour of the `/about` palette
   and the favicon.
 - Images stay subtle: decorative photos go through `DitheredImage`. The Capaldi silhouette appears only on
-  `/about` and `/heaven-sent`. Post photos stay small (at most 272x192 px, `PHOTO_BOX` in `app/lib/photos.ts`) so
-  they accompany the text instead of leading it, and link to the full-size file. Vertical photos
-  float to the right of the text from 640 px up (`layout='side'`, the default when taller than
-  wide) and stack on phones, where a float would leave the text about 25 characters wide;
-  `layout='inline'` or `'side'` overrides it. A side photo goes before the paragraphs it sits
-  next to, and every `h2` and `hr` clears floats so it never spills into the next section; they start grey and take their colour while they cross the
+  `/about` and `/heaven-sent`, and a post's dithered `cover` sits the same way: at the end, on the
+  right, fading out, drawn with one dot per device pixel (up to 2) so it stays sharp. Post photos
+  stay small (the boxes in `app/lib/photos.ts`: 272x192 inline, 185x252 beside the text) so they
+  accompany the text instead of leading it, and link to the full-size file. A `<Photo>` that wraps
+  paragraphs sits to their right from 640 px up and right under them on phones, where beside the
+  text would leave about 25 characters per line; a flex row, not a float, so it can never spill
+  into the next section. Photos start grey and take their colour while they cross the
   middle of the screen (hover on browsers without scroll-driven animations); at most one dithered
-  cover and two body photos per post. Dithering reads contrast, not subject: covers need a clear
+  cover per post. Dithering reads contrast, not subject: covers need a clear
   split of light and dark (silhouettes, something bright on a dark ground), because leaves, grass
   and sky turn to noise.
 - Bilingual text: English first, Spanish right under it in the `Es` MDX component (smaller, grey).

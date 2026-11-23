@@ -24,8 +24,8 @@ export const Post = () => {
           <p className='text-xs text-foreground'>{formatPostDate(post.date)}</p>
         </div>
       </section>
-      {post.cover && <PostCover src={post.cover} alt={post.coverAlt ?? ''} />}
       <Body components={mdxComponents} />
+      {post.cover && <PostCover src={post.cover} alt={post.coverAlt ?? ''} />}
     </Page>
   );
 };

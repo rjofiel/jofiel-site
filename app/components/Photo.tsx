@@ -1,56 +1,46 @@
-import type { CSSProperties } from 'react';
-import {
-  defaultLayout,
-  displayWidth,
-  getPhoto,
-  largestWidth,
-  middleWidth,
-  PHOTO_FORMATS,
-  photoSizes,
-  photoSrcSet,
-  sideWidth,
-  type PhotoEntry,
-  type PhotoLayout
-} from '@/lib/photos';
+import type { ReactNode } from 'react';
+import { getPhoto, inlineWidth, largestWidth, middleWidth, PHOTO_FORMATS, photoSrcSet, sideWidth, type PhotoEntry } from '@/lib/photos';
 import { photoPath } from '@/lib/photoPaths';
 
-type PhotoProps = { src: string; alt: string; layout?: PhotoLayout };
+type PictureProps = { src: string; alt: string; photo: PhotoEntry; width: number };
 
-const FIGURE_CLASS: Record<PhotoLayout, string> = {
-  inline: 'my-6',
-  side: 'my-6 sm:float-right sm:mt-1 sm:mb-4 sm:ml-6'
-};
+const LinkedPicture = ({ src, alt, photo, width }: PictureProps) => (
+  <a href={photoPath(src, largestWidth(photo), 'webp')} className='block w-fit max-w-full'>
+    <picture>
+      {PHOTO_FORMATS.map(format => (
+        <source key={format} type={`image/${format}`} srcSet={photoSrcSet(src, photo, format)} sizes={`${width}px`} />
+      ))}
+      <img
+        className='post-photo block h-auto max-w-full border border-border'
+        style={{ width }}
+        src={photoPath(src, middleWidth(photo), 'webp')}
+        width={photo.width}
+        height={photo.height}
+        alt={alt}
+        loading='lazy'
+        decoding='async'
+      />
+    </picture>
+  </a>
+);
 
-const IMAGE_CLASS: Record<PhotoLayout, string> = {
-  inline: 'w-(--photo-width)',
-  side: 'w-(--photo-width) sm:w-(--side-width)'
-};
+type PhotoProps = { src: string; alt: string; children?: ReactNode };
 
-const widthVariables = (photo: PhotoEntry) =>
-  ({ '--photo-width': `${displayWidth(photo)}px`, '--side-width': `${sideWidth(photo)}px` }) as CSSProperties;
-
-export const Photo = ({ src, alt, layout }: PhotoProps) => {
+export const Photo = ({ src, alt, children }: PhotoProps) => {
   const photo = getPhoto(src);
-  const placement = layout ?? defaultLayout(photo);
+  if (!children) {
+    return (
+      <figure className='my-6'>
+        <LinkedPicture src={src} alt={alt} photo={photo} width={inlineWidth(photo)} />
+      </figure>
+    );
+  }
   return (
-    <figure className={FIGURE_CLASS[placement]}>
-      <a href={photoPath(src, largestWidth(photo), 'webp')} className='block w-fit max-w-full'>
-        <picture>
-          {PHOTO_FORMATS.map(format => (
-            <source key={format} type={`image/${format}`} srcSet={photoSrcSet(src, photo, format)} sizes={photoSizes(photo, placement)} />
-          ))}
-          <img
-            className={`post-photo block h-auto max-w-full border border-border ${IMAGE_CLASS[placement]}`}
-            style={widthVariables(photo)}
-            src={photoPath(src, middleWidth(photo), 'webp')}
-            width={photo.width}
-            height={photo.height}
-            alt={alt}
-            loading='lazy'
-            decoding='async'
-          />
-        </picture>
-      </a>
-    </figure>
+    <div className='flex flex-col sm:flex-row sm:items-start sm:gap-6'>
+      <div className='min-w-0 flex-1'>{children}</div>
+      <figure className='mb-6 self-end sm:mt-1 sm:mb-4 sm:self-start'>
+        <LinkedPicture src={src} alt={alt} photo={photo} width={sideWidth(photo)} />
+      </figure>
+    </div>
   );
 };
