@@ -1,4 +1,5 @@
 import site from '../content/site.json';
+import { OG_IMAGE_SIZE, ogImagePath } from './photoPaths';
 
 export { site };
 
@@ -9,7 +10,12 @@ export type PageMeta = {
   type?: 'website' | 'article';
   noindex?: boolean;
   publishedTime?: string;
+  image?: ShareImage;
 };
+
+export type ShareImage = { path: string; width: number; height: number; alt: string };
+
+export type PhotoRef = { src: string; alt: string };
 
 export type PostEntry = {
   slug: string;
@@ -17,6 +23,9 @@ export type PostEntry = {
   title: string;
   description: string;
   published: boolean;
+  cover?: string;
+  coverAlt?: string;
+  photos: PhotoRef[];
 };
 
 export type HeadTag =
@@ -35,8 +44,14 @@ export function postMeta(post: PostEntry): PageMeta {
     description: post.description || pageMeta('/blog').description,
     type: 'article',
     noindex: !post.published,
-    publishedTime: post.date || undefined
+    publishedTime: post.date || undefined,
+    image: coverImage(post)
   };
+}
+
+function coverImage(post: PostEntry): ShareImage | undefined {
+  if (!post.cover) return undefined;
+  return { path: ogImagePath(post.cover), ...OG_IMAGE_SIZE, alt: post.coverAlt ?? '' };
 }
 
 export const absoluteUrl = (path: string) => new URL(path, site.url).href;
@@ -64,7 +79,8 @@ function structuredData(meta: PageMeta, url: string, image: string): object | un
 
 export function headTags(meta: PageMeta): HeadTag[] {
   const url = absoluteUrl(meta.path);
-  const image = absoluteUrl(site.image.path);
+  const shareImage = meta.image ?? site.image;
+  const image = absoluteUrl(shareImage.path);
   const tags: HeadTag[] = [
     { tag: 'title', text: meta.title },
     { tag: 'meta', attrs: { name: 'description', content: meta.description } },
@@ -76,16 +92,16 @@ export function headTags(meta: PageMeta): HeadTag[] {
     { tag: 'meta', attrs: { property: 'og:title', content: meta.title } },
     { tag: 'meta', attrs: { property: 'og:description', content: meta.description } },
     { tag: 'meta', attrs: { property: 'og:image', content: image } },
-    { tag: 'meta', attrs: { property: 'og:image:width', content: String(site.image.width) } },
-    { tag: 'meta', attrs: { property: 'og:image:height', content: String(site.image.height) } },
-    { tag: 'meta', attrs: { property: 'og:image:alt', content: site.image.alt } },
+    { tag: 'meta', attrs: { property: 'og:image:width', content: String(shareImage.width) } },
+    { tag: 'meta', attrs: { property: 'og:image:height', content: String(shareImage.height) } },
+    { tag: 'meta', attrs: { property: 'og:image:alt', content: shareImage.alt } },
     { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
     { tag: 'meta', attrs: { name: 'twitter:site', content: site.twitter } },
     { tag: 'meta', attrs: { name: 'twitter:creator', content: site.twitter } },
     { tag: 'meta', attrs: { name: 'twitter:title', content: meta.title } },
     { tag: 'meta', attrs: { name: 'twitter:description', content: meta.description } },
     { tag: 'meta', attrs: { name: 'twitter:image', content: image } },
-    { tag: 'meta', attrs: { name: 'twitter:image:alt', content: site.image.alt } }
+    { tag: 'meta', attrs: { name: 'twitter:image:alt', content: shareImage.alt } }
   ];
   if (meta.publishedTime) {
     tags.push({ tag: 'meta', attrs: { property: 'article:published_time', content: meta.publishedTime } });

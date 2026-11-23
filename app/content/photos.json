@@ -1,0 +1,118 @@
+{
+  "bosnia-to-the-adventure/cat": {
+    "width": 1440,
+    "height": 1016,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "bosnia-to-the-adventure/pines": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "bosnia-to-the-adventure/sunset": {
+    "width": 1440,
+    "height": 1056,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "brussels-luxembourg-and-the-cold/christmas-market": {
+    "width": 1440,
+    "height": 1536,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "brussels-luxembourg-and-the-cold/jordans": {
+    "width": 1440,
+    "height": 1440,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "brussels-luxembourg-and-the-cold/under-the-trees": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "how-was-this-year/mountain": {
+    "width": 1440,
+    "height": 773,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "how-was-this-year/summit": {
+    "width": 1440,
+    "height": 1227,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "madrid-with-perrito/cable-car": {
+    "width": 1440,
+    "height": 1016,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "madrid-with-perrito/prado": {
+    "width": 1440,
+    "height": 1200,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "november-rocks-and-squirrels/pedriza": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "november-rocks-and-squirrels/plata-o-plomo": {
+    "width": 1440,
+    "height": 900,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "november-rocks-and-squirrels/thirty-km": {
+    "width": 769,
+    "height": 648,
+    "widths": [
+      480,
+      769
+    ]
+  }
+}

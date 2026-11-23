@@ -27,7 +27,7 @@ this project is built using:
 - `/vite`: build-time plugins. `blog-index` reads every post's frontmatter for the blog list; `seo` prerenders every route to static html (full content plus its own `<head>`, which the browser then hydrates), writes `404.html`, `sitemap.xml`, `feed.xml` and `robots.txt`.
 - `app/entry-server.tsx`: renders a route to html at build time. `app/root.tsx` hydrates it in the browser. both use the same routes from `app/App.tsx`.
 - anything that depends on the visitor's clock or randomness renders only after hydration (`useHydrated`), otherwise the prerendered html and the browser disagree.
-- `public/og.png`: the preview image used when a link is shared.
+- `public/og.png`: the preview image used when a link is shared. a post with a `cover` shares its own dithered cover instead.
 - `create_post.sh`: a quick way to create new posts.
 
 ## 🛠️ getting started
@@ -82,6 +82,20 @@ your content here...
 ```
 
 or you can just use `create_post.sh` if you prefer the script.
+
+## 📷 photos in posts
+
+1. put the original in `private/photos/<slug>/<name>.jpg` (or `.heic`, `.png`, `.webp`). that folder is gitignored.
+2. in the post, `<Photo src='<slug>/<name>' alt='what it shows' />` between paragraphs, or wrapping them
+   (`<Photo ...>`, blank line, the paragraphs, blank line, `</Photo>`) to put the photo beside them (under them on phones).
+   tapping a photo opens it big; the arrows or a swipe go through the rest of the post's photos.
+   a dithered cover goes at the end, on the right, with `cover: <name>` and `coverAlt: what it shows` in the frontmatter.
+3. `npm run photos` (needs imagemagick 7: `brew install imagemagick`) strips every bit of metadata and writes
+   avif + webp at several widths to `public/images/blog`. commit those and `app/content/photos.json`.
+
+to frame a photo, give it a crop in `app/content/photo-crops.json` (`x`, `y`, `width`, `height` as fractions of the original).  
+photos nobody references are not built, so drop all the candidates in and keep the ones the post uses.
+`npm run check` fails if any image in `public/` still has metadata (gps, camera, dates).
 
 ## 🔒 sealed notes
 

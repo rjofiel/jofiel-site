@@ -2,10 +2,12 @@ import type { ComponentProps } from 'react';
 import type { MDXComponents } from 'mdx/types';
 import { ExternalLink } from '@/components/ExternalLink';
 import { Flow, Step } from '@/components/Flow';
+import { Photo } from '@/components/Photo';
 
 export const mdxComponents: MDXComponents = {
   Flow,
   Step,
+  Photo,
   hr: () => <hr className='my-8' />,
   h1: props => <h1 className='text-lg leading-relaxed text-foreground my-2 font-bold' {...props} />,
   h2: props => <h2 className='text-[16px] leading-relaxed text-foreground my-2 font-semibold' {...props} />,

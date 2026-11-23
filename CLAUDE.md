@@ -13,6 +13,7 @@ prerendered to static HTML at build time and hydrated in the browser. Deployed b
 | `npm run lint` / `typecheck` / `duplicates` | The individual steps of `check`                                                                                  |
 | `npm run preview`                           | Serves `dist/` to test the prerendered site                                                                      |
 | `npm run heaven-sent -- seal\|check`        | Seals or checks the private note. Only the owner runs it                                                         |
+| `npm run photos`                            | Builds the post photos from `private/photos` into `public/images/blog` (needs ImageMagick 7)                     |
 
 ## Definition of done
 
@@ -72,6 +73,9 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 | Body text style                                 | `.body-copy` class (`app/app.css`)                                                             |
 | External links                                  | `ExternalLink`                                                                                 |
 | Photos in the terminal look                     | `DitheredImage` (algorithm in `app/lib/dither.ts`)                                             |
+| Photos in posts                                 | `<Photo src='<slug>/<name>' alt>`; wrap paragraphs in it to set it beside them; `cover`        |
+| Zoom a post's photos in a modal                 | `PhotoViewer` around the body (`Post.tsx`), fed by `post.photos` from `vite/blog-index.ts`     |
+| Photo URLs, widths and formats                  | `app/lib/photoPaths.ts` (shared by the app and `scripts/photos.ts`)                            |
 
 ## Why it is built this way
 
@@ -104,6 +108,17 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   (`/blog/YYYY-MM-DD_HH-MM-<slug>`) are sent to the new ones by one pattern redirect in
   `vercel.json`. Its `:slug([^/]+)` keeps an explicit pattern on purpose: a bare `:slug` after a `-`
   stops matching hyphens under the newer path-to-regexp that Vercel is migrating to.
+- **Post photos.** The originals stay in gitignored `private/photos`, so the picks never reach the repo
+  and only the owner (who has them) runs `npm run photos`; Vercel just serves the committed output.
+  The script calls ImageMagick 7 through a fixed list of absolute paths, never through `PATH`
+  (`sonarjs/no-os-command-from-path`), and `-auto-orient` runs before `-strip`: stripping first drops
+  the EXIF orientation and phone photos come out sideways. Every photo ships as AVIF and WebP at
+  480/960/1440 px (or its own width when smaller) in a `<picture>` with `srcset`; the manifest
+  `app/content/photos.json` gives the size so the box is reserved before the image loads. The
+  cover's `og:image` is a 1200x630 PNG dithered at build time, because link previews do not run
+  JavaScript and not every app shows AVIF or WebP. `scripts/image-metadata.ts` runs in `lint` and
+  fails if any JPEG, PNG, WebP or AVIF under `public/` carries EXIF, XMP, IPTC or text chunks:
+  phone photos carry GPS, and the repo is public.
 - **Vercel.** `vercel.json` has `cleanUrls` and no catch-all rewrite: `/about` serves `about.html`,
   unknown URLs get `404.html` with a real 404 status.
 - **`public/.well-known/security.txt`** (RFC 9116) uses the contact email already shown on the
@@ -135,8 +150,23 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 - Colours come from the tokens in `app/app.css` (`background`, `foreground`, `muted`, `primary`
   cyan…). TARDIS blue `#003b6f` is reserved for the hidden nav square, the last colour of the `/about` palette
   and the favicon.
-- Images stay subtle: photos go through `DitheredImage`. The Capaldi silhouette appears only on
-  `/about` and `/heaven-sent`.
+- Images stay subtle: decorative photos go through `DitheredImage`. The Capaldi silhouette appears only on
+  `/about` and `/heaven-sent`, and a post's dithered `cover` sits the same way: at the end, on the
+  right, its edges fading into the background, with dots 1.74 device pixels wide (finer than one
+  CSS pixel on phones, never so fine that it loses its grain). Post photos
+  stay small (the boxes in `app/lib/photos.ts`: 272x192 inline, 185x252 beside the text) so they
+  accompany the text instead of leading it. Tapping one opens it big in a native `<dialog>`
+  (Esc, tap outside or `x` close it; arrows, swipe or `<` `>` move through the post's photos in
+  reading order, wrapping around); the photo is still a link to the full-size file, so it works
+  without JavaScript and with ctrl/cmd-click. A `<Photo>` that wraps
+  paragraphs sits to their right from 640 px up and right under them on phones, where beside the
+  text would leave about 25 characters per line; a flex row, not a float, so it can never spill
+  into the next section. Photos start grey and take their colour while they cross the
+  middle of the screen (hover on browsers without scroll-driven animations); at most one dithered
+  cover per post and one photo per `##` section; a second photo of the same moment becomes the
+  cover if it dithers well, or goes to another section. Dithering reads contrast, not subject: covers need a clear
+  split of light and dark (silhouettes, something bright on a dark ground), because leaves, grass
+  and sky turn to noise.
 - Bilingual text: English first, Spanish right under it in the `Es` MDX component (smaller, grey).
 - One `<h1>` per page; every image has alt text (`aria-label` on canvases).
 
@@ -150,6 +180,12 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   `date:` and `time:`, never the filename. Renaming a published post's slug needs its own
   permanent redirect in `vercel.json`, so shared links do not break.
 - No personal names or anything private in posts; the repo is public.
+- Photos: drop the originals (any of jpg, heic, png, webp) in `private/photos/<slug>/<name>.<ext>`,
+  reference them with `<Photo src='<slug>/<name>' alt='...' />` or `cover: <name>` + `coverAlt:` in
+  the frontmatter, run `npm run photos` and commit what it writes in `public/images/blog` and
+  `app/content/photos.json`. Only referenced photos are built; outputs nobody references are
+  deleted. To frame a photo, add its key to `app/content/photo-crops.json` with `x`, `y`, `width`
+  and `height` as fractions of the upright original; editing that file rebuilds every photo. To rebuild a photo, delete its outputs: an output newer than its original is skipped.
 - A new route needs an entry in `site.json` and `<Page meta={pageMeta('/route')}>`. Titles 30-60
   characters, descriptions 120-160. Private or unpublished pages get `noindex` and stay out of the
   sitemap and the feed.

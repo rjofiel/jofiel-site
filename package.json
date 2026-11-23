@@ -6,12 +6,13 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "lint": "eslint . --max-warnings 0 && node scripts/no-markup-comments.ts",
+    "lint": "eslint . --max-warnings 0 && node scripts/no-markup-comments.ts && node scripts/image-metadata.ts",
     "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "duplicates": "jscpd",
     "check": "prettier --check . && npm run lint && npm run typecheck && npm run duplicates",
     "preview": "vite preview",
     "heaven-sent": "node scripts/heaven-sent.ts",
+    "photos": "node scripts/photos.ts",
     "prepare": "husky"
   },
   "dependencies": {
