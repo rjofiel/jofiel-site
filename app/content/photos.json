@@ -171,10 +171,11 @@
     ]
   },
   "november-rocks-and-squirrels/thirty-km": {
-    "width": 454,
-    "height": 335,
+    "width": 518,
+    "height": 518,
     "widths": [
-      454
+      480,
+      518
     ]
   }
 }
