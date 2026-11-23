@@ -109,8 +109,11 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 - **`public/.well-known/security.txt`** (RFC 9116) uses the contact email already shown on the
   home page. Its `Expires` date must stay in the future: renew it every year, before it lapses.
 - **`app/heaven-sent/crypto.ts`** is shared by the browser and the Node CLI (type stripping), so it
-  stays plain TypeScript with no imports. The word ignores case, accents and stray spaces because it
-  is printed on paper. A wrong word returns `null`: AES-GCM fails instead of producing garbage.
+  stays plain TypeScript with no imports. Only the word's letters and digits count: case, accents,
+  spaces, hyphens, line breaks and punctuation are dropped before deriving the key, because it is
+  printed on paper (split across lines however it looks best) and phones capitalise the first letter.
+  Changing this normalisation changes every derived key, so it always ships with a reseal.
+  A wrong word returns `null`: AES-GCM fails instead of producing garbage.
 - **`scripts/heaven-sent.ts`** reads the words from a hidden prompt (or `HEAVEN_SENT_WORD` and
   `HEAVEN_SENT_OWNER_WORD`), never from argv, so they never land in shell history.
 - **`app/heaven-sent/sealed.json` holds the note sealed twice**: `guests` with the letters word,

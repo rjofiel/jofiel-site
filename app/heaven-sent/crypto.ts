@@ -13,9 +13,8 @@ export function normalizeWord(word: string): string {
   return word
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
-    .trim()
     .toLowerCase()
-    .replace(/\s+/g, ' ');
+    .replace(/[^a-z0-9]/g, '');
 }
 
 function toBase64(bytes: Uint8Array): string {

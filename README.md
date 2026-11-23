@@ -95,10 +95,11 @@ the note is encrypted in the browser bundle, so the public repo never has the pl
 
 the letters word only opens the note from january 1st (madrid); before that the page says it is the right
 word and to come back then. your own word opens it any day.
-both words need at least 8 characters and must differ. the ciphertext is public, so pick something rare,
+both words need at least 8 letters or digits and must differ. the ciphertext is public, so pick something rare,
 not a dictionary word.
 
-case, accents and extra spaces don't matter.  
+only letters and digits count: case, accents, spaces, hyphens, line breaks and punctuation don't matter,
+so the printed card can split the word however it looks best.  
 wrap a translation in `<Es>...</Es>` to show it right below, smaller and in grey.  
 what the page says before and after each date lives in `app/heaven-sent/phases.ts`.  
 in `npm run dev`, preview a phase with `/heaven-sent?phase=open`.
