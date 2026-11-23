@@ -20,9 +20,9 @@ const stageLabels: Record<Stage, string> = {
   next: 'next?'
 };
 
-type StepProps = { name: string; note?: string; stage?: Stage };
+type StepProps = { name: string; note?: string; stage?: Stage; children?: ReactNode };
 
-export const Step = ({ name, note, stage = 'past' }: StepProps) => (
+export const Step = ({ name, note, stage = 'past', children }: StepProps) => (
   <li className='flex w-full max-w-md flex-col items-start'>
     <span aria-hidden='true' className='flow-arrow pl-4 text-sm leading-6 text-muted-foreground'>
       |<br />v
@@ -33,6 +33,7 @@ export const Step = ({ name, note, stage = 'past' }: StepProps) => (
         <span className='pl-3 text-xs text-muted-foreground'>{stageLabels[stage]}</span>
       </p>
       {note && <p className='text-xs leading-relaxed text-muted-foreground'>{note}</p>}
+      {children}
     </div>
   </li>
 );

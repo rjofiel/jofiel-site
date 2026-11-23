@@ -2,9 +2,16 @@ import type { ComponentProps } from 'react';
 import type { MDXComponents } from 'mdx/types';
 import { ExternalLink } from '@/components/ExternalLink';
 import { Flow, Step } from '@/components/Flow';
+import { Camino } from '@/components/Camino';
+import { Fold, From } from '@/components/Fold';
+import { PostLink } from '@/components/PostLink';
 
 export const mdxComponents: MDXComponents = {
+  Camino,
   Flow,
+  Fold,
+  From,
+  PostLink,
   Step,
   hr: () => <hr className='my-8' />,
   h1: props => <h1 className='text-lg leading-relaxed text-foreground my-2 font-bold' {...props} />,

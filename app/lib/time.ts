@@ -1,5 +1,9 @@
 export const SITE_TIME_ZONE = 'Europe/Madrid';
 
+export function madridDate(now: Date): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: SITE_TIME_ZONE, year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
+}
+
 function offsetMinutes(instant: Date): number {
   const name = new Intl.DateTimeFormat('en-US', { timeZone: SITE_TIME_ZONE, timeZoneName: 'longOffset' })
     .formatToParts(instant)

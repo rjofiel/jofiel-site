@@ -72,6 +72,10 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 | Body text style                                 | `.body-copy` class (`app/app.css`)                                                             |
 | External links                                  | `ExternalLink`                                                                                 |
 | Photos in the terminal look                     | `DitheredImage` (algorithm in `app/lib/dither.ts`)                                             |
+| Today's date in Madrid inside a component       | `useMadridToday()` (`app/lib/useMadridToday.ts`; `?today=YYYY-MM-DD` overrides it in dev only) |
+| Note sections that appear or fold by date       | `<From date>` and `<Fold label from>` (`app/components/Fold.tsx`)                              |
+| Camino stages computed from the date            | `<Camino start stages>` (`app/components/Camino.tsx`, logic in `app/heaven-sent/camino.ts`)    |
+| Link to a post only once it is published        | `<PostLink slug>` (`app/components/PostLink.tsx`)                                              |
 
 ## Why it is built this way
 
