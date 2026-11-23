@@ -3,17 +3,26 @@ import remarkFrontmatter from 'remark-frontmatter';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { seal, unseal, type SealedPayload } from '../app/heaven-sent/crypto.ts';
+import { normalizeWord, seal } from '../app/heaven-sent/crypto.ts';
+import { readNote, type Reader, type SealedNote } from '../app/heaven-sent/gate.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const notePath = join(root, 'private/heaven-sent/note.mdx');
 const sealedPath = join(root, 'app/heaven-sent/sealed.json');
 
-function askHidden(question: string): Promise<string> {
-  const fromEnv = process.env.HEAVEN_SENT_WORD;
+const GUESTS_WORD_ENV = 'HEAVEN_SENT_WORD';
+const OWNER_WORD_ENV = 'HEAVEN_SENT_OWNER_WORD';
+
+const readerLabels: Record<Reader, string> = {
+  guests: 'opens for the letters, from january 1st (madrid)',
+  owner: 'opens for you, any day'
+};
+
+function askHidden(question: string, envName = GUESTS_WORD_ENV): Promise<string> {
+  const fromEnv = process.env[envName];
   if (fromEnv) return Promise.resolve(fromEnv);
   if (!process.stdin.isTTY) {
-    return Promise.reject(new Error('No TTY: run this in a terminal or set HEAVEN_SENT_WORD.'));
+    return Promise.reject(new Error(`No TTY: run this in a terminal or set ${envName}.`));
   }
   return new Promise(resolve => {
     process.stdout.write(question);
@@ -41,6 +50,21 @@ function askHidden(question: string): Promise<string> {
   });
 }
 
+async function askNewWord(label: string, envName: string): Promise<string> {
+  const word = await askHidden(`${label}: `, envName);
+  const again = await askHidden(`${label} again: `, envName);
+  if (word !== again) throw new Error('The two words do not match. Nothing was written.');
+  if (word.trim().length < 8) {
+    throw new Error('Use at least 8 characters: the ciphertext is public, so a short word can be guessed offline.');
+  }
+  return word;
+}
+
+async function opensAs(note: SealedNote, word: string, reader: Reader, compiled: string): Promise<boolean> {
+  const reading = await readNote(note, word);
+  return reading?.reader === reader && reading.code === compiled;
+}
+
 async function sealCommand() {
   if (!existsSync(notePath)) {
     throw new Error(`Missing ${notePath}. Write the note there first (the folder is gitignored).`);
@@ -48,30 +72,30 @@ async function sealCommand() {
   const source = readFileSync(notePath, 'utf8');
   const compiled = String(await compile(source, { outputFormat: 'function-body', remarkPlugins: [remarkFrontmatter] }));
 
-  const word = await askHidden('word: ');
-  const again = await askHidden('word again: ');
-  if (word !== again) throw new Error('The two words do not match. Nothing was written.');
-  if (word.trim().length < 8) {
-    throw new Error('Use at least 8 characters: the ciphertext is public, so a short word can be guessed offline.');
+  const guestsWord = await askNewWord('word for the letters', GUESTS_WORD_ENV);
+  const ownerWord = await askNewWord('your own word', OWNER_WORD_ENV);
+  if (normalizeWord(guestsWord) === normalizeWord(ownerWord)) {
+    throw new Error('Your own word must differ from the letters word. Nothing was written.');
   }
 
-  const payload = await seal(compiled, word);
-  if ((await unseal(payload, word)) !== compiled) throw new Error('Round-trip failed. Nothing was written.');
+  const note: SealedNote = { guests: await seal(compiled, guestsWord), owner: await seal(compiled, ownerWord) };
+  const roundTrip = (await opensAs(note, guestsWord, 'guests', compiled)) && (await opensAs(note, ownerWord, 'owner', compiled));
+  if (!roundTrip) throw new Error('Round-trip failed. Nothing was written.');
 
-  writeFileSync(sealedPath, JSON.stringify(payload, null, 2) + '\n');
-  console.log(`sealed -> ${sealedPath.replace(root + '/', '')} (round-trip ok)`);
+  writeFileSync(sealedPath, JSON.stringify(note, null, 2) + '\n');
+  console.log(`sealed -> ${sealedPath.replace(root + '/', '')} (round-trip ok for both words)`);
 }
 
 async function checkCommand() {
   if (!existsSync(sealedPath)) throw new Error('No sealed.json yet. Run seal first.');
-  const payload = JSON.parse(readFileSync(sealedPath, 'utf8')) as SealedPayload;
+  const note = JSON.parse(readFileSync(sealedPath, 'utf8')) as SealedNote;
   const word = await askHidden('word: ');
-  const result = await unseal(payload, word);
-  if (result === null) {
+  const reading = await readNote(note, word);
+  if (reading === null) {
     console.log('wrong word');
     process.exitCode = 1;
   } else {
-    console.log('opens');
+    console.log(readerLabels[reading.reader]);
   }
 }
 

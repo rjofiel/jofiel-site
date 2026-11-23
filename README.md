@@ -89,10 +89,14 @@ or you can just use `create_post.sh` if you prefer the script.
 the note is encrypted in the browser bundle, so the public repo never has the plaintext.
 
 1. write the note in `private/heaven-sent/note.mdx` (gitignored, never commit it).
-2. `npm run heaven-sent -- seal`, type the word twice. it writes `app/heaven-sent/sealed.json`.
-3. `npm run heaven-sent -- check` to test the word you printed.
+2. `npm run heaven-sent -- seal` asks two words, each twice: the word for the letters and your own word.
+   it seals the same note with each one into `app/heaven-sent/sealed.json`.
+3. `npm run heaven-sent -- check` tells you whose word you typed.
 
-the word needs at least 8 characters. the ciphertext is public, so pick something rare, not a dictionary word.
+the letters word only opens the note from january 1st (madrid); before that the page says it is the right
+word and to come back then. your own word opens it any day.
+both words need at least 8 characters and must differ. the ciphertext is public, so pick something rare,
+not a dictionary word.
 
 case, accents and extra spaces don't matter.  
 wrap a translation in `<Es>...</Es>` to show it right below, smaller and in grey.  

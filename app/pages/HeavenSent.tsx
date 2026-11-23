@@ -7,11 +7,23 @@ import { useHydrated } from '@/lib/useHydrated';
 import { pageMeta } from '@/lib/meta';
 import { DoctorSilhouette } from '@/components/DoctorSilhouette';
 import { mdxComponents } from '@/components/mdxComponents';
-import { unseal, type SealedPayload } from '@/heaven-sent/crypto';
-import { PHASES, phaseAt, type Phase, type PhaseId } from '@/heaven-sent/phases';
+import { readNote, type Reading, type SealedNote } from '@/heaven-sent/gate';
+import { PHASES, guestsMustWait, phaseAt, type Phase, type PhaseId } from '@/heaven-sent/phases';
 
 const sealedFiles = import.meta.glob('/app/heaven-sent/sealed.json', { eager: true, import: 'default' });
-const sealed = sealedFiles['/app/heaven-sent/sealed.json'] as SealedPayload | undefined;
+const sealed = sealedFiles['/app/heaven-sent/sealed.json'] as SealedNote | undefined;
+
+type WordStatus = 'idle' | 'opening' | 'wrong' | 'early';
+
+const statusMessages: Partial<Record<WordStatus, string>> = {
+  wrong: 'not that one. try again.',
+  early: "that's the word. it opens on january 1st."
+};
+
+function statusAfter(reading: Reading | null, guestsWait: boolean): WordStatus {
+  if (!reading) return 'wrong';
+  return reading.reader === 'guests' && guestsWait ? 'early' : 'idle';
+}
 
 type NoteContent = ComponentType<{ components?: typeof mdxComponents }>;
 
@@ -46,17 +58,21 @@ const PhaseMessage = ({ phase }: { phase: Phase }) => (
   </div>
 );
 
-const WordForm = ({ payload, onOpen }: { payload: SealedPayload; onOpen: (code: string) => void }) => {
+type WordFormProps = { note: SealedNote; guestsWait: boolean; onOpen: (code: string) => void };
+
+const WordForm = ({ note, guestsWait, onOpen }: WordFormProps) => {
   const [word, setWord] = useState('');
-  const [status, setStatus] = useState<'idle' | 'opening' | 'wrong'>('idle');
+  const [status, setStatus] = useState<WordStatus>('idle');
+  const message = statusMessages[status];
 
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (!word.trim()) return;
     setStatus('opening');
-    const code = await unseal(payload, word);
-    setStatus(code === null ? 'wrong' : 'idle');
-    if (code !== null) onOpen(code);
+    const reading = await readNote(note, word);
+    const next = statusAfter(reading, guestsWait);
+    setStatus(next);
+    if (reading && next === 'idle') onOpen(reading.code);
   };
 
   return (
@@ -74,7 +90,7 @@ const WordForm = ({ payload, onOpen }: { payload: SealedPayload; onOpen: (code: 
           value={word}
           onChange={event => {
             setWord(event.target.value);
-            if (status === 'wrong') setStatus('idle');
+            if (message) setStatus('idle');
           }}
           placeholder='the word'
           aria-label='the word from the letter'
@@ -84,7 +100,7 @@ const WordForm = ({ payload, onOpen }: { payload: SealedPayload; onOpen: (code: 
           {status === 'opening' ? 'opening...' : '/open'}
         </button>
       </form>
-      {status === 'wrong' && <p className='text-xs text-muted-foreground'>not that one. try again.</p>}
+      {message && <p className='text-xs text-muted-foreground'>{message}</p>}
     </>
   );
 };
@@ -103,7 +119,7 @@ const SealedNote = () => {
   return (
     <>
       <PhaseMessage phase={phase} />
-      {sealed && <WordForm payload={sealed} onOpen={code => setNote(() => runCompiledMdx(code))} />}
+      {sealed && <WordForm note={sealed} guestsWait={guestsMustWait(phase)} onOpen={code => setNote(() => runCompiledMdx(code))} />}
     </>
   );
 };

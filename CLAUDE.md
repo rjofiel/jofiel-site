@@ -111,8 +111,13 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 - **`app/heaven-sent/crypto.ts`** is shared by the browser and the Node CLI (type stripping), so it
   stays plain TypeScript with no imports. The word ignores case, accents and stray spaces because it
   is printed on paper. A wrong word returns `null`: AES-GCM fails instead of producing garbage.
-- **`scripts/heaven-sent.ts`** reads the word from a hidden prompt (or `HEAVEN_SENT_WORD`), never from
-  argv, so it never lands in shell history.
+- **`scripts/heaven-sent.ts`** reads the words from a hidden prompt (or `HEAVEN_SENT_WORD` and
+  `HEAVEN_SENT_OWNER_WORD`), never from argv, so they never land in shell history.
+- **`app/heaven-sent/sealed.json` holds the note sealed twice**: `guests` with the letters word,
+  `owner` with the owner's own word. `readNote()` (`app/heaven-sent/gate.ts`) says which one opened.
+  The letters word is held back until the `open` phase; this is a courtesy gate in the browser, not
+  security, because the ciphertext is public and the word alone decrypts it. The owner word ignores
+  the date so he can always read and check the note.
 - **`vite.config.ts`** drops react-router's `"use client"` warning: it is meant for server components
   and means nothing here.
 
@@ -146,9 +151,10 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 
 - The plaintext lives only in `private/heaven-sent/note.mdx`, which git ignores. Never commit it and
   never move it under `app/content/`.
-- Never ask for the word, never type it with a tool, never suggest one. The owner seals and checks.
-- A changed note is resealed with the same word (cards may be printed) and ships alone in its own PR;
-  after deploy, confirm the live bundle has the new `salt`.
+- Never ask for either word, never type one with a tool, never suggest one. The owner seals and checks.
+- A changed note is resealed with the same two words (cards may be printed) and ships alone in its own
+  PR; after deploy, confirm the live bundle has the new `salt`.
+- Phase dates in `app/heaven-sent/phases.ts` are Madrid wall-clock times through `madridIso()`.
 
 ## Workflow
 
