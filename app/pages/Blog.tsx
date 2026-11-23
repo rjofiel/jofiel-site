@@ -15,7 +15,7 @@ const PostDate = ({ date }: { date: string }) => {
 
 const PostItem = ({ post }: { post: PostEntry }) => (
   <article className={`group ${!post.published && 'pointer-events-none opacity-50'}`}>
-    <Link to={`/blog/${post.filename}`} className='block space-y-1'>
+    <Link to={`/blog/${post.slug}`} className='block space-y-1'>
       <div className='flex gap-4'>
         <PostDate date={post.date} />
         <div>
@@ -30,7 +30,7 @@ const PostItem = ({ post }: { post: PostEntry }) => (
 const PostList = ({ posts }: { posts: PostEntry[] }) => (
   <div className='space-y-6'>
     {posts.map(post => (
-      <PostItem key={post.filename} post={post} />
+      <PostItem key={post.slug} post={post} />
     ))}
   </div>
 );

@@ -6,9 +6,9 @@ import { formatPostDate, getPost, postBody } from '@/lib/posts';
 import { NotFound } from '@/pages/NotFound';
 
 export const Post = () => {
-  const { slug: filename = '' } = useParams();
-  const post = getPost(filename);
-  const Body = postBody(filename);
+  const { slug = '' } = useParams();
+  const post = getPost(slug);
+  const Body = postBody(slug);
 
   if (!post || !Body) return <NotFound />;
 
