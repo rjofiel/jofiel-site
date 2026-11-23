@@ -65,7 +65,8 @@ before committing, `npm run check` has to pass (format, lint, types, duplicates)
 ## 📝 writing
 
 posts are in mdx.  
-stored in `/app/content/blog`.  
+stored in `/app/content/blog/<slug>.mdx`; the filename is the url (`/blog/<slug>`).  
+the date lives only in the metadata, in madrid time, so changing it never breaks a link.  
 they need this metadata structure:
 
 ```mdx

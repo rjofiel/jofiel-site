@@ -21,7 +21,7 @@ SLUG=$(printf "%s" "$TITLE" \
   | sed 's/  */ /g' \
   | tr ' ' '-' )
 
-FILENAME="$DATE-$SLUG.mdx"
+FILENAME="$SLUG.mdx"
 FILEPATH="$BLOG_DIR/$FILENAME"
 
 mkdir -p "$BLOG_DIR"

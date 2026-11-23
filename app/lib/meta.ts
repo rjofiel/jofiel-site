@@ -12,7 +12,6 @@ export type PageMeta = {
 };
 
 export type PostEntry = {
-  filename: string;
   slug: string;
   date: string;
   title: string;
@@ -31,7 +30,7 @@ export function pageMeta(path: string): PageMeta {
 
 export function postMeta(post: PostEntry): PageMeta {
   return {
-    path: `/blog/${post.filename}`,
+    path: `/blog/${post.slug}`,
     title: `${post.title || post.slug.replace(/-/g, ' ')} | ${site.name}`,
     description: post.description || pageMeta('/blog').description,
     type: 'article',
