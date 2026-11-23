@@ -152,7 +152,8 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   and the favicon.
 - Images stay subtle: decorative photos go through `DitheredImage`. The Capaldi silhouette appears only on
   `/about` and `/heaven-sent`, and a post's dithered `cover` sits the same way: at the end, on the
-  right, fading out, drawn with one dot per device pixel (up to 2) so it stays sharp. Post photos
+  right, its edges fading into the background, with dots two device pixels wide (finer than one
+  CSS pixel on phones, never so fine that it loses its grain). Post photos
   stay small (the boxes in `app/lib/photos.ts`: 272x192 inline, 185x252 beside the text) so they
   accompany the text instead of leading it. Tapping one opens it big in a native `<dialog>`
   (Esc, tap outside or `x` close it; arrows, swipe or `<` `>` move through the post's photos in
