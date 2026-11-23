@@ -4,13 +4,13 @@ import { coverWidth, getPhoto, middleWidth } from '@/lib/photos';
 import { photoPath } from '@/lib/photoPaths';
 import { useHydrated } from '@/lib/useHydrated';
 
-const DEVICE_PIXELS_PER_DOT = 2;
+const DEVICE_PIXELS_PER_DOT = 1.8;
 
-const dotSizeFor = (devicePixelRatio: number) => Math.min(1, DEVICE_PIXELS_PER_DOT / devicePixelRatio);
+const dotSizeFor = (devicePixelRatio: number) => Math.max(1 / devicePixelRatio, Math.min(1, DEVICE_PIXELS_PER_DOT / devicePixelRatio));
 
 const SOFT_EDGES: CSSProperties = {
   maskImage:
-    'linear-gradient(to right, transparent, black 18%, black 82%, transparent), linear-gradient(to bottom, transparent, black 14%, black 62%, transparent)',
+    'linear-gradient(to right, transparent, black 8%, black 92%, transparent), linear-gradient(to bottom, transparent, black 6%, black 78%, transparent)',
   maskComposite: 'intersect'
 };
 
