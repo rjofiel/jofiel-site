@@ -163,7 +163,8 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   text would leave about 25 characters per line; a flex row, not a float, so it can never spill
   into the next section. Photos start grey and take their colour while they cross the
   middle of the screen (hover on browsers without scroll-driven animations); at most one dithered
-  cover per post. Dithering reads contrast, not subject: covers need a clear
+  cover per post and one photo per `##` section; a second photo of the same moment becomes the
+  cover if it dithers well, or goes to another section. Dithering reads contrast, not subject: covers need a clear
   split of light and dark (silhouettes, something bright on a dark ground), because leaves, grass
   and sky turn to noise.
 - Bilingual text: English first, Spanish right under it in the `Es` MDX component (smaller, grey).
