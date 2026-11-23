@@ -72,7 +72,8 @@ they need this metadata structure:
 ```mdx
 ---
 title: your title here
-date: YYYY-MM-DD_HH-mm
+date: YYYY-MM-DD
+time: HH:MM
 description: a brief description...
 published: true
 ---

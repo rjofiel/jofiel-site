@@ -10,8 +10,9 @@ if [ -z "$TITLE" ]; then
   exit 1
 fi
 
-# date YYYY-MM-DD
-DATE=$(date +"%Y-%m-%d_%H-%M")
+# date YYYY-MM-DD, time HH:MM, both in Madrid
+DATE=$(TZ=Europe/Madrid date +"%Y-%m-%d")
+TIME=$(TZ=Europe/Madrid date +"%H:%M")
 
 # slugify
 SLUG=$(printf "%s" "$TITLE" \
@@ -35,6 +36,7 @@ cat <<EOF > "$FILEPATH"
 ---
 title: $TITLE  
 date: $DATE   
+time: $TIME   
 description:    
 published: false    
 ---

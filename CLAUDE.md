@@ -92,8 +92,10 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   group; the post page shows the full `dd/mm/yy, hh:mm` because it has no year around it.
 - **`progressiveChunkSize: Infinity`** in `app/entry-server.tsx` keeps lazy routes (`/heaven-sent`)
   from being prerendered as deferred chunks.
-- **Madrid time.** The `date` frontmatter of a post (`YYYY-MM-DD_HH-MM`) is Madrid wall-clock time.
-  `madridIso()` turns it into a real instant whatever the time zone of the build machine (Vercel
+- **Madrid time.** The `date` (`YYYY-MM-DD`) and `time` (`HH:MM`) frontmatter of a post are Madrid
+  wall-clock time. The `yaml` package parses YAML 1.2, so both stay strings; a YAML 1.1 parser
+  would read the date as a UTC `Date` and `00:45` as the number 45. `madridIso()` turns them into a
+  real instant whatever the time zone of the build machine (Vercel
   builds in UTC) or the reader. It computes the offset twice so times right after a DST switch use
   the offset in force at that moment. The ISO string keeps the wall-clock digits, so the dates on
   screen are read straight from it with no time zone maths.
@@ -128,12 +130,13 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 
 ## Content and SEO
 
-- Posts: `app/content/blog/<slug>.mdx`. Frontmatter `title`, `date` (`YYYY-MM-DD_HH-MM`, Madrid
-  time), `description`, `published`. English, all lowercase, line breaks as two trailing spaces,
-  `---` after the frontmatter. Prettier ignores `app/content/` so those spaces survive.
+- Posts: `app/content/blog/<slug>.mdx`. Frontmatter `title`, `date` (`YYYY-MM-DD`), `time`
+  (`HH:MM`, Madrid), `description`, `published`. English, all lowercase, line breaks as two
+  trailing spaces, `---` after the frontmatter. Prettier ignores `app/content/` so those spaces
+  survive.
 - The filename is the URL; the date only orders and labels the post. Change a date by editing
-  `date:`, never the filename. Renaming a published post's slug needs its own permanent redirect
-  in `vercel.json`, so shared links do not break.
+  `date:` and `time:`, never the filename. Renaming a published post's slug needs its own
+  permanent redirect in `vercel.json`, so shared links do not break.
 - No personal names or anything private in posts; the repo is public.
 - A new route needs an entry in `site.json` and `<Page meta={pageMeta('/route')}>`. Titles 30-60
   characters, descriptions 120-160. Private or unpublished pages get `noindex` and stay out of the

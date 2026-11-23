@@ -8,19 +8,15 @@ import { madridIso } from '../app/lib/time';
 const VIRTUAL_ID = 'virtual:blog-index';
 const RESOLVED_ID = `\0${VIRTUAL_ID}`;
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---/;
-const POST_DATE = /^(\d{4}-\d{2}-\d{2})_(\d{2})-(\d{2})$/;
 
-function postDate(value: unknown): string {
-  const parts = String(value ?? '').match(POST_DATE);
-  return parts ? madridIso(`${parts[1]}T${parts[2]}:${parts[3]}`) : '';
-}
+const postDate = (frontmatter: Record<string, unknown>) => madridIso(`${String(frontmatter.date ?? '')}T${String(frontmatter.time ?? '')}`);
 
 function toEntry(slug: string, source: string): PostEntry {
   const match = source.match(FRONTMATTER);
   const frontmatter: Record<string, unknown> = (match && parse(match[1])) || {};
   return {
     slug,
-    date: postDate(frontmatter.date),
+    date: postDate(frontmatter),
     title: String(frontmatter.title ?? ''),
     description: String(frontmatter.description ?? ''),
     published: frontmatter.published === true || frontmatter.published === 'true'
