@@ -1,3 +1,5 @@
+import { madridIso } from '@/lib/time';
+
 export type PhaseId = 'sealed' | 'open' | 'happened';
 
 export type Phase = {
@@ -10,17 +12,17 @@ export type Phase = {
 export const PHASES: Phase[] = [
   {
     id: 'sealed',
-    startsAt: '1970-01-01T00:00:00Z',
+    startsAt: madridIso('1970-01-01T00:00'),
     lines: ['not yet.', 'this one opens on january 1st.', 'keep the letter closed until then.']
   },
   {
     id: 'open',
-    startsAt: '2026-12-31T23:00:00Z',
+    startsAt: madridIso('2027-01-01T00:00'),
     lines: ['you opened it.', 'the word is inside the letter.']
   },
   {
     id: 'happened',
-    startsAt: '2027-09-22T22:00:00Z',
+    startsAt: madridIso('2027-09-23T00:00'),
     lines: ['it happened.'],
     links: []
   }
@@ -33,3 +35,5 @@ export function phaseAt(now: Date, phases: Phase[] = PHASES): Phase {
   }
   return current;
 }
+
+export const guestsMustWait = (phase: Phase) => phase.id === 'sealed';
