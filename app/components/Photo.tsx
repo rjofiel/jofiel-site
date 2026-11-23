@@ -1,6 +1,6 @@
 import type { MouseEvent, ReactNode } from 'react';
 import { PhotoPicture } from '@/components/PhotoPicture';
-import { getPhoto, inlineWidth, largestWidth, sideWidth, type PhotoEntry } from '@/lib/photos';
+import { getPhoto, inlineWidth, isLandscape, largestWidth, sideWidth, type PhotoEntry } from '@/lib/photos';
 import { photoPath } from '@/lib/photoPaths';
 import { isPlainClick, usePhotoViewer } from '@/lib/usePhotoViewer';
 
@@ -27,13 +27,21 @@ const LinkedPicture = ({ src, alt, photo, width }: LinkedPictureProps) => {
 
 type PhotoProps = { src: string; alt: string; children?: ReactNode };
 
+const InlinePhoto = ({ src, alt, photo }: Omit<LinkedPictureProps, 'width'>) => (
+  <figure className='my-6'>
+    <LinkedPicture src={src} alt={alt} photo={photo} width={inlineWidth(photo)} />
+  </figure>
+);
+
 export const Photo = ({ src, alt, children }: PhotoProps) => {
   const photo = getPhoto(src);
-  if (!children) {
+  if (!children) return <InlinePhoto src={src} alt={alt} photo={photo} />;
+  if (isLandscape(photo)) {
     return (
-      <figure className='my-6'>
-        <LinkedPicture src={src} alt={alt} photo={photo} width={inlineWidth(photo)} />
-      </figure>
+      <>
+        {children}
+        <InlinePhoto src={src} alt={alt} photo={photo} />
+      </>
     );
   }
   return (

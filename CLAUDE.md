@@ -161,7 +161,9 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   without JavaScript and with ctrl/cmd-click. A `<Photo>` that wraps
   paragraphs sits to their right from 640 px up and right under them on phones, where beside the
   text would leave about 25 characters per line; a flex row, not a float, so it can never spill
-  into the next section. Photos start grey and take their colour while they cross the
+  into the next section. Only vertical and square photos go beside the text: a horizontal one that wraps
+  paragraphs still renders under them in the column (`isLandscape()` in `app/lib/photos.ts`),
+  because beside the copy it shrinks to a thin strip. Photos start grey and take their colour while they cross the
   middle of the screen (hover on browsers without scroll-driven animations); at most one dithered
   cover per post and one photo per `##` section; a second photo of the same moment becomes the
   cover if it dithers well, or goes to another section. Dithering reads contrast, not subject: covers need a clear

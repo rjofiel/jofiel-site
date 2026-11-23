@@ -15,6 +15,8 @@ const COVER_BOX: Box = { width: 256, height: 256 };
 
 const fitWidth = (photo: PhotoEntry, box: Box) => Math.min(box.width, Math.round((box.height * photo.width) / photo.height));
 
+export const isLandscape = (photo: PhotoEntry) => photo.width > photo.height;
+
 export const inlineWidth = (photo: PhotoEntry) => fitWidth(photo, INLINE_BOX);
 
 export const sideWidth = (photo: PhotoEntry) => fitWidth(photo, SIDE_BOX);
