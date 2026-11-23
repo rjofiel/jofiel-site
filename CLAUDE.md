@@ -165,9 +165,10 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   `pre-commit` runs `npm run check`, `commit-msg` runs commitlint (conventional commits, no
   `Co-Authored-By`), `pre-push` runs `npm run check` and `npm run build`. Never skip them with
   `--no-verify`; fix what they report. A fresh worktree needs `npm ci` before its first commit.
-- Git over SSH only. Push the branch to `develop`, open a PR to `main`, merge with
-  `gh pr merge <n> --merge --match-head-commit <sha>`.
-- There is no CI and no preview deploy for `develop`: the checks above are the gate. After merging,
+- Git over SSH only. `main` is the only branch on the remote and deploys to production; there is no
+  `develop` and no git flow. Push the feature branch under its own name, open a PR to `main`, merge
+  with `gh pr merge <n> --merge --match-head-commit <sha>`.
+- There is no CI and no preview deploy: the checks above are the gate. After merging,
   wait for the Vercel status on the merge commit and check the live site (curl and a browser).
 - New dependencies need a reason: prefer the platform or a few lines of code. Keep `npm audit` at 0;
   packages with install scripts must be approved with `npm install-scripts`.
