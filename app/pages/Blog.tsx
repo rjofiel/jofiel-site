@@ -7,7 +7,7 @@ const PostDate = ({ date }: { date: string }) => {
   const parts = postDateParts(date);
   return (
     <p className='w-[5ch] shrink-0 text-xs leading-5 text-muted-foreground tabular-nums'>
-      <span className='block'>{parts?.day}</span>
+      <span className='block'>{parts?.dayMonth}</span>
       <span className='block'>{parts?.time}</span>
     </p>
   );
