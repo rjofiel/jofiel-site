@@ -150,7 +150,8 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   cyan…). TARDIS blue `#003b6f` is reserved for the hidden nav square, the last colour of the `/about` palette
   and the favicon.
 - Images stay subtle: decorative photos go through `DitheredImage`. The Capaldi silhouette appears only on
-  `/about` and `/heaven-sent`. Post photos start grey and take their colour while they cross the
+  `/about` and `/heaven-sent`. Post photos stay small (at most 272x192 px, `PHOTO_BOX` in `app/lib/photos.ts`) so
+  they accompany the text instead of leading it, and link to the full-size file; they start grey and take their colour while they cross the
   middle of the screen (hover on browsers without scroll-driven animations); at most one dithered
   cover and two body photos per post. Dithering reads contrast, not subject: covers need a clear
   split of light and dark (silhouettes, something bright on a dark ground), because leaves, grass

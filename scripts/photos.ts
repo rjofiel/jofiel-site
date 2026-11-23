@@ -13,7 +13,7 @@ const outputDir = path.join(root, 'public', PHOTO_ROOT);
 const manifestPath = path.join(root, 'app/content/photos.json');
 const cropsPath = path.join(root, 'app/content/photo-crops.json');
 
-const QUALITY: Record<PhotoFormat, string> = { avif: '55', webp: '80' };
+const QUALITY: Record<PhotoFormat, string> = { avif: '64', webp: '82' };
 const OG_DOT_SIZE = 2;
 const OG_CONTRAST = 1.4;
 const OG_DOT_COLOUR = [235, 235, 235];

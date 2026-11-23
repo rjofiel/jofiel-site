@@ -5,7 +5,13 @@ export type PhotoEntry = { width: number; height: number; widths: number[] };
 
 const photos: Record<string, PhotoEntry> = manifest;
 
-export const PHOTO_SIZES = '(min-width: 720px) 672px, calc(100vw - 3rem)';
+const PHOTO_BOX = { width: 272, height: 192 };
+
+export const displayWidth = (photo: PhotoEntry) => Math.min(PHOTO_BOX.width, Math.round((PHOTO_BOX.height * photo.width) / photo.height));
+
+export const photoSizes = (photo: PhotoEntry) => `${displayWidth(photo)}px`;
+
+export const largestWidth = (photo: PhotoEntry) => photo.widths[photo.widths.length - 1];
 
 export { PHOTO_FORMATS };
 
