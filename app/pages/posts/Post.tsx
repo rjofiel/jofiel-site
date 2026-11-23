@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { Page, PageTitle } from '@/components/Page';
 import { mdxComponents } from '@/components/mdxComponents';
+import { PostCover } from '@/components/PostCover';
 import { postMeta } from '@/lib/meta';
 import { formatPostDate, getPost, postBody } from '@/lib/posts';
 import { NotFound } from '@/pages/NotFound';
@@ -23,6 +24,7 @@ export const Post = () => {
           <p className='text-xs text-foreground'>{formatPostDate(post.date)}</p>
         </div>
       </section>
+      {post.cover && <PostCover src={post.cover} alt={post.coverAlt ?? ''} />}
       <Body components={mdxComponents} />
     </Page>
   );

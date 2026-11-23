@@ -1,0 +1,82 @@
+{
+  "brussels-luxembourg-and-the-cold/christmas-market": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "brussels-luxembourg-and-the-cold/jordans": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "brussels-luxembourg-and-the-cold/under-the-trees": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "how-was-this-year/mountain": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "how-was-this-year/summit": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "madrid-with-perrito/cable-car": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "madrid-with-perrito/prado": {
+    "width": 1440,
+    "height": 1080,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "november-rocks-and-squirrels/pedriza": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  },
+  "november-rocks-and-squirrels/thirty-km": {
+    "width": 810,
+    "height": 1080,
+    "widths": [
+      480,
+      810
+    ]
+  }
+}

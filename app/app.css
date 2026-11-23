@@ -107,4 +107,36 @@
       opacity: 0;
     }
   }
+
+  .post-photo {
+    filter: grayscale(1);
+    transition: filter 600ms ease;
+  }
+
+  .post-photo:hover {
+    filter: grayscale(0);
+  }
+
+  @supports (animation-timeline: view()) {
+    .post-photo {
+      animation: colour-in-view linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+
+  @keyframes colour-in-view {
+    0%,
+    20% {
+      filter: grayscale(1);
+    }
+    40%,
+    60% {
+      filter: grayscale(0);
+    }
+    80%,
+    100% {
+      filter: grayscale(1);
+    }
+  }
 }

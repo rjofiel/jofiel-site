@@ -3,13 +3,18 @@ import path from 'node:path';
 import { parse } from 'yaml';
 import type { Plugin } from 'vite';
 import type { PostEntry } from '../app/lib/meta';
-import { madridIso } from '../app/lib/time';
+import { madridIso } from '../app/lib/time.ts';
 
 const VIRTUAL_ID = 'virtual:blog-index';
 const RESOLVED_ID = `\0${VIRTUAL_ID}`;
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---/;
 
 const postDate = (frontmatter: Record<string, unknown>) => madridIso(`${String(frontmatter.date ?? '')}T${String(frontmatter.time ?? '')}`);
+
+function coverOf(slug: string, frontmatter: Record<string, unknown>): Pick<PostEntry, 'cover' | 'coverAlt'> {
+  if (!frontmatter.cover) return {};
+  return { cover: `${slug}/${String(frontmatter.cover)}`, coverAlt: String(frontmatter.coverAlt ?? '') };
+}
 
 function toEntry(slug: string, source: string): PostEntry {
   const match = source.match(FRONTMATTER);
@@ -19,7 +24,8 @@ function toEntry(slug: string, source: string): PostEntry {
     date: postDate(frontmatter),
     title: String(frontmatter.title ?? ''),
     description: String(frontmatter.description ?? ''),
-    published: frontmatter.published === true || frontmatter.published === 'true'
+    published: frontmatter.published === true || frontmatter.published === 'true',
+    ...coverOf(slug, frontmatter)
   };
 }
 
