@@ -159,9 +159,14 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   (Esc, tap outside or `x` close it; arrows, swipe or `<` `>` move through the post's photos in
   reading order, wrapping around); the photo is still a link to the full-size file, so it works
   without JavaScript and with ctrl/cmd-click. A `<Photo>` that wraps
-  paragraphs sits to their right from 640 px up and right under them on phones, where beside the
+  paragraphs sits to their right from 640 px up and centred under them on phones, where beside the
   text would leave about 25 characters per line; a flex row, not a float, so it can never spill
-  into the next section. Only vertical and square photos go beside the text: a horizontal one that wraps
+  into the next section. On phones every post photo is centred in the column; from 640 px inline
+  photos sit at the left edge of the text. Each photo reserves its box from its `width` and
+  `height`, and a dashed `loading_` box sits behind it until the image paints over it, so a slow
+  photo never leaves an empty gap and needs no JavaScript. Both Agave weights are preloaded in
+  `index.html`: the bold one carries every heading, and loading it late made the text jump.
+  Only vertical and square photos go beside the text: a horizontal one that wraps
   paragraphs still renders under them in the column (`isLandscape()` in `app/lib/photos.ts`),
   because beside the copy it shrinks to a thin strip. Photos start grey and take their colour while they cross the
   middle of the screen (hover on browsers without scroll-driven animations); at most one dithered
