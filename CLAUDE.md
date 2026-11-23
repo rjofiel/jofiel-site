@@ -88,6 +88,8 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 - **`/blog` groups posts by year, newest first.** The newest year with posts is shown first under
   "current year"; older years follow as native `<details>` that start collapsed. Inside every year
   the newest post comes first. It works without JavaScript and crawlers still see every link.
+  The list shows each post's day and month (`dd/mm`) and time, since the year is already the
+  group; the post page keeps `mm/yy, hh:mm` because it has no year around it.
 - **`progressiveChunkSize: Infinity`** in `app/entry-server.tsx` keeps lazy routes (`/heaven-sent`)
   from being prerendered as deferred chunks.
 - **Madrid time.** Post filenames carry Madrid wall-clock time. `madridIso()` turns it into a real
