@@ -73,7 +73,7 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
 | Body text style                                 | `.body-copy` class (`app/app.css`)                                                             |
 | External links                                  | `ExternalLink`                                                                                 |
 | Photos in the terminal look                     | `DitheredImage` (algorithm in `app/lib/dither.ts`)                                             |
-| Photos in posts                                 | `<Photo src='<slug>/<name>' alt>` in MDX; a dithered cover with `cover`/`coverAlt` frontmatter |
+| Photos in posts                                 | `<Photo src='<slug>/<name>' alt layout?>` in MDX; a dithered cover with `cover`/`coverAlt`     |
 | Photo URLs, widths and formats                  | `app/lib/photoPaths.ts` (shared by the app and `scripts/photos.ts`)                            |
 
 ## Why it is built this way
@@ -151,7 +151,11 @@ They live in `eslint.config.js`, scoped to one file each. Adding one needs a rea
   and the favicon.
 - Images stay subtle: decorative photos go through `DitheredImage`. The Capaldi silhouette appears only on
   `/about` and `/heaven-sent`. Post photos stay small (at most 272x192 px, `PHOTO_BOX` in `app/lib/photos.ts`) so
-  they accompany the text instead of leading it, and link to the full-size file; they start grey and take their colour while they cross the
+  they accompany the text instead of leading it, and link to the full-size file. Vertical photos
+  float to the right of the text from 640 px up (`layout='side'`, the default when taller than
+  wide) and stack on phones, where a float would leave the text about 25 characters wide;
+  `layout='inline'` or `'side'` overrides it. A side photo goes before the paragraphs it sits
+  next to, and every `h2` and `hr` clears floats so it never spills into the next section; they start grey and take their colour while they cross the
   middle of the screen (hover on browsers without scroll-driven animations); at most one dithered
   cover and two body photos per post. Dithering reads contrast, not subject: covers need a clear
   split of light and dark (silhouettes, something bright on a dark ground), because leaves, grass

@@ -86,7 +86,8 @@ or you can just use `create_post.sh` if you prefer the script.
 ## 📷 photos in posts
 
 1. put the original in `private/photos/<slug>/<name>.jpg` (or `.heic`, `.png`, `.webp`). that folder is gitignored.
-2. in the post, `<Photo src='<slug>/<name>' alt='what it shows' />`, or a dithered cover on top with
+2. in the post, `<Photo src='<slug>/<name>' alt='what it shows' />` (vertical photos sit beside the text, put them before
+   the paragraphs they go with; `layout='inline'` or `layout='side'` forces one or the other), or a dithered cover on top with
    `cover: <name>` and `coverAlt: what it shows` in the frontmatter.
 3. `npm run photos` (needs imagemagick 7: `brew install imagemagick`) strips every bit of metadata and writes
    avif + webp at several widths to `public/images/blog`. commit those and `app/content/photos.json`.
