@@ -21,22 +21,22 @@ export function postsByYear(posts: PostEntry[]): PostYear[] {
   return [...groups].map(([year, yearPosts]) => ({ year, posts: yearPosts }));
 }
 
-export type PostDateParts = { dayMonth: string; monthYear: string; time: string };
+export type PostDateParts = { dayMonth: string; fullDate: string; time: string };
 
-const madridFormat = (parsed: Date, options: Intl.DateTimeFormatOptions, locale = 'en-US') =>
-  parsed.toLocaleString(locale, { timeZone: SITE_TIME_ZONE, ...options });
+const madridFormat = (parsed: Date, options: Intl.DateTimeFormatOptions) =>
+  parsed.toLocaleString('en-GB', { timeZone: SITE_TIME_ZONE, ...options });
 
 export function postDateParts(date: string): PostDateParts | undefined {
   const parsed = new Date(date);
   if (!date || isNaN(parsed.getTime())) return undefined;
   return {
-    dayMonth: madridFormat(parsed, { day: '2-digit', month: '2-digit' }, 'en-GB'),
-    monthYear: madridFormat(parsed, { month: '2-digit', year: '2-digit' }),
+    dayMonth: madridFormat(parsed, { day: '2-digit', month: '2-digit' }),
+    fullDate: madridFormat(parsed, { day: '2-digit', month: '2-digit', year: '2-digit' }),
     time: madridFormat(parsed, { hour: '2-digit', minute: '2-digit', hour12: false })
   };
 }
 
 export function formatPostDate(date: string): string {
   const parts = postDateParts(date);
-  return parts ? `${parts.monthYear}, ${parts.time}` : '';
+  return parts ? `${parts.fullDate}, ${parts.time}` : '';
 }
